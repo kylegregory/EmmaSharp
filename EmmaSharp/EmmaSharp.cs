@@ -10,6 +10,5 @@ namespace EmmaSharp
     {
         private string baseUrl = "https://api.e2ma.net";
 
-
     }
 }
