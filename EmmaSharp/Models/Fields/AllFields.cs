@@ -1,11 +1,11 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Fields
 {
-    class AllFields : PaginationBase
+    public class AllFields : PaginationBase
     {
-        [JsonProperty("fields")]
+        [DeserializeAs(Name = "fields")]
         public List<Field> Fields { get; set; }
     }
 }

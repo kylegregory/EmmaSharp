@@ -1,41 +1,41 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 using System;
 
 namespace EmmaSharp.Models
 {
-    class Field
+    public class Field
     {
-        [JsonProperty("shortcut_name")]
+        [DeserializeAs(Name = "shortcut_name")]
         public string ShortcutName { get; set; }
 
-        [JsonProperty("display_name")]
+        [DeserializeAs(Name = "display_name")]
         public string DisplayName { get; set; }
 
-        [JsonProperty("account_id")]
+        [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
 
-        [JsonProperty("field_type")]
+        [DeserializeAs(Name = "field_type")]
         public FieldType FieldType { get; set; }
 
-        [JsonProperty("required")]
+        [DeserializeAs(Name = "required")]
         public bool Required { get; set; }
 
-        [JsonProperty("field_id")]
+        [DeserializeAs(Name = "field_id")]
         public int FieldId { get; set; }
 
-        [JsonProperty("widget_type")]
+        [DeserializeAs(Name = "widget_type")]
         public WidgetType WidgetType { get; set; }
 
-        [JsonProperty("short_display_name")]
+        [DeserializeAs(Name = "short_display_name")]
         public string ShortDisplayName { get; set; }
 
-        [JsonProperty("shortcut_name")]
+        [DeserializeAs(Name = "shortcut_name")]
         public int ColumnOrder { get; set; }
 
-        [JsonProperty("shortcut_name")]
+        [DeserializeAs(Name = "shortcut_name")]
         public DateTime DeletedAt { get; set; }
 
-        [JsonProperty("shortcut_name")]
+        [DeserializeAs(Name = "shortcut_name")]
         public string Options { get; set; }
     }
 }

@@ -1,31 +1,31 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 
 namespace EmmaSharp.Models.Generics
 {
-    class Link
+    public class Link
     {
-        [JsonProperty("mailing_id")]
+        [DeserializeAs(Name = "mailing_id")]
         public int MailingId { get; set; }
 
-        [JsonProperty("plaintext")]
+        [DeserializeAs(Name = "plaintext")]
         public bool Plaintext { get; set; }
 
-        [JsonProperty("link_id")]
+        [DeserializeAs(Name = "link_id")]
         public int LinkId { get; set; }
 
-        [JsonProperty("Link_name")]
+        [DeserializeAs(Name = "Link_name")]
         public string LinkName { get; set; }
 
-        [JsonProperty("link_target")]
+        [DeserializeAs(Name = "link_target")]
         public string LinkTarget { get; set; }
 
-        [JsonProperty("link_order")]
+        [DeserializeAs(Name = "link_order")]
         public int LinkOrder { get; set; }
 
-        [JsonProperty("unique_clicks")]
+        [DeserializeAs(Name = "unique_clicks")]
         public int UniqueClicks { get; set; }
 
-        [JsonProperty("total_clicks")]
+        [DeserializeAs(Name = "total_clicks")]
         public int TotalClicks { get; set; }
     }
 }

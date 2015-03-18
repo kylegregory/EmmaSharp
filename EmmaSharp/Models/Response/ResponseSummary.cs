@@ -1,64 +1,64 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 
 namespace EmmaSharp.Models.Response
 {
-    class ResponseSummary
+    public class ResponseSummary
     {
-        [JsonProperty("account_id")]
+        [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
 
-        [JsonProperty("month")]
+        [DeserializeAs(Name = "month")]
         public int Month { get; set; }
 
-        [JsonProperty("year")]
+        [DeserializeAs(Name = "year")]
         public int Year { get; set; }
 
-        [JsonProperty("mailings")]
+        [DeserializeAs(Name = "mailings")]
         public int Mailings { get; set; }
 
-        [JsonProperty("sent")]
+        [DeserializeAs(Name = "sent")]
         public int Sent { get; set; }
 
-        [JsonProperty("delivered")]
+        [DeserializeAs(Name = "delivered")]
         public int Delivered { get; set; }
 
-        [JsonProperty("bounced")]
+        [DeserializeAs(Name = "bounced")]
         public int Bounced { get; set; }
 
-        [JsonProperty("opened")]
+        [DeserializeAs(Name = "opened")]
         public int Opened { get; set; }
 
-        [JsonProperty("clicked_unique")]
+        [DeserializeAs(Name = "clicked_unique")]
         public int ClickedUnique { get; set; }
 
-        [JsonProperty("clicked")]
+        [DeserializeAs(Name = "clicked")]
         public int Clicked { get; set; }
 
-        [JsonProperty("forwarded")]
+        [DeserializeAs(Name = "forwarded")]
         public int Forwarded { get; set; }
 
-        [JsonProperty("shared")]
+        [DeserializeAs(Name = "shared")]
         public int Shared { get; set; }
 
-        [JsonProperty("share_clicked")]
+        [DeserializeAs(Name = "share_clicked")]
         public int ShareClicked { get; set; }
 
-        [JsonProperty("webview_shared")]
+        [DeserializeAs(Name = "webview_shared")]
         public int WebviewShared { get; set; }
 
-        [JsonProperty("webview_share_clicked")]
+        [DeserializeAs(Name = "webview_share_clicked")]
         public int WebviewShareClicked { get; set; }
 
-        [JsonProperty("opted_out")]
+        [DeserializeAs(Name = "opted_out")]
         public int OptedOut { get; set; }
 
-        [JsonProperty("signed_up")]
+        [DeserializeAs(Name = "signed_up")]
         public int SignedUp { get; set; }
 
-        [JsonProperty("count_purchased")]
+        [DeserializeAs(Name = "count_purchased")]
         public int CountPurchased { get; set; }
 
-        [JsonProperty("sum_purchased")]
+        [DeserializeAs(Name = "sum_purchased")]
         public int SumPurchased { get; set; }
     }
 }

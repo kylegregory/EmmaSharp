@@ -1,38 +1,38 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 using System;
 
 namespace EmmaSharp.Models.Searches
 {
-    class Search
+    public class Search
     {
-        [JsonProperty("search_id")]
+        [DeserializeAs(Name = "search_id")]
         public int SearchId { get; set; }
 
-        [JsonProperty("optout_count")]
+        [DeserializeAs(Name = "optout_count")]
         public int OptoutCount { get; set; }
 
-        [JsonProperty("error_count")]
+        [DeserializeAs(Name = "error_count")]
         public int ErrorCount { get; set; }
 
-        [JsonProperty("name")]
+        [DeserializeAs(Name = "name")]
         public string Name { get; set; }
 
-        [JsonProperty("criteria")]
+        [DeserializeAs(Name = "criteria")]
         public string Criteria { get; set; }
 
-        [JsonProperty("deleted_at")]
+        [DeserializeAs(Name = "deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
-        [JsonProperty("purged_at")]
+        [DeserializeAs(Name = "purged_at")]
         public DateTime? PurgedAt { get; set; }
 
-        [JsonProperty("last_run_at")]
+        [DeserializeAs(Name = "last_run_at")]
         public DateTime? LastRunAt { get; set; }
 
-        [JsonProperty("active_count")]
+        [DeserializeAs(Name = "active_count")]
         public int ActiveCount { get; set; }
 
-        [JsonProperty("account_id")]
+        [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
     }
 }

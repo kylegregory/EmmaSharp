@@ -1,48 +1,48 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Members
 {
-    class Member
+    public class Member
     {
-        [JsonProperty("status")]
+        [DeserializeAs(Name = "status")]
         public string Status { get; set; }
 
-        [JsonProperty("confirmed_opt_in")]
+        [DeserializeAs(Name = "confirmed_opt_in")]
         public bool? ConfirmedOptIn { get; set; }
 
-        [JsonProperty("account_id")]
+        [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
 
-        [JsonProperty("fields")]
+        [DeserializeAs(Name = "fields")]
         public Dictionary<string, string> Fields { get; set; }
 
-        [JsonProperty("member_id")]
+        [DeserializeAs(Name = "member_id")]
         public int MemberId { get; set; }
 
-        [JsonProperty("last_modified_at")]
+        [DeserializeAs(Name = "last_modified_at")]
         public DateTime? LastModifiedAt { get; set; }
 
-        [JsonProperty("member_status_id")]
+        [DeserializeAs(Name = "member_status_id")]
         public string MemberStatusId { get; set; }
 
-        [JsonProperty("plaintext_preferred")]
+        [DeserializeAs(Name = "plaintext_preferred")]
         public bool PlaintextPreferred { get; set; }
 
-        [JsonProperty("email_error")]
+        [DeserializeAs(Name = "email_error")]
         public bool? EmailError { get; set; }
 
-        [JsonProperty("member_since")]
+        [DeserializeAs(Name = "member_since")]
         public DateTime MemberSince { get; set; }
 
-        [JsonProperty("bounce_count")]
+        [DeserializeAs(Name = "bounce_count")]
         public int BounceCount { get; set; }
 
-        [JsonProperty("deleted_at")]
+        [DeserializeAs(Name = "deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
-        [JsonProperty("email")]
+        [DeserializeAs(Name = "email")]
         public string Email { get; set; }
     }
 }

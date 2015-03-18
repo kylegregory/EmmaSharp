@@ -1,39 +1,39 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Response
 {
-    class ResponseSignups
+    public class ResponseSignups
     {
-        [JsonProperty("ref_member_id")]
+        [DeserializeAs(Name = "ref_member_id")]
         public int RefMemberId { get; set; }
 
-        [JsonProperty("mailing_mailing_id")]
+        [DeserializeAs(Name = "mailing_mailing_id")]
         public int MailingMailingId { get; set; }
 
-        [JsonProperty("fields")]
+        [DeserializeAs(Name = "fields")]
         public Dictionary<string, string> Fields { get; set; }
 
-        [JsonProperty("timestamp")]
+        [DeserializeAs(Name = "timestamp")]
         public DateTime? Timestamp { get; set; }
 
-        [JsonProperty("member_id")]
+        [DeserializeAs(Name = "member_id")]
         public int MemberId { get; set; }
 
-        [JsonProperty("member_since")]
+        [DeserializeAs(Name = "member_since")]
         public DateTime? MemberSince { get; set; }
 
-        [JsonProperty("email_domain")]
+        [DeserializeAs(Name = "email_domain")]
         public string EmailDomain { get; set; }
 
-        [JsonProperty("email_user")]
+        [DeserializeAs(Name = "email_user")]
         public string EmailUser { get; set; }
 
-        [JsonProperty("email")]
+        [DeserializeAs(Name = "email")]
         public string Email { get; set; }
 
-        [JsonProperty("member_status_id")]
+        [DeserializeAs(Name = "member_status_id")]
         public int MemberStatusId { get; set; }
     }
 }

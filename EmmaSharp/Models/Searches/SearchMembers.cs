@@ -1,13 +1,12 @@
 ﻿using EmmaSharp.Models.Members;
-using Newtonsoft.Json;
-using System;
+using RestSharp.Deserializers;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Searches
 {
-    class SearchMembers
+    public class SearchMembers
     {
-        [JsonProperty("members")]
+        [DeserializeAs(Name = "members")]
         public IList<Member> Members { get; set; }
     }
 }

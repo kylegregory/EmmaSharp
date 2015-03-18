@@ -22,7 +22,7 @@ namespace EmmaSharp
             _accountId = accountId;
         }
 
-        public T Execute<T>(RestRequest request) where T : new()
+        public virtual T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl);

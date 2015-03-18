@@ -1,64 +1,64 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 
 namespace EmmaSharp.Models.Response
 {
-    class Response
+    public class Response
     {
-        [JsonProperty("delivered")]
+        [DeserializeAs(Name = "delivered")]
         public int Delivered { get; set; }
 
-        [JsonProperty("signed_up")]
+        [DeserializeAs(Name = "signed_up")]
         public int SignedUp { get; set; }
 
-        [JsonProperty("clicked")]
+        [DeserializeAs(Name = "clicked")]
         public int Clicked { get; set; }
 
-        [JsonProperty("forwarded")]
+        [DeserializeAs(Name = "forwarded")]
         public int Forwarded { get; set; }
 
-        [JsonProperty("clicked_unique")]
+        [DeserializeAs(Name = "clicked_unique")]
         public int ClickedUnique { get; set; }
 
-        [JsonProperty("webview_share_clicked")]
+        [DeserializeAs(Name = "webview_share_clicked")]
         public int WebviewShareClicked { get; set; }
 
-        [JsonProperty("subject")]
+        [DeserializeAs(Name = "subject")]
         public string Subject { get; set; }
 
-        [JsonProperty("opened")]
+        [DeserializeAs(Name = "opened")]
         public int Opened { get; set; }
 
-        [JsonProperty("opted_out")]
+        [DeserializeAs(Name = "opted_out")]
         public int OptedOut { get; set; }
 
-        [JsonProperty("share_clicked")]
+        [DeserializeAs(Name = "share_clicked")]
         public int ShareClicked { get; set; }
 
-        [JsonProperty("shred")]
+        [DeserializeAs(Name = "shred")]
         public int Shared { get; set; }
 
-        [JsonProperty("webview_shared")]
+        [DeserializeAs(Name = "webview_shared")]
         public int WebviewShared { get; set; }
 
-        [JsonProperty("in_progress")]
+        [DeserializeAs(Name = "in_progress")]
         public int InProgress { get; set; }
 
-        [JsonProperty("bounced")]
+        [DeserializeAs(Name = "bounced")]
         public int Bounced { get; set; }
 
-        [JsonProperty("recipient_count")]
+        [DeserializeAs(Name = "recipient_count")]
         public int RecipientCount { get; set; }
 
-        [JsonProperty("sent")]
+        [DeserializeAs(Name = "sent")]
         public int Sent { get; set; }
 
-        [JsonProperty("name")]
+        [DeserializeAs(Name = "name")]
         public string Name { get; set; }
 
-        [JsonProperty("count_purchased")]
+        [DeserializeAs(Name = "count_purchased")]
         public int CountPurchased { get; set; }
 
-        [JsonProperty("sum_purchased")]
+        [DeserializeAs(Name = "sum_purchased")]
         public int SumPurchased { get; set; }
     }
 }

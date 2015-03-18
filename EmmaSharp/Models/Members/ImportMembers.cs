@@ -1,19 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using RestSharp.Deserializers;
 
 namespace EmmaSharp.Models.Members
 {
-    class ImportMembers
+    public class ImportMembers
     {
-        [JsonProperty("member_id")]
+        [DeserializeAs(Name = "member_id")]
         public int MemberId { get; set; }
 
-        [JsonProperty("change_type")]
+        [DeserializeAs(Name = "change_type")]
         public string ChangeType { get; set; }
 
-        [JsonProperty("member_status_id")]
+        [DeserializeAs(Name = "member_status_id")]
         public string MemberStatusId { get; set; }
 
-        [JsonProperty("email")]
+        [DeserializeAs(Name = "email")]
         public string Email { get; set; }
     }
 }

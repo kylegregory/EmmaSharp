@@ -1,78 +1,78 @@
 ﻿using EmmaSharp.Models.Generics;
 using EmmaSharp.Models.Members;
 using EmmaSharp.Models.Searches;
-using Newtonsoft.Json;
+using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Mailings
 {
-    class Mailing
+    public class Mailing
     {
-        [JsonProperty("recipient_groups")]
+        [DeserializeAs(Name = "recipient_groups")]
         public IList<Group> RecipientGroups { get; set; }
 
-        [JsonProperty("heads_up_emails")]
+        [DeserializeAs(Name = "heads_up_emails")]
         public IList<Email> HeadsUpEmails { get; set; }
 
-        [JsonProperty("send_started")]
+        [DeserializeAs(Name = "send_started")]
         public DateTime? SendStarted { get; set; }
 
-        [JsonProperty("signup_form_id")]
+        [DeserializeAs(Name = "signup_form_id")]
         public int SignupFormId { get; set; }
 
-        [JsonProperty("links")]
+        [DeserializeAs(Name = "links")]
         public IList<Link> Links { get; set; }
 
-        [JsonProperty("mailing_id")]
+        [DeserializeAs(Name = "mailing_id")]
         public int MailingId { get; set; }
 
-        [JsonProperty("plaintext")]
+        [DeserializeAs(Name = "plaintext")]
         public string Plaintext { get; set; }
 
-        [JsonProperty("recipient_count")]
+        [DeserializeAs(Name = "recipient_count")]
         public int RecipientCount { get; set; }
 
-        [JsonProperty("public_webview_url")]
+        [DeserializeAs(Name = "public_webview_url")]
         public string PublicWebviewUrl { get; set; }
 
-        [JsonProperty("mailing_type")]
+        [DeserializeAs(Name = "mailing_type")]
         public string MailingType { get; set; }
 
-        [JsonProperty("parent_mailing_id")]
+        [DeserializeAs(Name = "parent_mailing_id")]
         public int? ParentMailingId { get; set; }
 
-        [JsonProperty("recipient_searches")]
+        [DeserializeAs(Name = "recipient_searches")]
         public IList<Search> RecipientSearches { get; set; }
 
-        [JsonProperty("account_id")]
+        [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
 
-        [JsonProperty("recipient_members")]
+        [DeserializeAs(Name = "recipient_members")]
         public IList<Member> RecipientMembers { get; set; }
 
-        [JsonProperty("mailing_status")]
+        [DeserializeAs(Name = "mailing_status")]
         public string MailingStatus { get; set; }
 
-        [JsonProperty("sender")]
+        [DeserializeAs(Name = "sender")]
         public string Sender { get; set; }
 
-        [JsonProperty("name")]
+        [DeserializeAs(Name = "name")]
         public string Name { get; set; }
 
-        [JsonProperty("send_finished")]
+        [DeserializeAs(Name = "send_finished")]
         public bool? SendFinished { get; set; }
 
-        [JsonProperty("send_at")]
+        [DeserializeAs(Name = "send_at")]
         public DateTime? SendAt { get; set; }
 
-        [JsonProperty("subject")]
+        [DeserializeAs(Name = "subject")]
         public string Subject { get; set; }
 
-        [JsonProperty("archived_ts")]
+        [DeserializeAs(Name = "archived_ts")]
         public DateTime? ArchivedTs { get; set; }
 
-        [JsonProperty("html_body")]
+        [DeserializeAs(Name = "html_body")]
         public string HtmlBody { get; set; }
     }
 }
