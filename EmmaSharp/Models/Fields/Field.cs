@@ -24,7 +24,7 @@ namespace EmmaSharp.Models
         public int FieldId { get; set; }
 
         [JsonProperty("widget_type")]
-        public string WidgetType { get; set; }
+        public WidgetType WidgetType { get; set; }
 
         [JsonProperty("short_display_name")]
         public string ShortDisplayName { get; set; }

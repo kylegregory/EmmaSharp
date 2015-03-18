@@ -6,6 +6,6 @@ namespace EmmaSharp.Models.Fields
     class AllFields : PaginationBase
     {
         [JsonProperty("fields")]
-        public IList<Field> Fields { get; set; }
+        public List<Field> Fields { get; set; }
     }
 }
