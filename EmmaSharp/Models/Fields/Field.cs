@@ -15,7 +15,7 @@ namespace EmmaSharp.Models
         public int AccountId { get; set; }
 
         [JsonProperty("field_type")]
-        public string FieldType { get; set; }
+        public FieldType FieldType { get; set; }
 
         [JsonProperty("required")]
         public bool Required { get; set; }

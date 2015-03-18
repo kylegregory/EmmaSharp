@@ -35,6 +35,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.6.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.105.0.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,8 +48,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmmaSharp.cs" />
+    <Compile Include="Methods\Fields.cs" />
     <Compile Include="Models\Fields\AllFields.cs" />
     <Compile Include="Models\Fields\Field.cs" />
+    <Compile Include="Models\Fields\FieldType.cs" />
+    <Compile Include="Models\Fields\WidgetType.cs" />
     <Compile Include="Models\Generics\Email.cs" />
     <Compile Include="Models\Generics\Link.cs" />
     <Compile Include="Models\Groups\AllGroups.cs" />
