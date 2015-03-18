@@ -8,7 +8,7 @@ namespace EmmaSharp.Models.Generics
 {
     class Email
     {
-        [JsonProperty("email")]
-        public string Email { get; set; }
+        /*[JsonProperty("email")]
+        public string Email { get; set; }*/
     }
 }
