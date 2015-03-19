@@ -7,7 +7,7 @@ namespace EmmaSharp.Models.Members
     public class Member
     {
         [DeserializeAs(Name = "status")]
-        public string Status { get; set; }
+        public MemberStatus Status { get; set; }
 
         [DeserializeAs(Name = "confirmed_opt_in")]
         public bool? ConfirmedOptIn { get; set; }

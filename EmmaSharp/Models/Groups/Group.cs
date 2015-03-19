@@ -14,11 +14,11 @@ namespace EmmaSharp.Models
         [DeserializeAs(Name = "error_count")]
         public int ErrorCount { get; set; }
 
-        [DeserializeAs(Name = "outout_count")]
+        [DeserializeAs(Name = "optout_count")]
         public int OptoutCount { get; set; }
 
         [DeserializeAs(Name = "group_type")]
-        public string GroupType { get; set; }
+        public GroupType GroupType { get; set; }
 
         [DeserializeAs(Name = "member_group_id")]
         public int MemberGroupId { get; set; }

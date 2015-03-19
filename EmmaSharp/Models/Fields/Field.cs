@@ -35,7 +35,7 @@ namespace EmmaSharp.Models
         [DeserializeAs(Name = "shortcut_name")]
         public DateTime DeletedAt { get; set; }
 
-        [DeserializeAs(Name = "shortcut_name")]
-        public string Options { get; set; }
+        [DeserializeAs(Name = "options")]
+        public string[] Options { get; set; }
     }
 }

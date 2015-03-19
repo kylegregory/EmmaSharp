@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmmaSharp.cs" />
+    <Compile Include="Methods\Groups.cs" />
     <Compile Include="Methods\Fields.cs" />
     <Compile Include="Models\Fields\AllFields.cs" />
     <Compile Include="Models\Fields\Field.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Models\Generics\Email.cs" />
     <Compile Include="Models\Generics\Link.cs" />
     <Compile Include="Models\Groups\AllGroups.cs" />
+    <Compile Include="Models\Groups\GroupType.cs" />
     <Compile Include="Models\Groups\Group.cs" />
     <Compile Include="Models\Groups\GroupMembers.cs" />
     <Compile Include="Models\Mailings\AllMailings.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="Models\Members\MemberGroups.cs" />
     <Compile Include="Models\Members\MemberMailings.cs" />
     <Compile Include="Models\Members\MemberOptout.cs" />
+    <Compile Include="Models\Members\MemberStatus.cs" />
     <Compile Include="Models\PaginationBase.cs" />
     <Compile Include="Models\Response\ResponseCustomerShares.cs" />
     <Compile Include="Models\Response\ResponseCustomerShareClicks.cs" />

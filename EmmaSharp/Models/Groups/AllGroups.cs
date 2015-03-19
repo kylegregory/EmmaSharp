@@ -6,6 +6,6 @@ namespace EmmaSharp.Models.Groups
     public class AllGroups
     {
         [DeserializeAs(Name = "groups")]
-        public IList<Group> Groups { get; set; }
+        public List<Group> Groups { get; set; }
     }
 }
