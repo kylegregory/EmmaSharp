@@ -8,7 +8,7 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 ### Sample Usage
 
-The examples below show how to have your application initiate and outbound phone call and send an SMS message using the Twilio .NET helper library:
+The examples below show how to have your application pull all account fields on the Emma API. An optional parameter is inlcuded to show all fields, inlcuded those that were deleted:
 
     using EmmaSharp;
     var emmasharp = new EmmaApi("publicKey", "privateKey", "accountId");
