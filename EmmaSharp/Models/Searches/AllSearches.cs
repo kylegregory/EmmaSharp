@@ -6,6 +6,6 @@ namespace EmmaSharp.Models.Searches
     public class AllSearches
     {
         [DeserializeAs(Name = "searches")]
-        public IList<Search> Searches { get; set; }
+        public List<Search> Searches { get; set; }
     }
 }

@@ -92,9 +92,14 @@
     <Compile Include="Models\Searches\SearchMembers.cs" />
     <Compile Include="Models\Triggers\TriggerParent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Methods\Mailings.cs" />
+    <Compile Include="Models\Mailings\MailingStatus.cs" />
+    <Compile Include="Models\Mailings\MailingType.cs" />
+    <Compile Include="Models\Mailings\PersonalizationType.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="EmmaSharp.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\Webhooks\" />

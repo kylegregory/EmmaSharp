@@ -7,6 +7,6 @@ namespace EmmaSharp.Models.Mailings
     public class MailingMembers
     {
         [DeserializeAs(Name = "members")]
-        public IList<Member> Members { get; set; }
+        public List<Member> Members { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace EmmaSharp.Models.Searches
     public class SearchMembers
     {
         [DeserializeAs(Name = "members")]
-        public IList<Member> Members { get; set; }
+        public List<Member> Members { get; set; }
     }
 }

@@ -7,6 +7,6 @@ namespace EmmaSharp.Models.Response
     public class ResponseLinks
     {
         [DeserializeAs(Name = "links")]
-        public IList<Link> Links { get; set; }
+        public List<Link> Links { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace EmmaSharp.Models.Members
         public string SourceFilename { get; set; }
 
         [DeserializeAs(Name = "fields_updated")]
-        public IList<Field> FieldsUpdated { get; set; }
+        public List<Field> FieldsUpdated { get; set; }
 
         [DeserializeAs(Name = "num_fields_added")]
         public int NumFieldsAdded { get; set; }
@@ -40,7 +40,7 @@ namespace EmmaSharp.Models.Members
         public bool? ImportFinished { get; set; }
 
         [DeserializeAs(Name = "groups_updated")]
-        public IList<Group> GroupsUpdated { get; set; }
+        public List<Group> GroupsUpdated { get; set; }
 
         [DeserializeAs(Name = "num_skipped")]
         public int NumSkipped { get; set; }

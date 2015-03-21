@@ -10,10 +10,10 @@ namespace EmmaSharp.Models.Mailings
     public class Mailing
     {
         [DeserializeAs(Name = "recipient_groups")]
-        public IList<Group> RecipientGroups { get; set; }
+        public List<Group> RecipientGroups { get; set; }
 
         [DeserializeAs(Name = "heads_up_emails")]
-        public IList<Email> HeadsUpEmails { get; set; }
+        public List<Email> HeadsUpEmails { get; set; }
 
         [DeserializeAs(Name = "send_started")]
         public DateTime? SendStarted { get; set; }
@@ -22,7 +22,7 @@ namespace EmmaSharp.Models.Mailings
         public int SignupFormId { get; set; }
 
         [DeserializeAs(Name = "links")]
-        public IList<Link> Links { get; set; }
+        public List<Link> Links { get; set; }
 
         [DeserializeAs(Name = "mailing_id")]
         public int MailingId { get; set; }
@@ -43,13 +43,13 @@ namespace EmmaSharp.Models.Mailings
         public int? ParentMailingId { get; set; }
 
         [DeserializeAs(Name = "recipient_searches")]
-        public IList<Search> RecipientSearches { get; set; }
+        public List<Search> RecipientSearches { get; set; }
 
         [DeserializeAs(Name = "account_id")]
         public int AccountId { get; set; }
 
         [DeserializeAs(Name = "recipient_members")]
-        public IList<Member> RecipientMembers { get; set; }
+        public List<Member> RecipientMembers { get; set; }
 
         [DeserializeAs(Name = "mailing_status")]
         public string MailingStatus { get; set; }
