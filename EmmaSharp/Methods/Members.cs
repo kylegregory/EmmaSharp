@@ -101,9 +101,7 @@ namespace EmmaSharp
 			request.AddUrlSegment("memberId", memberId);
 
 			return Execute<MemberOptout>(request);
-		}
-
-		public 
+		} 
 
 		#endregion
 	}
