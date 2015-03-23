@@ -6,17 +6,44 @@ namespace EmmaSharp
 {
     public partial class EmmaApi
     {
-        /// <summary>
-        /// Gets a list of this account’s defined fields.
-        /// </summary>
+		/// <summary>
+		/// Gets number of fields for paging.
+		/// </summary>
+		/// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
+		/// <returns>An array of fields.</returns>
+		public int GetFieldCount(bool? deleted)
+		{
+			var request = new RestRequest();
+			request.Resource = "/{accountId}/fields";
+			request.AddParameter("count", "true");
+
+			if (!deleted ?? false) 
+				request.AddParameter("deleted", deleted);
+
+			return Execute<int>(request);
+		}
+
+		/// <summary>
+        /// Gets a list of this account's defined fields. Be sure to get a count of fields before accessing this method, so you're aware of paging requirements.
+		/// </summary>
+		/// <param name="start">Start paging record at.</param>
+		/// <param name="end">End paging record at.</param>
         /// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
         /// <returns>An array of fields.</returns>
-        public AllFields ListFields(bool deleted = false)
+		public AllFields ListFields(bool? deleted, int? start, int? end)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields";
 
-            if (deleted != false) 
+			if (!start.HasValue)
+				start = 0;
+			request.AddParameter("start", start);
+
+			if (!end.HasValue || end - start > 500)
+				end = 500;
+			request.AddParameter("end", end);
+
+            if (!deleted ?? false) 
                 request.AddParameter("deleted", deleted);
 
             return Execute<AllFields>(request);
@@ -29,13 +56,13 @@ namespace EmmaSharp
         /// <param name="deleted">Accepts True. Optionally show a field even if it has been deleted.</param>
         /// <returns>A field.</returns>
         /// <exception cref="HttpResponseException">Http404 if the field does not exist.</exception>
-        public Field GetField(string fieldId, bool deleted = false)
+        public Field GetField(string fieldId, bool? deleted)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields/{fieldId}";
             request.AddUrlSegment("fieldId", fieldId);
 
-            if (deleted != false)
+            if (!deleted ?? false)
                 request.AddParameter("deleted", deleted);
 
             return Execute<Field>(request);

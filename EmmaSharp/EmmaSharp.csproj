@@ -96,6 +96,7 @@
     <Compile Include="Models\Mailings\MailingStatus.cs" />
     <Compile Include="Models\Mailings\MailingType.cs" />
     <Compile Include="Models\Mailings\PersonalizationType.cs" />
+    <Compile Include="Methods\Members.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

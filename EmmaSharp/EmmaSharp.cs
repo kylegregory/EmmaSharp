@@ -7,7 +7,7 @@ using RestSharp;
 
 namespace EmmaSharp
 {
-    public partial class EmmaApi
+	public partial class EmmaApi
     {
         const string BaseUrl = "https://api.e2ma.net";
 

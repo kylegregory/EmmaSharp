@@ -5,27 +5,54 @@ using EmmaSharp.Models;
 
 namespace EmmaSharp
 {
-    public partial class EmmaApi
+	public partial class EmmaApi
     {
         #region Mailings
 
-        /// <summary>
-        /// Get information about current mailings.
+		/// <summary>
+		/// Lists the number of mailings.
+		/// </summary>
+		/// <returns>The number of mailings.</returns>
+		/// <param name="archived">Boolen. Optional flag to include archived mailings in the count.</param>
+		public int GetMailingCount(bool? archived)
+		{
+			var request = new RestRequest();
+			request.Resource = "/{accountId}/mailings";
+			request.AddParameter("count", "true");
+
+			if (!archived ?? false)
+				request.AddParameter("include_archived", archived);
+
+			return Execute<int>(request);
+		}
+
+		/// <summary>
+		/// Get information about current mailings. Be sure to get a count of mailings before accessing this method, so you're aware of paging requirements.
         /// </summary>
         /// <param name="archived">Boolen. Optional flag to include archived mailings in the list.</param>
         /// <param name="mailingType">Accepts a List with one or more of the following mailing types: ‘m’ (standard), ‘t’ (test), ‘r’ (trigger), ‘s’ (split). Defaults to ‘m,t’, standard and test mailings, when none are specified.</param>
         /// <param name="mailingStatus">Accepts a List with one or more of the following mailing statuses: ‘p’ (pending), ‘a’ (paused), ‘s’ (sending), ‘x’ (canceled), ‘c’ (complete), ‘f’ (failed). Defaults to ‘p,a,s,x,c,f’, all statuses, when none are specified.</param>
         /// <param name="isScheduled">Boolen. Mailings that have a scheduled timestamp.</param>
         /// <param name="withHtmlBody">Boolen. Include the html_body content.</param>
-        /// <param name="withPlaintext">Boolen. Include the plaintext content.</param>
+		/// <param name="withPlaintext">Boolen. Include the plaintext content.</param>
+		/// <param name="start">Record to begin with. Defaults to 0</param>
+		/// <param name="end">Record to begin with. Defaults to 500</param>
         /// <returns>An array of mailings.</returns>
         /// <exception cref="HttpResponseException">Http400 if invalid mailing types or statuses are specified.</exception>
-        public AllMailings ListMailings(bool archived = false, List<MailingType> mailingType = null, List<MailingStatus> mailingStatus = null, bool isScheduled = false, bool withHtmlBody = false, bool withPlaintext = false)
+		public AllMailings ListMailings(bool? archived, List<MailingType> mailingType, List<MailingStatus> mailingStatus, bool? isScheduled, bool? withHtmlBody, bool? withPlaintext, int? start, int? end)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/mailings";
 
-            if (archived)
+			if (!start.HasValue)
+				start = 0;
+			request.AddParameter("start", start);
+
+			if (!end.HasValue || end - start > 500)
+				end = 500;
+			request.AddParameter("end", end);
+
+            if (!archived ?? false)
                 request.AddParameter("include_archived", archived);
 
             if (mailingType != null)
@@ -34,13 +61,13 @@ namespace EmmaSharp
             if (mailingStatus != null)
                 request.AddParameter("mailing_statuses", mailingStatus);
 
-            if (isScheduled)
+            if (!isScheduled ?? false)
                 request.AddParameter("is_scheduled", isScheduled);
 
-            if (withHtmlBody)
+            if (!withHtmlBody ?? false)
                 request.AddParameter("with_html_body", withHtmlBody);
 
-            if (withPlaintext)
+            if (!withPlaintext ?? false)
                 request.AddParameter("with_plaintext", withPlaintext);
 
 			return Execute<AllMailings>(request);
@@ -84,7 +111,7 @@ namespace EmmaSharp
 		/// <param name="memberId">Member identifier.</param>
 		/// <param name="type">Accepts: ‘all’, ‘html’, ‘plaintext’, ‘subject’. Defaults to ‘all’, if not provided.</param>
 		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
-		public List<PersonalizationType> GetMailingMembersPersonalization(string mailingId, string memberId, PersonalizationType type = null)
+		public List<PersonalizationType> GetMailingMembersPersonalization(string mailingId, string memberId, PersonalizationType type)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/mailings/{mailingId}/messages/{memberId}";
@@ -205,7 +232,7 @@ namespace EmmaSharp
 		/// <param name="recipientSearches">A list of searches that this mailing should be sent to.</param>
 		/// <param name="sender">The message sender. If this is not supplied, the sender of the original mailing will be used.</param>
 		/// <exception cref="HttpResponseException">Http404 if no message is found.</exception>
-		public Mailing ResendMailing(string mailingId, List<string> headsUpEmails, List<string> recipientEmails, List<string> recipientGroups, List<string> recipientSearches, string sender = null)
+		public Mailing ResendMailing(string mailingId, List<string> headsUpEmails, List<string> recipientEmails, List<string> recipientGroups, List<string> recipientSearches, string sender)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/mailings/{mailingId}";
@@ -269,6 +296,7 @@ namespace EmmaSharp
 
 			return Execute<bool>(request);
 		}
+
         #endregion
     }
 }
