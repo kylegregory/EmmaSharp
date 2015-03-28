@@ -6,9 +6,20 @@ using System.Collections.Generic;
 
 namespace EmmaSharp
 {
-    public partial class EmmaApi
+    public class Groups : EmmaApi
     {
         #region Groups
+
+        /// <summary>
+        /// Groups Endpoints
+        /// </summary>
+        /// <param name="publicKey">The account's public key.</param>
+        /// <param name="secretKey">The account's private key.</param>
+        /// <param name="accountId">The account id.</param>
+        public Groups(string publicKey, string secretKey, string accountId)
+            : base(publicKey, secretKey, accountId)
+        {
+        }
 
 		/// <summary>
 		/// Get number of all active member groups for a single account.

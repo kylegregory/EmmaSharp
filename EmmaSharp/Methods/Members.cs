@@ -5,9 +5,20 @@ using EmmaSharp.Models.Members;
 
 namespace EmmaSharp
 {
-	public partial class EmmaApi
+	public class Members : EmmaApi
 	{
 		#region Members
+
+        /// <summary>
+        /// Members Endpoints
+        /// </summary>
+        /// <param name="publicKey">The account's public key.</param>
+        /// <param name="secretKey">The account's private key.</param>
+        /// <param name="accountId">The account id.</param>
+        public Members(string publicKey, string secretKey, string accountId)
+            : base(publicKey, secretKey, accountId)
+        {
+        }
 
 		/// <summary>
 		/// Get a count of all members in an account.

@@ -5,9 +5,20 @@ using EmmaSharp.Models;
 
 namespace EmmaSharp
 {
-	public partial class EmmaApi
+	public class Mailings : EmmaApi
     {
         #region Mailings
+
+        /// <summary>
+        /// Mailings Endpoints
+        /// </summary>
+        /// <param name="publicKey">The account's public key.</param>
+        /// <param name="secretKey">The account's private key.</param>
+        /// <param name="accountId">The account id.</param>
+        public Mailings(string publicKey, string secretKey, string accountId)
+            : base(publicKey, secretKey, accountId)
+        {
+        }
 
 		/// <summary>
 		/// Lists the number of mailings.

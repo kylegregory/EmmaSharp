@@ -4,8 +4,19 @@ using RestSharp;
 
 namespace EmmaSharp
 {
-    public partial class EmmaApi
+    public class Fields : EmmaApi
     {
+        /// <summary>
+        /// Fields Endpoints
+        /// </summary>
+        /// <param name="publicKey">The account's public key.</param>
+        /// <param name="secretKey">The account's private key.</param>
+        /// <param name="accountId">The account id.</param>
+        public Fields(string publicKey, string secretKey, string accountId)
+            : base(publicKey, secretKey, accountId)
+        {
+        }
+
 		/// <summary>
 		/// Gets number of fields for paging.
 		/// </summary>

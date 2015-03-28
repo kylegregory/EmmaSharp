@@ -7,14 +7,23 @@ using RestSharp;
 
 namespace EmmaSharp
 {
-	public partial class EmmaApi
+    /// <summary>
+    /// Base Class for APIs
+    /// </summary>
+	public abstract class EmmaApi
     {
-        const string BaseUrl = "https://api.e2ma.net";
+        private const string BaseUrl = "https://api.e2ma.net";
 
         readonly string _publicKey;
         readonly string _secretKey;
         readonly string _accountId;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EmmaApi"/> class.
+        /// </summary>
+        /// <param name="publicKey">The account's public key.</param>
+        /// <param name="secretKey">The account's private key.</param>
+        /// <param name="accountId">The account id.</param>
         public EmmaApi(string publicKey, string secretKey, string accountId)
         {
             _publicKey = publicKey;
@@ -22,6 +31,12 @@ namespace EmmaSharp
             _accountId = accountId;
         }
 
+        /// <summary>
+        /// Execute the Call to the Emma API. All methods return this base method.
+        /// </summary>
+        /// <typeparam name="T">The model or type to bind the return response.</typeparam>
+        /// <param name="request">The RestRequest request.</param>
+        /// <returns>Response data from the API call.</returns>
         public virtual T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
