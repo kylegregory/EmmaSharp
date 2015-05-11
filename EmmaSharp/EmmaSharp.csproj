@@ -67,6 +67,8 @@
     <Compile Include="Models\Mailings\MailingSearches.cs" />
     <Compile Include="Models\Members\AllImports.cs" />
     <Compile Include="Models\Members\AllMembers.cs" />
+    <Compile Include="Models\Members\MemberSignup.cs" />
+    <Compile Include="Models\Members\MemberAdd.cs" />
     <Compile Include="Models\Members\Import.cs" />
     <Compile Include="Models\Members\ImportMembers.cs" />
     <Compile Include="Models\Members\Member.cs" />
