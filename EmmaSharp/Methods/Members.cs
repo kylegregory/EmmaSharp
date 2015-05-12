@@ -217,6 +217,228 @@ namespace EmmaSharp
             return Execute<MemberSignup>(request);
         }
 
+        /// <summary>
+        /// Delete an array of members. The members will be marked as deleted and cannot be retrieved.
+        /// </summary>
+        /// <param name="memberIds">An array of member ids to delete.</param>
+        /// <returns>True if all members are successfully deleted, otherwise False.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public bool DeleteMembers(List<string> memberIds)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/delete";
+            request.AddParameter("member_ids", memberIds);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Change the status for an array of members. The members will have their member_status_id update
+        /// </summary>
+        /// <param name="memberIds">The array of member ids to change.</param>
+        /// <param name="statusTo">The new status for the given members. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (optout).</param>
+        /// <returns>True if the members are successfully updated, otherwise False.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public bool ChangeMemberStatus(List<string> memberIds, MemberStatus statusTo)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/status";
+            request.AddParameter("member_ids", memberIds);
+            request.AddParameter("status_to", statusTo);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Update a single member’s information. Update the information for an existing member (even if they are marked as deleted). Note that this method allows the email address to be updated (which cannot be done with a POST, since in that case the email address is used to identify the member).
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <param name="memberEmail">A new email address for the member.</param>
+        /// <param name="statusTo"> A new status for the member. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (opt-out).</param>
+        /// <param name="fields">An array of fields with associated values for this member.</param>
+        /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
+        /// <returns>True if the member was updated successfully</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, AllFields fields, bool fieldTriggers)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/{memberId}";
+            request.AddUrlSegment("memberId", memberId);
+            request.AddParameter("email", memberEmail);
+            request.AddParameter("status_to", statusTo);
+            request.AddParameter("fields", fields.Fields);
+
+            if (fieldTriggers)
+                request.AddParameter("field_triggers", fieldTriggers);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Delete the specified member. The member, along with any associated response and history information, will be completely removed from the database.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <returns>True if the member is deleted.</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public bool DeleteMember(string memberId)
+        {
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = "/{accountId}/members/{memberId}";
+            request.AddUrlSegment("memberId", memberId);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Get the groups to which a member belongs.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <returns>An array of groups.</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public MemberGroups GetMemberGroups(string memberId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/members/{memberId}/groups";
+            request.AddUrlSegment("memberId", memberId);
+
+            return Execute<MemberGroups>(request);
+        }
+
+        /// <summary>
+        /// Add a single member to one or more groups.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <param name="groupIds">Group ids to which to add this member.</param>
+        /// <returns>An array of ids of the affected groups.</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public List<string> AddMemberToGroups(string memberId, List<string> groupIds)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/{memberId}/groups";
+            request.AddUrlSegment("memberId", memberId);
+            request.AddParameter("group_ids", groupIds);
+
+            return Execute<List<string>>(request);
+        }
+
+        /// <summary>
+        /// Remove a single member from one or more groups.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <param name="groupIds">Group ids from which to remove this member</param>
+        /// <returns>An array of references to the affected groups.</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public List<string> AddMemberToGroups(string memberId, List<string> groupIds)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/{memberId}/groups/remove";
+            request.AddUrlSegment("memberId", memberId);
+            request.AddParameter("group_ids", groupIds);
+
+            return Execute<List<string>>(request);
+        }
+
+        /// <summary>
+        /// Delete all members.
+        /// </summary>
+        /// <param name="memberStatusId">This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
+        /// <returns>Returns true.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public bool DeleteAllMembers(MemberStatus memberStatusId)
+        {
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = "/{accountId}/members";
+            request.AddParameter("member_status_id", memberStatusId);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Remove the specified member from all groups.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <returns>True if the member is removed from all groups.</returns>
+        /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
+        public bool RemoveMemberFromGroups(string memberId)
+        {
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = "/{accountId}/members/{memberId}/groups";
+            request.AddUrlSegment("memberId", memberId);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Remove multiple members from groups.
+        /// </summary>
+        /// <param name="memberIds">Member ids to remove from the given groups.</param>
+        /// <param name="groupIds">Group ids from which to remove the given members</param>
+        /// <returns>True if the members are deleted, otherwise False.</returns>
+        /// <exception cref="HttpResponseException">Http404 if any of the members or groups do not exist</exception>
+        public bool RemoveMembersFromGroups(List<string> memberIds, List<string> groupIds)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/groups/remove";
+            request.AddParameter("member_ids", memberIds);
+            request.AddParameter("group_ids", groupIds);
+
+            return Execute<bool>(request);
+        }
+
+        public void GetMemberMailingHistory() { }
+        public void GetMembersAffectedByImport() { }
+        public void GetImportInformation() { }
+        public void GetAllImportInformation() { }
+
+        /// <summary>
+        /// Update an import record to be marked as ‘deleted’.
+        /// </summary>
+        /// <returns>True if the import is marked as deleted.</returns>
+        /// <exception cref="HttpResponseException">Http404 if the import record does not exist.</exception>
+        public bool UpdateImportRecordAsDeleted()
+        {
+            var request = new RestRequest(Method.DELETE);
+            request.Resource = "/{accountId}/members/imports/delete";
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Copy all account members of one or more statuses into a group.
+        /// </summary>
+        /// <param name="groupId">Group identifier.</param>
+        /// <param name="memberStatusId"> ‘a’ (active), ‘o’ (optout), and/or ‘e’ (error).</param>
+        /// <returns>True</returns>
+        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        public bool CopyMembersIntoStatusGroup(string groupId, List<string> memberStatusId)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/{groupId}/copy";
+            request.AddUrlSegment("groupId", groupId);
+            request.AddParameter("member_status_id", memberStatusId);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Update the status for a group of members, based on their current status. Valid statuses id are (‘a’,’e’, ‘f’, ‘o’) active, error, forwarded, optout.
+        /// </summary>
+        /// <param name="statusFrom">The current status of the members.</param>
+        /// <param name="statusTo">The updated status of the members.</param>
+        /// <param name="groupId">Optional. Limit the update to members of the specified group</param>
+        /// <returns>True</returns>
+        /// <exception cref="HttpResponseException">Http400 if the specified status is invalid</exception>
+        public bool UpdateStatusOfGroupMembersBasedOnCurrentStatus(MemberStatus statusFrom, MemberStatus statusTo, string groupId)
+        {
+            var request = new RestRequest(Method.PUT);
+            request.Resource = "/{accountId}/members/status/{statusFrom}/to/{statusTo}";
+            request.AddUrlSegment("statusFrom", statusFrom.ToString());
+            request.AddUrlSegment("statusTo", statusTo.ToString());
+            request.AddParameter("group_id", groupId);
+
+            return Execute<bool>(request);
+        }
+
 		#endregion
 	}
 }
