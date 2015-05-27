@@ -2,15 +2,16 @@ using RestSharp.Deserializers;
 
 namespace EmmaSharp.Models
 {
-    public sealed class MailingType {
+    public sealed class PersonalizationType
+    {
         private readonly string name;
 
-        public static readonly MailingType Standard = new MailingType("m");
-        public static readonly MailingType Test = new MailingType("t");
-        public static readonly MailingType Trigger = new MailingType("r");
-        public static readonly MailingType Spilt = new MailingType("s");
+        public static readonly PersonalizationType All = new PersonalizationType("all");
+        public static readonly PersonalizationType Html = new PersonalizationType("html");
+        public static readonly PersonalizationType PlainText = new PersonalizationType("plaintext");
+        public static readonly PersonalizationType Subject = new PersonalizationType("subject");
 
-        private MailingType(string name)
+        private PersonalizationType(string name)
         {
             this.name = name;
         }

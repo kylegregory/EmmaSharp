@@ -8,10 +8,10 @@ namespace EmmaSharp.Models.Members
         public int MemberId { get; set; }
 
         [DeserializeAs(Name = "change_type")]
-        public string ChangeType { get; set; }
+        public ImportChangeType ChangeType { get; set; }
 
         [DeserializeAs(Name = "member_status_id")]
-        public string MemberStatusId { get; set; }
+        public MemberStatus MemberStatusId { get; set; }
 
         [DeserializeAs(Name = "email")]
         public string Email { get; set; }

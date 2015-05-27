@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using EmmaSharp.Models;
 using EmmaSharp.Models.Members;
 using EmmaSharp.Models.Fields;
+using EmmaSharp.Models.Mailings;
 
 namespace EmmaSharp
 {
@@ -385,10 +386,63 @@ namespace EmmaSharp
             return Execute<bool>(request);
         }
 
-        public void GetMemberMailingHistory() { }
-        public void GetMembersAffectedByImport() { }
-        public void GetImportInformation() { }
-        public void GetAllImportInformation() { }
+        /// <summary>
+        /// Get the entire mailing history for a member.
+        /// </summary>
+        /// <param name="memberId">Member identifier.</param>
+        /// <returns>Message history details for the specified member.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public MailingHistory GetMemberMailingHistory(string memberId) 
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/members/{memberId}/mailings";
+            request.AddUrlSegment("memberId", memberId);
+
+            return Execute<MailingHistory>(request);
+        }
+
+        /// <summary>
+        /// Get a list of members affected by this import.
+        /// </summary>
+        /// <param name="importId">Import identifier.</param>
+        /// <returns>A list of members in the given account and import.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public ImportMembers GetMembersAffectedByImport(string importId) 
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/members/imports/{importId}/members";
+            request.AddUrlSegment("importId", importId);
+
+            return Execute<ImportMembers>(request);
+        }
+
+        /// <summary>
+        /// Get information and statistics about this import.
+        /// </summary>
+        /// <param name="importId">Import identifier.</param>
+        /// <returns>Import details for the given import_id.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public Import GetImportInformation(string importId) 
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/members/imports/{importId}";
+            request.AddUrlSegment("importId", importId);
+
+            return Execute<Import>(request);
+        }
+
+        /// <summary>
+        /// Get information about all imports for this account.
+        /// </summary>
+        /// <returns>An array of import details.</returns>
+        /// <exception cref="HttpResponseException"></exception>
+        public List<Import> GetAllImportInformation() 
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/members/imports";
+
+            return Execute<List<Import>>(request);
+        }
 
         /// <summary>
         /// Update an import record to be marked as ‘deleted’.

@@ -37,7 +37,7 @@ namespace EmmaSharp.Models.Members
         public int NumFieldsAdded { get; set; }
 
         [DeserializeAs(Name = "import_finished")]
-        public bool? ImportFinished { get; set; }
+        public DateTime? ImportFinished { get; set; }
 
         [DeserializeAs(Name = "groups_updated")]
         public List<Group> GroupsUpdated { get; set; }

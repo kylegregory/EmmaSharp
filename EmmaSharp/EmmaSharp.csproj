@@ -59,14 +59,17 @@
     <Compile Include="Models\Groups\Group.cs" />
     <Compile Include="Models\Groups\GroupMembers.cs" />
     <Compile Include="Models\Mailings\AllMailings.cs" />
+    <Compile Include="Models\Mailings\DeliveryType.cs" />
     <Compile Include="Models\Mailings\MailingHeadsup.cs" />
     <Compile Include="Models\Mailings\Mailing.cs" />
     <Compile Include="Models\Mailings\MailingGroups.cs" />
+    <Compile Include="Models\Mailings\MailingHistory.cs" />
     <Compile Include="Models\Mailings\MailingMembers.cs" />
     <Compile Include="Models\Mailings\MailingPersonalization.cs" />
     <Compile Include="Models\Mailings\MailingSearches.cs" />
     <Compile Include="Models\Members\AllImports.cs" />
     <Compile Include="Models\Members\AllMembers.cs" />
+    <Compile Include="Models\Members\ImportChangeType.cs" />
     <Compile Include="Models\Members\MemberSignup.cs" />
     <Compile Include="Models\Members\MemberAdd.cs" />
     <Compile Include="Models\Members\Import.cs" />
