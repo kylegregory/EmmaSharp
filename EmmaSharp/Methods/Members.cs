@@ -31,7 +31,7 @@ namespace EmmaSharp
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members";
-			request.AddParameter ("count", "true");
+			request.AddParameter("count", "true");
 
 			if(!deleted ?? false)
 				request.AddParameter("deleted", deleted.ToString());
@@ -329,7 +329,7 @@ namespace EmmaSharp
         /// <param name="groupIds">Group ids from which to remove this member</param>
         /// <returns>An array of references to the affected groups.</returns>
         /// <exception cref="HttpResponseException">Http404 if no member is found.</exception>
-        public List<string> AddMemberToGroups(string memberId, List<string> groupIds)
+        public List<string> RemoveMemberFromGroups(string memberId, List<string> groupIds)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups/remove";

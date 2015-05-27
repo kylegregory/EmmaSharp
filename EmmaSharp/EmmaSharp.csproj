@@ -46,8 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmmaSharp.cs" />
+    <Compile Include="Extensions\DateRange.cs" />
     <Compile Include="Methods\Groups.cs" />
     <Compile Include="Methods\Fields.cs" />
+    <Compile Include="Methods\Responses.cs" />
     <Compile Include="Models\Fields\AllFields.cs" />
     <Compile Include="Models\Fields\Field.cs" />
     <Compile Include="Models\Fields\FieldType.cs" />
