@@ -1,11 +1,11 @@
-﻿using EmmaSharp.Extensions;
-using EmmaSharp.Models.Response;
-using RestSharp;
+﻿using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmmaSharp.Models.Response;
+using EmmaSharp.Extensions;
 
 namespace EmmaSharp
 {
@@ -27,20 +27,20 @@ namespace EmmaSharp
         /// <summary>
         /// Get the response summary for an account.
         /// </summary>
-        /// <param name="includeArchived"></param>
-        /// <param name="startDate"></param>
-        /// <param name="endDate"></param>
-        /// <returns></returns>
+        /// <param name="includeArchived">Accepts 1. All other values are False. Optional flag to include archived mailings in the list.</param>
+        /// <param name="range">Optional. A DateRange object to build the range parameter.</param>
+        /// <returns>A list of objects with each object representing one month.</returns>
+        /// <exception cref="HttpResponseException"></exception>
         public Response GetResponseSummary(bool includeArchived = false, DateRange range = null)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response";
 
             if (includeArchived)
-                request.AddParameter("include_archived", "true");
+                request.AddParameter("include_archived", "1");
 
             if (range != null)
-                request.AddParameter("range", range);
+                request.AddParameter("range", range.BuildRangeString());
 
             return Execute<Response>(request);
         }
