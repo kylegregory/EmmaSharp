@@ -50,6 +50,7 @@
     <Compile Include="Methods\Groups.cs" />
     <Compile Include="Methods\Fields.cs" />
     <Compile Include="Methods\Responses.cs" />
+    <Compile Include="Methods\Searches.cs" />
     <Compile Include="Models\Fields\AllFields.cs" />
     <Compile Include="Models\Fields\Field.cs" />
     <Compile Include="Models\Fields\FieldType.cs" />
@@ -82,12 +83,13 @@
     <Compile Include="Models\Members\MemberOptout.cs" />
     <Compile Include="Models\Members\MemberStatus.cs" />
     <Compile Include="Models\PaginationBase.cs" />
+    <Compile Include="Models\Response\ResponseOpens.cs" />
     <Compile Include="Models\Response\ResponseCustomerShares.cs" />
     <Compile Include="Models\Response\ResponseCustomerShareClicks.cs" />
     <Compile Include="Models\Response\ResponseCustomerShare.cs" />
     <Compile Include="Models\Response\ResponseForwards.cs" />
     <Compile Include="Models\Response\ResponseSharesOverview.cs" />
-    <Compile Include="Models\Response\ResponseSharess.cs" />
+    <Compile Include="Models\Response\ResponseShares.cs" />
     <Compile Include="Models\Response\ResponseSignups.cs" />
     <Compile Include="Models\Response\Response.cs" />
     <Compile Include="Models\Response\ResponseClicks.cs" />
@@ -95,6 +97,7 @@
     <Compile Include="Models\Response\ResponseLinks.cs" />
     <Compile Include="Models\Response\ResponseGeneric.cs" />
     <Compile Include="Models\Response\ResponseSummary.cs" />
+    <Compile Include="Models\Response\DelieveryType.cs" />
     <Compile Include="Models\Searches\AllSearches.cs" />
     <Compile Include="Models\Searches\Search.cs" />
     <Compile Include="Models\Searches\SearchMembers.cs" />
