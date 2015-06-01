@@ -1,4 +1,5 @@
 ﻿using RestSharp.Deserializers;
+using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Response
 {
@@ -60,5 +61,8 @@ namespace EmmaSharp.Models.Response
 
         [DeserializeAs(Name = "sum_purchased")]
         public int SumPurchased { get; set; }
+
+        //[DeserializeAs(Name = "purchase_metrics")]
+        //public List<T> PurchaseMetrics { get; set; }
     }
 }

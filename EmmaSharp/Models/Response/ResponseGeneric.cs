@@ -1,4 +1,5 @@
-﻿using RestSharp.Deserializers;
+﻿using EmmaSharp.Models.Members;
+using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 
@@ -28,6 +29,6 @@ namespace EmmaSharp.Models.Response
         public string Email { get; set; }
 
         [DeserializeAs(Name = "member_status_id")]
-        public int MemberStatusId { get; set; }
+        public MemberStatus MemberStatusId { get; set; }
     }
 }

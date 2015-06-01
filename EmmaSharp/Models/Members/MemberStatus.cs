@@ -11,7 +11,7 @@ namespace EmmaSharp.Models.Members
         private readonly string name;
 
         public static readonly MemberStatus Active = new MemberStatus("a");
-        public static readonly MemberStatus Optout = new MemberStatus("a");
+        public static readonly MemberStatus Optout = new MemberStatus("o");
         public static readonly MemberStatus Error = new MemberStatus("e");
 
         private MemberStatus(string name)
