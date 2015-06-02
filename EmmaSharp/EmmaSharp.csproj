@@ -47,6 +47,9 @@
   <ItemGroup>
     <Compile Include="EmmaSharp.cs" />
     <Compile Include="Extensions\DateRange.cs" />
+    <Compile Include="Extensions\Dates.cs" />
+    <Compile Include="Extensions\Intervals.cs" />
+    <Compile Include="Extensions\QueryFactory.cs" />
     <Compile Include="Methods\Groups.cs" />
     <Compile Include="Methods\Fields.cs" />
     <Compile Include="Methods\Responses.cs" />
