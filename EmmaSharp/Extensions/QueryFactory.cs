@@ -84,6 +84,25 @@ namespace EmmaSharp.Extensions
                     return Tuple.Create<string, string, string, string>(this.field, "between", this.low, this.high);
                 }
             }
+            private class InLastQuery
+            {
+                private readonly string field;
+                private readonly List<Intervals> interval;
+
+                public InLastQuery(string field, Intervals interval)
+                {
+                    this.field = field;
+                    this.interval = new List<Intervals>();
+                    foreach (Intervals i in interval)
+                    {
+                        this.interval.Add(i);
+                    }
+                }
+                public Tuple<string, string, List<Intervals>> ToTuple()
+                {
+                    return Tuple.Create<string, string, List<Intervals>>(this.field, "in last", this.interval);
+                }
+            }
             private class InNextQuery
             {
                 private readonly string field;
@@ -92,6 +111,7 @@ namespace EmmaSharp.Extensions
                 public InNextQuery(string field, Intervals interval)
                 {
                     this.field = field;
+                    this.interval = new List<Intervals>();
                     foreach (Intervals i in interval)
                     {
                         this.interval.Add(i);
@@ -102,15 +122,16 @@ namespace EmmaSharp.Extensions
                     return Tuple.Create<string, string, List<Intervals>>(this.field, "in next", this.interval);
                 }
             }
-            private class DateMatchQuery
+            public class DateMatchQuery
             {
                 private readonly string field;
                 private readonly List<Dates> date;
 
-                public DateMatchQuery(string field, Dates date)
+                public DateMatchQuery(string field, Dates dates)
                 {
                     this.field = field;
-                    foreach (Dates d in date)
+                    this.date = new List<Dates>();
+                    foreach (Dates d in dates)
                     {
                         this.date.Add(d);
                     }

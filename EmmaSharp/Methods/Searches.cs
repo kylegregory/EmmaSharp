@@ -3,6 +3,9 @@ using RestSharp;
 
 namespace EmmaSharp.Methods
 {
+    /// <summary>
+    /// These endpoints allow you to create, edit, and delete searches. You can also retrieve the members matching any search created in your account.
+    /// </summary>
     public class Searches : EmmaApi
     {
         #region Searches
@@ -23,7 +26,7 @@ namespace EmmaSharp.Methods
         /// </summary>
         /// <param name="deleted">Accepts True or 1. Optional flag to include deleted searches.</param>
         /// <returns>An array of searches.</returns>
-        /// <exception cref="HttpResponseException"></exception>
+        /// <remarks></remarks>
         public AllSearches GetSearches(bool deleted = false)
         {
             var request = new RestRequest();
@@ -41,7 +44,7 @@ namespace EmmaSharp.Methods
         /// <param name="searchId">Search identifier</param>
         /// <param name="deleted">>Accepts True or 1. Optional flag to include deleted searches.</param>
         /// <returns>A search.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the search does not exist.</exception>
+        /// <remarks>Http404 if the search does not exist.</remarks>
         public Search GetSearchDetails(string searchId, bool deleted = false)
         {
             var request = new RestRequest();
@@ -62,7 +65,7 @@ namespace EmmaSharp.Methods
         /// </summary>
         /// <param name="searchId">Search identifier</param>
         /// <returns>True if the search is deleted.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the search does not exist.</exception>
+        /// <remarks>Http404 if the search does not exist.</remarks>
         public bool DeleteSavedSearch(string searchId)
         {
             var request = new RestRequest(Method.DELETE);
@@ -77,7 +80,7 @@ namespace EmmaSharp.Methods
         /// </summary>
         /// <param name="searchId">Search identifier</param>
         /// <returns>An array of members.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the search does not exist.</exception>
+        /// <remarks>Http404 if the search does not exist.</remarks>
         public SearchMembers GetMembersMatchingSearch(string searchId)
         {
             var request = new RestRequest();

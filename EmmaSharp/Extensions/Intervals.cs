@@ -9,11 +9,15 @@ namespace EmmaSharp.Extensions
 {
     public class Intervals : IEnumerable
     {
-        public class Intervals
+        public Interval Key { get; set; }
+        public int Value { get; set; }
+
+        public Intervals(Interval Key, int Value)
         {
-            public Interval Interval { get; set; }
-            public int Value { get; set; }
+            this.Key = Key;
+            this.Value = Value;
         }
+
         public sealed class Interval
         {
             private readonly string name;
@@ -34,6 +38,10 @@ namespace EmmaSharp.Extensions
             {
                 return this.name;
             }
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 namespace EmmaSharp.Methods
 {
+    /// <summary>
+    /// With this endpoint, you can list all of your signup forms.
+    /// </summary>
     public class SignupForms : EmmaApi
     {
         #region SignupForms

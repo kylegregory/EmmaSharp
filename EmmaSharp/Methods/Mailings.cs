@@ -5,6 +5,9 @@ using EmmaSharp.Models;
 
 namespace EmmaSharp
 {
+    /// <summary>
+    /// With these endpoints, you can get information about your mailings including their HTML contents. You can retrieve the members to whom the mailing was sent. You can also pause mailings and cancel mailings that are pending or paused.
+    /// </summary>
 	public class Mailings : EmmaApi
     {
         #region Mailings
@@ -49,7 +52,7 @@ namespace EmmaSharp
 		/// <param name="start">Record to begin with. Defaults to 0</param>
 		/// <param name="end">Record to begin with. Defaults to 500</param>
         /// <returns>An array of mailings.</returns>
-        /// <exception cref="HttpResponseException">Http400 if invalid mailing types or statuses are specified.</exception>
+        /// <remarks>Http400 if invalid mailing types or statuses are specified.</remarks>
 		public AllMailings ListMailings(bool? archived, List<MailingType> mailingType, List<MailingStatus> mailingStatus, bool? isScheduled, bool? withHtmlBody, bool? withPlaintext, int? start, int? end)
         {
             var request = new RestRequest();
@@ -89,7 +92,7 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>The mailing.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
+		/// <remarks>Http404 if no mailing is found.</remarks>
 		public Mailing GetMailing(string mailingId)
 		{
 			var request = new RestRequest();
@@ -104,7 +107,7 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>An array of members including status and member fields.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
+		/// <remarks>Http404 if no mailing is found.</remarks>
 		public MailingMembers GetMailingMembers(string mailingId)
 		{
 			var request = new RestRequest();
@@ -121,7 +124,7 @@ namespace EmmaSharp
 		/// <param name="mailingId">Mailing identifier.</param>
 		/// <param name="memberId">Member identifier.</param>
 		/// <param name="type">Accepts: ‘all’, ‘html’, ‘plaintext’, ‘subject’. Defaults to ‘all’, if not provided.</param>
-		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
+		/// <remarks>Http404 if no mailing is found.</remarks>
 		public List<PersonalizationType> GetMailingMembersPersonalization(string mailingId, string memberId, PersonalizationType type)
 		{
 			var request = new RestRequest();
@@ -140,7 +143,7 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>An array of groups.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
+		/// <remarks>Http404 if no mailing is found.</remarks>
 		public MailingGroups GetMailingGroups(string mailingId)
 		{
 			var request = new RestRequest();
@@ -155,7 +158,7 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>An array of searches.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		/// <exception cref="HttpResponseException">Http404 if no mailing is found.</exception>
+		/// <remarks>Http404 if no mailing is found.</remarks>
 		public MailingSearches GetMailingSearches(string mailingId)
 		{
 			var request = new RestRequest();
@@ -219,7 +222,7 @@ namespace EmmaSharp
 		/// <param name="memberId">Member identifier.</param>
 		/// <param name="recipientEmails">An array of email addresses to which to forward the specified message.</param>
 		/// <param name="note">A note to include in the forward. This note will be HTML encoded and is limited to 500 characters.</param>
-		/// <exception cref="HttpResponseException">Http404 if no message is found.</exception>
+		/// <remarks>Http404 if no message is found.</remarks>
 		public Mailing ForwardMailing(string mailingId, string memberId, List<string> recipientEmails, string note)
 		{
 			var request = new RestRequest(Method.POST);
@@ -242,7 +245,7 @@ namespace EmmaSharp
 		/// <param name="recipientGroups">An array of member groups to which the new mailing should be sent.</param>
 		/// <param name="recipientSearches">A list of searches that this mailing should be sent to.</param>
 		/// <param name="sender">The message sender. If this is not supplied, the sender of the original mailing will be used.</param>
-		/// <exception cref="HttpResponseException">Http404 if no message is found.</exception>
+		/// <remarks>Http404 if no message is found.</remarks>
 		public Mailing ResendMailing(string mailingId, List<string> headsUpEmails, List<string> recipientEmails, List<string> recipientGroups, List<string> recipientSearches, string sender)
 		{
 			var request = new RestRequest(Method.POST);
@@ -279,7 +282,7 @@ namespace EmmaSharp
 		/// <param name="htmlBody">The html contents of the mailing</param>
 		/// <param name="plaintext">The plaintext contents of the mailing. Unlike in create_mailing, this param is not required.</param>
 		/// <param name="subject">The subject of the mailing.</param>
-		/// <exception cref="HttpResponseException">Http400 if any tags are invalid. The response body will have information about the invalid tags.</exception>
+		/// <remarks>Http400 if any tags are invalid. The response body will have information about the invalid tags.</remarks>
 		public bool VaildatePersonalizationSyntax(string htmlBody, string plaintext, string subject)
 		{
 			var request = new RestRequest(Method.POST);
@@ -297,7 +300,7 @@ namespace EmmaSharp
 		/// <returns><c>true</c>, if winner was declared, <c>false</c> otherwise.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
 		/// <param name="winnerId">Winner identifier.</param>
-		/// <exception cref="HttpResponseException">Http403 if the winner cannot be manually declared.</exception>
+		/// <remarks>Http403 if the winner cannot be manually declared.</remarks>
 		public bool DeclareWinner(string mailingId, string winnerId)
 		{
 			var request = new RestRequest(Method.POST);

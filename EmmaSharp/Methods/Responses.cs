@@ -9,6 +9,9 @@ using EmmaSharp.Extensions;
 
 namespace EmmaSharp
 {
+    /// <summary>
+    /// We know that you want to do some fancy pivot tables with your response data, so we’ve provided quite a few endpoints here to give you access to that response data. You can get overview numbers for all of your mailings and also drill down into finding out the actual members who opened a particular mailing.
+    /// </summary>
     public class Responses : EmmaApi
     {
         #region Responses
@@ -30,7 +33,7 @@ namespace EmmaSharp
         /// <param name="includeArchived">Accepts 1. All other values are False. Optional flag to include archived mailings in the list.</param>
         /// <param name="range">Optional. A DateRange object to build the range parameter.</param>
         /// <returns>A list of objects with each object representing one month.</returns>
-        /// <exception cref="HttpResponseException"></exception>
+        /// <remarks></remarks>
         public List<ResponseSummary> GetResponseSummary(bool includeArchived = false, DateRange range = null)
         {
             var request = new RestRequest();
@@ -50,7 +53,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>A single mailing object.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public Response GetMailingResponse(string mailingId)
         {
             var request = new RestRequest();
@@ -65,7 +68,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>Get the list of messages that have been sent to an MTA for delivery.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseGeneric> GetMailingSends(string mailingId)
         {
             var request = new RestRequest();
@@ -80,7 +83,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>Get the list of messages that are in-progress.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseGeneric> GetMailingInProgress(string mailingId)
         {
             var request = new RestRequest();
@@ -96,7 +99,7 @@ namespace EmmaSharp
         /// <param name="mailingId">Mailing Identifier</param>
         /// <param name="result">Optional. Accepted options: ‘all’, ‘delivered’, ‘bounced’, ‘hard’, ‘soft’. Defaults to ‘all’, if not provided.</param>
         /// <returns>An array of message responses that have finished delivery.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseDeliveries> GetMailingDelieveries(string mailingId, DelieveryType result = null)
         {
             var request = new RestRequest();
@@ -114,7 +117,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>Get the list of messages that opened.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseOpens> GetMailingOpens(string mailingId)
         {
             var request = new RestRequest();
@@ -129,7 +132,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of link objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseLinks> GetMailingLinks(string mailingId)
         {
             var request = new RestRequest();
@@ -146,7 +149,7 @@ namespace EmmaSharp
         /// <param name="memberId">Optional. Limits results to a single member.</param>
         /// <param name="linkId">Optional. Limits results to a single link.</param>
         /// <returns>An array of link objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseClicks> GetMailingClicks(string mailingId, string memberId = null, string linkId = null)
         {
             var request = new RestRequest();
@@ -167,7 +170,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of forwards objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseForwards> GetMailingForwards(string mailingId)
         {
             var request = new RestRequest();
@@ -182,7 +185,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of optouts objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseGeneric> GetMailingOptouts(string mailingId)
         {
             var request = new RestRequest();
@@ -197,7 +200,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of signups objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseSignups> GetMailingSignups(string mailingId)
         {
             var request = new RestRequest();
@@ -212,7 +215,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of signups objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseShares> GetMailingShares(string mailingId)
         {
             var request = new RestRequest();
@@ -227,7 +230,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of customer shares objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseCustomerShares> GetMailingCustomerShares(string mailingId)
         {
             var request = new RestRequest();
@@ -242,7 +245,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of customer share click objects for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public List<ResponseCustomerShareClicks> GetMailingCustomerShareClicks(string mailingId)
         {
             var request = new RestRequest();
@@ -255,9 +258,9 @@ namespace EmmaSharp
         /// <summary>
         /// Get the customer share associated with the share id.
         /// </summary>
-        /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="shareId">Share Identifier</param>
         /// <returns>A customer share for the mailing.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public ResponseCustomerShare GetMailingCustomerShare(string shareId)
         {
             var request = new RestRequest();
@@ -272,7 +275,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of share summary objects for the mailing, by network.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the mailing does not exist. Http404 if the mailing is not valid.</exception>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid.</remarks>
         public List<ResponseSharesOverview> GetMailingSharesOverview(string mailingId)
         {
             var request = new RestRequest();

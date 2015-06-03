@@ -9,10 +9,12 @@ namespace EmmaSharp.Extensions
 {
     public class Dates : IEnumerable
     {
-        public class Dates
+        public Date Key { get; set; }
+        public int Value { get; set; }
+
+        public Dates()
         {
-            public Date Date { get; set; }
-            public int Value { get; set; }
+            
         }
         public sealed class Date
         {
@@ -35,6 +37,10 @@ namespace EmmaSharp.Extensions
             {
                 return this.name;
             }
+        }
+        public IEnumerator GetEnumerator()
+        {
+            return GetEnumerator();
         }
     }
 }

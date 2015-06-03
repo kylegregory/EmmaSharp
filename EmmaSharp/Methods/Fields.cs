@@ -4,6 +4,9 @@ using RestSharp;
 
 namespace EmmaSharp
 {
+    /// <summary>
+    /// These endpoints let you create, edit, update and delete all of the custom fields in your account. Of particular interest is the <code>/#account_id/fields/#field_id/clear</code> endpoint which lets you clear out all the data in a single field for all members in your account. This makes it easy to re-initialize a dataset if you’re looking to correct an import error or syncing issue.
+    /// </summary>
     public class Fields : EmmaApi
     {
         /// <summary>
@@ -66,7 +69,7 @@ namespace EmmaSharp
         /// <param name="fieldId">The Field Id of the field to retrieve.</param>
         /// <param name="deleted">Accepts True. Optionally show a field even if it has been deleted.</param>
         /// <returns>A field.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the field does not exist.</exception>
+        /// <remarks>Http404 if the field does not exist.</remarks>
         public Field GetField(string fieldId, bool? deleted)
         {
             var request = new RestRequest();

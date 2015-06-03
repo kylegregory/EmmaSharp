@@ -6,6 +6,9 @@ using System.Collections.Generic;
 
 namespace EmmaSharp
 {
+    /// <summary>
+    /// With these endpoints, you can manage all aspects of the groups in your account. In addition to various CRUD methods, you can also use these endpoints to manage the members of your groups. You’ll want to use these methods if you’re managing group membership for more than one member at a time. For dealing with single members, there are better methods in the members endpoints.
+    /// </summary>
     public class Groups : EmmaApi
     {
         #region Groups
@@ -79,7 +82,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <returns>A group.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public Group GetGroup(string memberGroupId)
         {
             var request = new RestRequest();
@@ -95,7 +98,7 @@ namespace EmmaSharp
         /// <param name="group">The Group to be updated.</param>
         /// <param name="memberGroupId">The Member Group Id to be updated.</param>
         /// <returns>True if the update was successful</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public Group UpdateGroup(Group group, string memberGroupId)
         {
             var request = new RestRequest(Method.PUT);
@@ -111,7 +114,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="memberIdGroup">The Member Group Id to be deleted.</param>
         /// <returns>True if the group is deleted.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public bool DeleteGroup(string memberIdGroup)
         {
             var request = new RestRequest(Method.DELETE);
@@ -130,7 +133,7 @@ namespace EmmaSharp
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="deleted">Include deleted members. Optional, defaults to false.</param>
         /// <returns>An array of members.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public GroupMembers ListGroupMembers(string memberGroupId, bool deleted = false)
         {
             var request = new RestRequest();
@@ -149,7 +152,7 @@ namespace EmmaSharp
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="memberIds">An array of member ids.</param>
         /// <returns>An array of references to the members added to the group. If a member already exists in the group or is not a valid member, that reference will not be returned.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public List<string> AddMembersToGroup(string memberGroupId, List<string> memberIds)
         {
             var request = new RestRequest(Method.PUT);
@@ -166,7 +169,7 @@ namespace EmmaSharp
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="memberIds">An array of member ids.</param>
         /// <returns>An array of references to the removed members.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public List<string> RemoveMembersFromGroup(string memberGroupId, List<string> memberIds) 
         {
             var request = new RestRequest(Method.PUT);
@@ -183,7 +186,7 @@ namespace EmmaSharp
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns the number of members removed from the group.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public int DeleteAllMembersFromGroup(string memberGroupId, MemberStatus status)
         {
             var request = new RestRequest(Method.DELETE);
@@ -202,7 +205,7 @@ namespace EmmaSharp
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns true.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public bool DeleteAllMembersFromAllGroups(string memberGroupId, MemberStatus status)
         {
             var request = new RestRequest(Method.DELETE);
@@ -222,7 +225,7 @@ namespace EmmaSharp
         /// <param name="toGroupId">The Member Group ID to be copied to.</param>
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns true.</returns>
-        /// <exception cref="HttpResponseException">Http404 if the group does not exist.</exception>
+        /// <remarks>Http404 if the group does not exist.</remarks>
         public bool CopyUsersFromGroup(string fromGroupId, string toGroupId, MemberStatus status)
         {
             var request = new RestRequest(Method.DELETE);

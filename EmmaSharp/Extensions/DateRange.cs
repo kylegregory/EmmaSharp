@@ -14,6 +14,11 @@ namespace EmmaSharp.Extensions
         public DateTime? Start { get; set; }
         public DateTime? End { get; set; }
         public bool? SpecificDate { get; set; }
+
+        public DateRange()
+        {
+
+        }
     }
 
     /// <summary>
@@ -25,7 +30,6 @@ namespace EmmaSharp.Extensions
         /// Build a DateRage string for use in API calls. Use Optional specificDate attribute to specify a single date from the Start date. End date will be ignored.
         /// </summary>
         /// <param name="range">A date range object.</param>
-        /// <param name="specificDate">Optional. When used a specific date will be returned. End date will be ignored, if provided.</param>
         /// <returns>A range string to be used in Response API calls.</returns>
         public static string BuildRangeString(this DateRange range)
         {
