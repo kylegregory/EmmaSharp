@@ -1,4 +1,4 @@
-using EmmaSharp.Models;
+using EmmaSharp.Models.Fields;
 using RestSharp;
 using System.Collections.Generic;
 
@@ -7,34 +7,25 @@ namespace EmmaSharp
     /// <summary>
     /// These endpoints let you create, edit, update and delete all of the custom fields in your account. Of particular interest is the <code>/#account_id/fields/#field_id/clear</code> endpoint which lets you clear out all the data in a single field for all members in your account. This makes it easy to re-initialize a dataset if you’re looking to correct an import error or syncing issue.
     /// </summary>
-    public class Fields : EmmaApi
+    public partial class EmmaApi
     {
-        /// <summary>
-        /// Fields Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Fields(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
+        #region Fields
 
-		/// <summary>
+        /// <summary>
 		/// Gets number of fields for paging.
 		/// </summary>
 		/// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
 		/// <returns>An array of fields.</returns>
-		public int GetFieldCount(bool? deleted)
+		public int GetFieldCount(bool deleted = false)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/fields";
 			request.AddParameter("count", "true");
 
-			if (!deleted ?? false) 
+			if (deleted) 
 				request.AddParameter("deleted", deleted);
 
-			return Execute<int>(request);
+            return Execute<int>(request);
 		}
 
 		/// <summary>
@@ -139,5 +130,7 @@ namespace EmmaSharp
 
             return Execute<bool>(request);
         }
+
+        #endregion
     }
 }

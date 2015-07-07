@@ -2,22 +2,11 @@
 using RestSharp;
 using System.Collections.Generic;
 
-namespace EmmaSharp.Methods
+namespace EmmaSharp
 {
-    class Triggers : EmmaApi
+    public partial class EmmaApi
     {
         #region Triggers
-
-        /// <summary>
-        /// Triggers Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Triggers(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
 
         /// <summary>
         /// Get a basic listing of all triggers in an account.

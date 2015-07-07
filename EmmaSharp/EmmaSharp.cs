@@ -1,4 +1,5 @@
-﻿using RestSharp;
+﻿using Newtonsoft.Json;
+using RestSharp;
 using System;
 
 namespace EmmaSharp
@@ -6,7 +7,7 @@ namespace EmmaSharp
     /// <summary>
     /// Base Class for APIs
     /// </summary>
-	public abstract class EmmaApi
+	public partial class EmmaApi
     {
         private const string BaseUrl = "https://api.e2ma.net";
 
@@ -33,21 +34,22 @@ namespace EmmaSharp
         /// <typeparam name="T">The model or type to bind the return response.</typeparam>
         /// <param name="request">The RestRequest request.</param>
         /// <returns>Response data from the API call.</returns>
-        public virtual T Execute<T>(RestRequest request) where T : new()
+        private T Execute<T>(RestRequest request) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl);
             client.Authenticator = new HttpBasicAuthenticator(_publicKey, _secretKey);
             request.AddParameter("accountId", _accountId, ParameterType.UrlSegment); // used on every request
-            var response = client.Execute<T>(request);
+            var execute = client.Execute(request);
+            T response = JsonConvert.DeserializeObject<T>(execute.Content);
 
-            if (response.ErrorException != null)
+            if (execute.ErrorException != null)
             {
                 const string message = "Error retrieving response. Check inner details for more info.";
-                var emmaException = new ApplicationException(message, response.ErrorException);
+                var emmaException = new ApplicationException(message, execute.ErrorException);
                 throw emmaException;
             }
-            return response.Data;
+            return response;
         }
     }
 }

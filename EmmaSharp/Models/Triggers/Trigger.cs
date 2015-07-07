@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Triggers
 {
-    class Trigger
+    public class Trigger
     {
         [DeserializeAs(Name = "parent_mailing")]
         public TriggerParent ParentMailing { get; set; }

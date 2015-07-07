@@ -2,25 +2,14 @@
 using RestSharp;
 using System.Collections.Generic;
 
-namespace EmmaSharp.Methods
+namespace EmmaSharp
 {
     /// <summary>
     /// These endpoints allow you to create, edit, and delete searches. You can also retrieve the members matching any search created in your account.
     /// </summary>
-    public class Searches : EmmaApi
+    public partial class EmmaApi
     {
         #region Searches
-
-        /// <summary>
-        /// Search Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Searches(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
 
         /// <summary>
         /// Retrieve a list of saved searches.

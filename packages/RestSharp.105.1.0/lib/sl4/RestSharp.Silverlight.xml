@@ -1,32 +1,9 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>RestSharp</name>
+        <name>RestSharp.Silverlight</name>
     </assembly>
     <members>
-        <member name="T:RestSharp.NtlmAuthenticator">
-            <summary>
-            Tries to Authenticate with the credentials of the currently logged in user, or impersonate a user
-            </summary>
-        </member>
-        <member name="M:RestSharp.NtlmAuthenticator.#ctor">
-            <summary>
-            Authenticate with the credentials of the currently logged in user
-            </summary>
-        </member>
-        <member name="M:RestSharp.NtlmAuthenticator.#ctor(System.String,System.String)">
-            <summary>
-            Authenticate by impersonation
-            </summary>
-            <param name="username"></param>
-            <param name="password"></param>
-        </member>
-        <member name="M:RestSharp.NtlmAuthenticator.#ctor(System.Net.ICredentials)">
-            <summary>
-            Authenticate by impersonation, using an existing <c>ICredentials</c> instance
-            </summary>
-            <param name="credentials"></param>
-        </member>
         <member name="T:RestSharp.Authenticators.OAuth1Authenticator">
             <seealso href="http://tools.ietf.org/html/rfc5849"/>
         </member>
@@ -408,27 +385,6 @@
             <param name="buffer">An array of bytes to convert</param>
             <returns>The byte as a string.</returns>
         </member>
-        <member name="M:RestSharp.Contrib.HttpUtility.HtmlDecode(System.String)">
-            <summary>
-            Decodes an HTML-encoded string and returns the decoded string.
-            </summary>
-            <param name="s">The HTML string to decode. </param>
-            <returns>The decoded text.</returns>
-        </member>
-        <member name="M:RestSharp.Contrib.HttpUtility.HtmlDecode(System.String,System.IO.TextWriter)">
-            <summary>
-            Decodes an HTML-encoded string and sends the resulting output to a TextWriter output stream.
-            </summary>
-            <param name="s">The HTML string to decode</param>
-            <param name="output">The TextWriter output stream containing the decoded string. </param>
-        </member>
-        <member name="M:RestSharp.Contrib.HttpUtility.HtmlEncode(System.String,System.IO.TextWriter)">
-            <summary>
-            HTML-encodes a string and sends the resulting output to a TextWriter output stream.
-            </summary>
-            <param name="s">The string to encode. </param>
-            <param name="output">The TextWriter output stream containing the encoded string. </param>
-        </member>
         <member name="T:RestSharp.Extensions.ReflectionExtensions">
             <summary>
             Reflection extensions
@@ -663,9 +619,6 @@
             <summary>
             HttpWebRequest wrapper
             </summary>
-            <summary>
-            HttpWebRequest wrapper (sync methods)
-            </summary>
         </member>
         <member name="P:RestSharp.IHttp.AlwaysMultipartFormData">
             <summary>
@@ -703,60 +656,6 @@
             <summary>
             Default constructor
             </summary>
-        </member>
-        <member name="M:RestSharp.Http.Post">
-            <summary>
-            Execute a POST request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Put">
-            <summary>
-            Execute a PUT request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Get">
-            <summary>
-            Execute a GET request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Head">
-            <summary>
-            Execute a HEAD request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Options">
-            <summary>
-            Execute an OPTIONS request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Delete">
-            <summary>
-            Execute a DELETE request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Patch">
-            <summary>
-            Execute a PATCH request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.Merge">
-            <summary>
-            Execute a MERGE request
-            </summary>
-        </member>
-        <member name="M:RestSharp.Http.AsGet(System.String)">
-            <summary>
-            Execute a GET-style request with the specified HTTP Method.  
-            </summary>
-            <param name="httpMethod">The HTTP method to execute.</param>
-            <returns></returns>
-        </member>
-        <member name="M:RestSharp.Http.AsPost(System.String)">
-            <summary>
-            Execute a POST-style request with the specified HTTP Method.  
-            </summary>
-            <param name="httpMethod">The HTTP method to execute.</param>
-            <returns></returns>
         </member>
         <member name="P:RestSharp.Http.HasParameters">
             <summary>
@@ -818,21 +717,6 @@
             Collection of files to be sent with request
             </summary>
         </member>
-        <member name="P:RestSharp.Http.FollowRedirects">
-            <summary>
-            Whether or not HTTP 3xx response redirects should be automatically followed
-            </summary>
-        </member>
-        <member name="P:RestSharp.Http.ClientCertificates">
-            <summary>
-            X509CertificateCollection to be sent with request
-            </summary>
-        </member>
-        <member name="P:RestSharp.Http.MaxRedirects">
-            <summary>
-            Maximum number of automatic redirects to follow if FollowRedirects is true
-            </summary>
-        </member>
         <member name="P:RestSharp.Http.UseDefaultCredentials">
             <summary>
             Determine whether or not the "default credentials" (e.g. the user account under which the current process is running)
@@ -877,11 +761,6 @@
         <member name="P:RestSharp.Http.PreAuthenticate">
             <summary>
             Flag to send authorisation header with the HttpWebRequest
-            </summary>
-        </member>
-        <member name="P:RestSharp.Http.Proxy">
-            <summary>
-            Proxy info to be sent with request
             </summary>
         </member>
         <member name="T:RestSharp.HttpCookie">
@@ -1176,25 +1055,6 @@
             Exception thrown when error is encountered.
             </summary>
         </member>
-        <member name="T:RestSharp.IRestClient">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteAsync(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle})">
-            <summary>
-            
-            </summary>
-            <param name="request"></param>
-            <param name="callback"></param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteAsync``1(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse{``0},RestSharp.RestRequestAsyncHandle})">
-            <summary>
-            
-            </summary>
-            <param name="request"></param>
-            <param name="callback"></param>
-        </member>
         <member name="M:RestSharp.IRestClient.ExecuteAsyncGet(RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse,RestSharp.RestRequestAsyncHandle},System.String)">
             <summary>
             Executes a GET-style request and callback asynchronously, authenticating if needed
@@ -1228,168 +1088,6 @@
             <param name="request">Request to be executed</param>
             <param name="callback">Callback function to be executed upon completion</param>
             <param name="httpMethod">The HTTP method to execute</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes the request and callback asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes a GET-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a GET-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes a POST-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a POST-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes the request and callback asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes a GET-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a GET-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes a POST-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.IRestClient.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a POST-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="P:RestSharp.IRestClient.CookieContainer">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.UserAgent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.Timeout">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.ReadWriteTimeout">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.UseSynchronizationContext">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.Authenticator">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.BaseUrl">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.PreAuthenticate">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.DefaultParameters">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:RestSharp.IRestClient.ClientCertificates">
-            <summary>
-            X509CertificateCollection to be sent with request
-            </summary>
-        </member>
-        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.String)">
-            <summary>
-            Adds a file to the Files collection to be included with a POST or PUT request 
-            (other methods do not support file uploads).
-            </summary>
-            <param name="name">The parameter name to use in the request</param>
-            <param name="path">Full path to file to upload</param>
-            <returns>This request</returns>
-        </member>
-        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.Byte[],System.String)">
-            <summary>
-            Adds the bytes to the Files collection with the specified file name
-            </summary>
-            <param name="name">The parameter name to use in the request</param>
-            <param name="bytes">The file data</param>
-            <param name="fileName">The file name to use for the uploaded file</param>
-            <returns>This request</returns>
-        </member>
-        <member name="M:RestSharp.IRestRequest.AddFile(System.String,System.Byte[],System.String,System.String)">
-            <summary>
-            Adds the bytes to the Files collection with the specified file name and content type
-            </summary>
-            <param name="name">The parameter name to use in the request</param>
-            <param name="bytes">The file data</param>
-            <param name="fileName">The file name to use for the uploaded file</param>
-            <param name="contentType">The MIME type of the file to upload</param>
-            <returns>This request</returns>
         </member>
         <member name="M:RestSharp.IRestRequest.AddBody(System.Object,System.String)">
             <summary>
@@ -1792,90 +1490,6 @@
             <param name="callback">Callback function to be executed upon completion</param>
             <param name="httpMethod">The HTTP method to execute</param>
         </member>
-        <member name="M:RestSharp.RestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes a GET-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteGetTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a GET-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes a POST-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecutePostTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a POST-style request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteTaskAsync``1(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes a GET-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteGetTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a GET-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecutePostTaskAsync(RestSharp.IRestRequest)">
-            <summary>
-            Executes a POST-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecutePostTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes a POST-style asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
-        <member name="M:RestSharp.RestClient.ExecuteTaskAsync(RestSharp.IRestRequest,System.Threading.CancellationToken)">
-            <summary>
-            Executes the request asynchronously, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <param name="token">The cancellation token</param>
-        </member>
         <member name="M:RestSharp.RestClient.#ctor">
             <summary>
             Default constructor that registers default content handlers
@@ -1925,48 +1539,9 @@
             <param name="request">RestRequest to execute</param>
             <returns>Assembled System.Uri</returns>
         </member>
-        <member name="M:RestSharp.RestClient.DownloadData(RestSharp.IRestRequest)">
-            <summary>
-            Executes the specified request and downloads the response data
-            </summary>
-            <param name="request">Request to execute</param>
-            <returns>Response data</returns>
-        </member>
-        <member name="M:RestSharp.RestClient.Execute(RestSharp.IRestRequest)">
-            <summary>
-            Executes the request and returns a response, authenticating if needed
-            </summary>
-            <param name="request">Request to be executed</param>
-            <returns>RestResponse</returns>
-        </member>
-        <member name="M:RestSharp.RestClient.Execute``1(RestSharp.IRestRequest)">
-            <summary>
-            Executes the specified request and deserializes the response content using the appropriate content handler
-            </summary>
-            <typeparam name="T">Target deserialization type</typeparam>
-            <param name="request">Request to execute</param>
-            <returns>RestResponse[[T]] with deserialized data in Data property</returns>
-        </member>
-        <member name="P:RestSharp.RestClient.DefaultParameters">
-            <summary>
-            Parameters included with every request made with this instance of RestClient
-            If specified in both client and request, the request wins
-            </summary>
-        </member>
         <member name="P:RestSharp.RestClient.MaxRedirects">
             <summary>
             Maximum number of redirects to follow if FollowRedirects is true
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestClient.ClientCertificates">
-            <summary>
-            X509CertificateCollection to be sent with request
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestClient.Proxy">
-            <summary>
-            Proxy to use for requests made by this client instance.
-            Passed on to underlying WebRequest if set.
             </summary>
         </member>
         <member name="P:RestSharp.RestClient.FollowRedirects">
@@ -2013,6 +1588,12 @@
             <example>
             client.BaseUrl = new Uri("http://example.com");
             </example>
+        </member>
+        <member name="P:RestSharp.RestClient.DefaultParameters">
+            <summary>
+            Parameters included with every request made with this instance of RestClient
+            If specified in both client and request, the request wins
+            </summary>
         </member>
         <member name="M:RestSharp.RestClientExtensions.ExecuteAsync(RestSharp.IRestClient,RestSharp.IRestRequest,System.Action{RestSharp.IRestResponse})">
             <summary>
@@ -2131,41 +1712,24 @@
             <param name="resource">Resource to use for this request</param>
             <param name="method">Method to use for this request</param>
         </member>
-        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.String)">
+        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.String,System.String)">
             <summary>
             Adds a file to the Files collection to be included with a POST or PUT request 
             (other methods do not support file uploads).
             </summary>
             <param name="name">The parameter name to use in the request</param>
             <param name="path">Full path to file to upload</param>
+            <param name="contentType">The MIME type of the file to upload</param>
             <returns>This request</returns>
         </member>
-        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.Byte[],System.String)">
+        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.Byte[],System.String,System.String)">
             <summary>
             Adds the bytes to the Files collection with the specified file name
             </summary>
             <param name="name">The parameter name to use in the request</param>
             <param name="bytes">The file data</param>
             <param name="fileName">The file name to use for the uploaded file</param>
-            <returns>This request</returns>
-        </member>
-        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.Byte[],System.String,System.String)">
-            <summary>
-            Adds the bytes to the Files collection with the specified file name and content type
-            </summary>
-            <param name="name">The parameter name to use in the request</param>
-            <param name="bytes">The file data</param>
-            <param name="fileName">The file name to use for the uploaded file</param>
             <param name="contentType">The MIME type of the file to upload</param>
-            <returns>This request</returns>
-        </member>
-        <member name="M:RestSharp.RestRequest.AddFile(System.String,System.Action{System.IO.Stream},System.String)">
-            <summary>
-            Adds the bytes to the Files collection with the specified file name and content type
-            </summary>
-            <param name="name">The parameter name to use in the request</param>
-            <param name="writer">A function that writes directly to the stream.  Should NOT close the stream.</param>
-            <param name="fileName">The file name to use for the uploaded file</param>
             <returns>This request</returns>
         </member>
         <member name="M:RestSharp.RestRequest.AddFile(System.String,System.Action{System.IO.Stream},System.String,System.String)">
@@ -2522,76 +2086,6 @@
             Container for data sent back from API
             </summary>
         </member>
-        <member name="P:RestSharp.RestResponseCookie.Comment">
-            <summary>
-            Comment of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.CommentUri">
-            <summary>
-            Comment of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Discard">
-            <summary>
-            Indicates whether the cookie should be discarded at the end of the session
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Domain">
-            <summary>
-            Domain of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Expired">
-            <summary>
-            Indicates whether the cookie is expired
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Expires">
-            <summary>
-            Date and time that the cookie expires
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.HttpOnly">
-            <summary>
-            Indicates that this cookie should only be accessed by the server
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Name">
-            <summary>
-            Name of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Path">
-            <summary>
-            Path of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Port">
-            <summary>
-            Port of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Secure">
-            <summary>
-            Indicates that the cookie should only be sent over secure channels
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.TimeStamp">
-            <summary>
-            Date and time the cookie was created
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Value">
-            <summary>
-            Value of the cookie
-            </summary>
-        </member>
-        <member name="P:RestSharp.RestResponseCookie.Version">
-            <summary>
-            Version of the cookie
-            </summary>
-        </member>
         <member name="T:RestSharp.Serializers.DotNetXmlSerializer">
             <summary>
             Wrapper for System.Xml.Serialization.XmlSerializer.
@@ -2775,18 +2269,6 @@
             <summary>
             Content type for serialized content
             </summary>
-        </member>
-        <member name="T:RestSharp.Validation.Require">
-            <summary>
-            Helper methods for validating required values
-            </summary>
-        </member>
-        <member name="M:RestSharp.Validation.Require.Argument(System.String,System.Object)">
-            <summary>
-            Require a parameter to not be null
-            </summary>
-            <param name="argumentName">Name of the parameter</param>
-            <param name="argumentValue">Value of the parameter</param>
         </member>
         <member name="T:RestSharp.JsonArray">
             <summary>
@@ -3000,6 +2482,18 @@
             (can be integer, double, null, etc).
             </summary>
         </member>
+        <member name="T:RestSharp.Validation.Require">
+            <summary>
+            Helper methods for validating required values
+            </summary>
+        </member>
+        <member name="M:RestSharp.Validation.Require.Argument(System.String,System.Object)">
+            <summary>
+            Require a parameter to not be null
+            </summary>
+            <param name="argumentName">Name of the parameter</param>
+            <param name="argumentValue">Value of the parameter</param>
+        </member>
         <member name="T:RestSharp.Validation.Validate">
             <summary>
             Helper methods for validating values
@@ -3019,6 +2513,76 @@
             </summary>
             <param name="value">String to be validated</param>
             <param name="maxSize">Maximum length of the string</param>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Comment">
+            <summary>
+            Comment of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.CommentUri">
+            <summary>
+            Comment of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Discard">
+            <summary>
+            Indicates whether the cookie should be discarded at the end of the session
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Domain">
+            <summary>
+            Domain of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Expired">
+            <summary>
+            Indicates whether the cookie is expired
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Expires">
+            <summary>
+            Date and time that the cookie expires
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.HttpOnly">
+            <summary>
+            Indicates that this cookie should only be accessed by the server
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Name">
+            <summary>
+            Name of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Path">
+            <summary>
+            Path of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Port">
+            <summary>
+            Port of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Secure">
+            <summary>
+            Indicates that the cookie should only be sent over secure channels
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.TimeStamp">
+            <summary>
+            Date and time the cookie was created
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Value">
+            <summary>
+            Value of the cookie
+            </summary>
+        </member>
+        <member name="P:RestSharp.RestResponseCookie.Version">
+            <summary>
+            Version of the cookie
+            </summary>
         </member>
     </members>
 </doc>

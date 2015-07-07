@@ -1,4 +1,5 @@
-﻿using RestSharp.Deserializers;
+﻿using EmmaSharp.Models.Fields;
+using RestSharp.Deserializers;
 using System;
 using System.Collections.Generic;
 

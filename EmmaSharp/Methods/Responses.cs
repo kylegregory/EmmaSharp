@@ -12,20 +12,9 @@ namespace EmmaSharp
     /// <summary>
     /// We know that you want to do some fancy pivot tables with your response data, so we’ve provided quite a few endpoints here to give you access to that response data. You can get overview numbers for all of your mailings and also drill down into finding out the actual members who opened a particular mailing.
     /// </summary>
-    public class Responses : EmmaApi
+    public partial class EmmaApi
     {
         #region Responses
-
-        /// <summary>
-        /// Response Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Responses(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
 
         /// <summary>
         /// Get the response summary for an account.

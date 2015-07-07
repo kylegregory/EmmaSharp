@@ -2,7 +2,7 @@
 
 namespace EmmaSharp.Models.Webhooks
 {
-    class Webhook
+    public class Webhook
     {
         [DeserializeAs(Name = "url")]
         public string Url { get; set; }

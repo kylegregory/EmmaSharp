@@ -2,7 +2,7 @@
 
 namespace EmmaSharp.Models.Webhooks
 {
-    class WebhookEvent
+    public class WebhookEvents
     {
         [DeserializeAs(Name = "event_name")]
         public string EventName { get; set; }

@@ -1,7 +1,7 @@
 ﻿using RestSharp.Deserializers;
 using System;
 
-namespace EmmaSharp.Models
+namespace EmmaSharp.Models.Fields
 {
     public class Field
     {

@@ -2,22 +2,11 @@
 using RestSharp;
 using System.Collections.Generic;
 
-namespace EmmaSharp.Methods
+namespace EmmaSharp
 {
-    class Webhooks : EmmaApi
+    public partial class EmmaApi
     {
         #region Webhooks
-
-        /// <summary>
-        /// Webhooks Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Webhooks(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
 
         /// <summary>
         /// Get a basic listing of all webhooks associated with an account.
@@ -49,12 +38,12 @@ namespace EmmaSharp.Methods
         /// Get a listing of all event types that are available for webhooks.
         /// </summary>
         /// <returns>A list of event types and descriptions</returns>
-        public WebhookEvent GetWebhookEvents()
+        public List<WebhookEvents> GetWebhookEvents()
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/webhooks/events";
 
-            return Execute<WebhookEvent>(request);
+            return Execute<List<WebhookEvents>>(request);
         }
 
         /// <summary>

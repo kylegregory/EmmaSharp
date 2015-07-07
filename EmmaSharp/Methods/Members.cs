@@ -1,8 +1,8 @@
 ﻿using RestSharp;
 using System.Collections.Generic;
-using EmmaSharp.Models;
 using EmmaSharp.Models.Members;
 using EmmaSharp.Models.Mailings;
+using EmmaSharp.Models.Fields;
 
 namespace EmmaSharp
 {
@@ -13,22 +13,11 @@ namespace EmmaSharp
     ///
     ///Where this is especially important is when adding new members. To do a bulk import, you’ll POST to the /#account_id/members endpoint. In return, you’ll receive an import ID. You can use this ID to check the status and results of your import. Imports are generally pretty fast, but the time to completion can vary with greater system usage.
     /// </summary>
-	public class Members : EmmaApi
+	public partial class EmmaApi
 	{
 		#region Members
 
         /// <summary>
-        /// Members Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Members(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
-
-		/// <summary>
 		/// Get a count of all members in an account.
 		/// </summary>
 		/// <returns>A list of members in the given account.</returns>
@@ -148,7 +137,7 @@ namespace EmmaSharp
         /// <param name="groupIds">Optional. Add imported members to this list of groups.</param>
         /// <returns>An import id.</returns>
         /// <remarks></remarks>
-        public int AddNewMemebers(Members members, string sourceFilename, bool addOnly, MemberGroups groupIds)
+        public int AddNewMemebers(List<Member> members, string sourceFilename, bool addOnly, MemberGroups groupIds)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members";

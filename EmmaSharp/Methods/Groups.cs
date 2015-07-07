@@ -9,22 +9,11 @@ namespace EmmaSharp
     /// <summary>
     /// With these endpoints, you can manage all aspects of the groups in your account. In addition to various CRUD methods, you can also use these endpoints to manage the members of your groups. You’ll want to use these methods if you’re managing group membership for more than one member at a time. For dealing with single members, there are better methods in the members endpoints.
     /// </summary>
-    public class Groups : EmmaApi
+    public partial class EmmaApi
     {
         #region Groups
 
         /// <summary>
-        /// Groups Endpoints
-        /// </summary>
-        /// <param name="publicKey">The account's public key.</param>
-        /// <param name="secretKey">The account's private key.</param>
-        /// <param name="accountId">The account id.</param>
-        public Groups(string publicKey, string secretKey, string accountId)
-            : base(publicKey, secretKey, accountId)
-        {
-        }
-
-		/// <summary>
 		/// Get number of all active member groups for a single account.
 		/// </summary>
 		/// <returns>An int of groups.</returns>
