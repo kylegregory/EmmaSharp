@@ -1,5 +1,6 @@
 ﻿using EmmaSharp.Models.Searches;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace EmmaSharp.Methods
 {
@@ -27,7 +28,7 @@ namespace EmmaSharp.Methods
         /// <param name="deleted">Accepts True or 1. Optional flag to include deleted searches.</param>
         /// <returns>An array of searches.</returns>
         /// <remarks></remarks>
-        public AllSearches GetSearches(bool deleted = false)
+        public List<Search> GetSearches(bool deleted = false)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response";
@@ -35,7 +36,7 @@ namespace EmmaSharp.Methods
             if (deleted)
                 request.AddParameter("deleted", "true");
 
-            return Execute<AllSearches>(request);
+            return Execute<List<Search>>(request);
         }
 
         /// <summary>

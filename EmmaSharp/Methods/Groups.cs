@@ -44,7 +44,7 @@ namespace EmmaSharp
 		/// <param name="start">Start paging record at.</param>
 		/// <param name="end">End paging record at.</param>
         /// <returns>An array of groups.</returns>
-		public AllGroups ListGroups(GroupType groupType, int? start, int? end)
+		public List<Group> ListGroups(GroupType groupType, int? start, int? end)
         {
             var request = new RestRequest();
 			request.Resource = "/{accountId}/groups";
@@ -60,7 +60,7 @@ namespace EmmaSharp
             if (groupType != null) 
                 request.AddParameter("group_types", groupType);
 
-            return Execute<AllGroups>(request);
+            return Execute<List<Group>>(request);
         }
 
         /// <summary>
@@ -68,13 +68,13 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="groups">A Group to be created. Each object must contain a group_name parameter.</param>
         /// <returns>An array of the new group ids and group names.</returns>
-        public AllGroups CreateFields(AllGroups groups)
+        public List<Group> CreateFields(List<Group> groups)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/groups";
             request.AddBody(groups);
 
-            return Execute<AllGroups>(request);
+            return Execute<List<Group>>(request);
         }
 
         /// <summary>

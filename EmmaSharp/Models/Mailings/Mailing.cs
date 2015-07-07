@@ -37,7 +37,7 @@ namespace EmmaSharp.Models.Mailings
         public string PublicWebviewUrl { get; set; }
 
         [DeserializeAs(Name = "mailing_type")]
-        public string MailingType { get; set; }
+        public MailingType MailingType { get; set; }
 
         [DeserializeAs(Name = "parent_mailing_id")]
         public int? ParentMailingId { get; set; }
@@ -52,7 +52,7 @@ namespace EmmaSharp.Models.Mailings
         public List<Member> RecipientMembers { get; set; }
 
         [DeserializeAs(Name = "mailing_status")]
-        public string MailingStatus { get; set; }
+        public MailingStatus MailingStatus { get; set; }
 
         [DeserializeAs(Name = "sender")]
         public string Sender { get; set; }
@@ -70,7 +70,7 @@ namespace EmmaSharp.Models.Mailings
         public string Subject { get; set; }
 
         [DeserializeAs(Name = "archived_ts")]
-        public DateTime? ArchivedTs { get; set; }
+        public DateTime? ArchivedTimestamp { get; set; }
 
         [DeserializeAs(Name = "html_body")]
         public string HtmlBody { get; set; }

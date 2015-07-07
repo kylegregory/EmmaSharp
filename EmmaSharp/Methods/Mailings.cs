@@ -53,7 +53,7 @@ namespace EmmaSharp
 		/// <param name="end">Record to begin with. Defaults to 500</param>
         /// <returns>An array of mailings.</returns>
         /// <remarks>Http400 if invalid mailing types or statuses are specified.</remarks>
-		public AllMailings ListMailings(bool? archived, List<MailingType> mailingType, List<MailingStatus> mailingStatus, bool? isScheduled, bool? withHtmlBody, bool? withPlaintext, int? start, int? end)
+		public List<Mailing> ListMailings(bool? archived, List<MailingType> mailingType, List<MailingStatus> mailingStatus, bool? isScheduled, bool? withHtmlBody, bool? withPlaintext, int? start, int? end)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/mailings";
@@ -84,7 +84,7 @@ namespace EmmaSharp
             if (!withPlaintext ?? false)
                 request.AddParameter("with_plaintext", withPlaintext);
 
-			return Execute<AllMailings>(request);
+            return Execute<List<Mailing>>(request);
         }
 
 		/// <summary>

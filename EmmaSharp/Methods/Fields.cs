@@ -1,6 +1,6 @@
 using EmmaSharp.Models;
-using EmmaSharp.Models.Fields;
 using RestSharp;
+using System.Collections.Generic;
 
 namespace EmmaSharp
 {
@@ -44,7 +44,7 @@ namespace EmmaSharp
 		/// <param name="end">End paging record at.</param>
         /// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
         /// <returns>An array of fields.</returns>
-		public AllFields ListFields(bool? deleted, int? start, int? end)
+		public List<Field> ListFields(bool? deleted, int? start, int? end)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields";
@@ -60,7 +60,7 @@ namespace EmmaSharp
             if (!deleted ?? false) 
                 request.AddParameter("deleted", deleted);
 
-            return Execute<AllFields>(request);
+            return Execute<List<Field>>(request);
         }
 
         /// <summary>

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using EmmaSharp.Models;
 using EmmaSharp.Models.Members;
-using EmmaSharp.Models.Fields;
 using EmmaSharp.Models.Mailings;
 
 namespace EmmaSharp
@@ -53,7 +52,7 @@ namespace EmmaSharp
 		/// <param name="deleted">Accepts True. Optional flag to include deleted members.</param>
         /// <param name="start">Pagination: start page. Defaults to first page (e.g. 0).</param>
         /// <param name="end">Pagination: end page. Defaults to first page (e.g. 500).</param>
-		public AllMembers ListMembers(bool? deleted, int? start, int? end)
+		public List<Member> ListMembers(bool? deleted, int? start, int? end)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members";
@@ -69,7 +68,7 @@ namespace EmmaSharp
 			if(!deleted ?? false)
 				request.AddParameter("deleted", deleted.ToString());
 
-			return Execute<AllMembers>(request);
+            return Execute<List<Member>>(request);
 		}
 
 		/// <summary>
@@ -174,12 +173,12 @@ namespace EmmaSharp
         /// <param name="field_triggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>The member_id of the new or updated member, whether the member was added or an existing member was updated, and the status of the member. The status will be reported as ‘a’ (active), ‘e’ (error), or ‘o’ (optout).</returns>
         /// <remarks></remarks>
-        public MemberAdd AddOrUpdateSingleMember(string memberEmail, AllFields fields, MemberGroups groupIds, bool field_triggers)
+        public MemberAdd AddOrUpdateSingleMember(string memberEmail, List<Field> fields, MemberGroups groupIds, bool field_triggers)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/add";
             request.AddParameter("email", memberEmail);
-            request.AddParameter("fields", fields.Fields);
+            request.AddParameter("fields", fields);
 
             if (groupIds.Groups.Count != 0)
                 request.AddParameter("group_ids", groupIds);
@@ -202,15 +201,15 @@ namespace EmmaSharp
         /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>The member_id of the member, and their status. The status will be reported as ‘a’ (active), ‘e’ (error), or ‘o’ (optout).</returns>
         /// <remarks></remarks>
-        public MemberSignup MemberSignup(string memberEmail, MemberGroups groupIds, AllFields fields, int signupFormId, string optInSubject, string optInMessage, bool fieldTriggers)
+        public MemberSignup MemberSignup(string memberEmail, MemberGroups groupIds, List<Field> fields, int signupFormId, string optInSubject, string optInMessage, bool fieldTriggers)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/signup";
             request.AddParameter("email", memberEmail);
             request.AddParameter("group_ids", groupIds.Groups);
 
-            if (fields.Fields.Count != 0)
-                request.AddParameter("fields", fields.Fields);
+            if (fields.Count != 0)
+                request.AddParameter("fields", fields);
 
             if (signupFormId != 0)
                 request.AddParameter("signup_form_id", signupFormId);
@@ -269,14 +268,14 @@ namespace EmmaSharp
         /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>True if the member was updated successfully</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, AllFields fields, bool fieldTriggers)
+        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, List<Field> fields, bool fieldTriggers)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}";
             request.AddUrlSegment("memberId", memberId);
             request.AddParameter("email", memberEmail);
             request.AddParameter("status_to", statusTo);
-            request.AddParameter("fields", fields.Fields);
+            request.AddParameter("fields", fields);
 
             if (fieldTriggers)
                 request.AddParameter("field_triggers", fieldTriggers);
