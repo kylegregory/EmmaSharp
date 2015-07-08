@@ -8,7 +8,7 @@ namespace EmmaSharp.Models.Members
     public class Import
     {
         [JsonProperty("import_id")]
-        public int ImportId { get; set; }
+        public int? ImportId { get; set; }
 
         [JsonProperty("status")]
         public string Status { get; set; }
@@ -20,13 +20,13 @@ namespace EmmaSharp.Models.Members
         public DateTime? ImportStarted { get; set; }
 
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; set; }
 
         [JsonProperty("num_members_updated")]
-        public int NumMembersUpdated { get; set; }
+        public int? NumMembersUpdated { get; set; }
 
         [JsonProperty("source_filename")]
         public string SourceFilename { get; set; }
@@ -35,7 +35,7 @@ namespace EmmaSharp.Models.Members
         public List<Field> FieldsUpdated { get; set; }
 
         [JsonProperty("num_fields_added")]
-        public int NumFieldsAdded { get; set; }
+        public int? NumFieldsAdded { get; set; }
 
         [JsonProperty("import_finished")]
         public DateTime? ImportFinished { get; set; }
@@ -44,9 +44,9 @@ namespace EmmaSharp.Models.Members
         public List<Group> GroupsUpdated { get; set; }
 
         [JsonProperty("num_skipped")]
-        public int NumSkipped { get; set; }
+        public int? NumSkipped { get; set; }
 
         [JsonProperty("num_duplicates")]
-        public int NumDuplicates { get; set; }
+        public int? NumDuplicates { get; set; }
     }
 }

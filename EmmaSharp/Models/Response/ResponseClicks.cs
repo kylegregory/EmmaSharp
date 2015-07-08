@@ -8,7 +8,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseClicks
     {
         [JsonProperty("link_id")]
-        public int LinkId { get; set; }
+        public int? LinkId { get; set; }
 
         [JsonProperty("fields")]
         public Dictionary<string, string> Fields { get; set; }
@@ -17,7 +17,7 @@ namespace EmmaSharp.Models.Response
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         [JsonProperty("member_since")]
         public DateTime? MemberSince { get; set; }

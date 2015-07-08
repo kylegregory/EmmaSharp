@@ -5,7 +5,7 @@ namespace EmmaSharp.Models.Members
     public class ImportMembers
     {
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         [JsonProperty("change_type")]
         public ImportChangeType ChangeType { get; set; }

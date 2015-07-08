@@ -8,10 +8,10 @@ namespace EmmaSharp.Models.Response
     public class ResponseSignups
     {
         [JsonProperty("ref_member_id")]
-        public int ReferingMemberId { get; set; }
+        public int? ReferingMemberId { get; set; }
 
         [JsonProperty("mailing_mailing_id")]
-        public int MailingMailingId { get; set; }
+        public int? MailingMailingId { get; set; }
 
         [JsonProperty("fields")]
         public Dictionary<string, string> Fields { get; set; }
@@ -20,7 +20,7 @@ namespace EmmaSharp.Models.Response
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         [JsonProperty("member_since")]
         public DateTime? MemberSince { get; set; }

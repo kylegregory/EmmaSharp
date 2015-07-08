@@ -10,7 +10,7 @@ namespace EmmaSharp.Models.SignupForms
     public class SignupForm
     {
         [JsonProperty("id")]
-        public int SignupFormId { get; set; }
+        public int? SignupFormId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }

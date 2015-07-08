@@ -10,6 +10,6 @@ namespace EmmaSharp.Models.Members
 		public DateTime Timestamp { get; set; }
 
 		[JsonProperty("mailing_id")]
-		public int MailingId { get; set; }
+		public int? MailingId { get; set; }
 	}
 }

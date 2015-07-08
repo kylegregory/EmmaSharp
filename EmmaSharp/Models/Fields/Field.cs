@@ -12,7 +12,7 @@ namespace EmmaSharp.Models.Fields
         public string DisplayName { get; set; }
 
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         [JsonProperty("field_type")]
         public FieldType FieldType { get; set; }
@@ -21,7 +21,7 @@ namespace EmmaSharp.Models.Fields
         public bool Required { get; set; }
 
         [JsonProperty("field_id")]
-        public int FieldId { get; set; }
+        public int? FieldId { get; set; }
 
         [JsonProperty("widget_type")]
         public WidgetType WidgetType { get; set; }
@@ -29,11 +29,11 @@ namespace EmmaSharp.Models.Fields
         [JsonProperty("short_display_name")]
         public string ShortDisplayName { get; set; }
 
-        [JsonProperty("shortcut_name")]
-        public int ColumnOrder { get; set; }
+        [JsonProperty("column_order")]
+        public int? ColumnOrder { get; set; }
 
-        [JsonProperty("shortcut_name")]
-        public DateTime DeletedAt { get; set; }
+        [JsonProperty("deleted_at")]
+        public DateTime? DeletedAt { get; set; }
 
         [JsonProperty("options")]
         public string[] Options { get; set; }

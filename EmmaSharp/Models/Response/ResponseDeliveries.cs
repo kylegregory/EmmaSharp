@@ -17,13 +17,13 @@ namespace EmmaSharp.Models.Response
         public Dictionary<string, string> Fields { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int MailingId { get; set; }
+        public int? MailingId { get; set; }
 
         [JsonProperty("timestamp")]
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         [JsonProperty("member_status_id")]
         public MemberStatus MemberStatusId { get; set; }

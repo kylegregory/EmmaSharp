@@ -1,7 +1,9 @@
-﻿using EmmaSharp.Models.Generics;
+﻿using EmmaSharp.Extensions;
+using EmmaSharp.Models.Generics;
 using EmmaSharp.Models.Members;
 using EmmaSharp.Models.Searches;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
 
@@ -15,23 +17,24 @@ namespace EmmaSharp.Models.Mailings
         [JsonProperty("heads_up_emails")]
         public List<Email> HeadsUpEmails { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("send_started")]
         public DateTime? SendStarted { get; set; }
 
         [JsonProperty("signup_form_id")]
-        public int SignupFormId { get; set; }
+        public int? SignupFormId { get; set; }
 
         [JsonProperty("links")]
         public List<Link> Links { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int MailingId { get; set; }
+        public int? MailingId { get; set; }
 
         [JsonProperty("plaintext")]
         public string Plaintext { get; set; }
 
         [JsonProperty("recipient_count")]
-        public int RecipientCount { get; set; }
+        public int? RecipientCount { get; set; }
 
         [JsonProperty("public_webview_url")]
         public string PublicWebviewUrl { get; set; }
@@ -46,7 +49,7 @@ namespace EmmaSharp.Models.Mailings
         public List<Search> RecipientSearches { get; set; }
 
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         [JsonProperty("recipient_members")]
         public List<Member> RecipientMembers { get; set; }
@@ -60,9 +63,11 @@ namespace EmmaSharp.Models.Mailings
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("send_finished")]
-        public bool? SendFinished { get; set; }
+        public DateTime? SendFinished { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("send_at")]
         public DateTime? SendAt { get; set; }
 

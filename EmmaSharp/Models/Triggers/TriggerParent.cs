@@ -12,16 +12,16 @@ namespace EmmaSharp.Models.Triggers
         public DateTime? SendStarted { get; set; }
 
         [JsonProperty("signup_form_id")]
-        public int SignupFormId { get; set; }
+        public int? SignupFormId { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int MailingId { get; set; }
+        public int? MailingId { get; set; }
 
         [JsonProperty("plaintext")]
         public string Plaintext { get; set; }
 
         [JsonProperty("recipient_count")]
-        public int RecipientCount { get; set; }
+        public int? RecipientCount { get; set; }
 
         [JsonProperty("cancel_ts")]
         public DateTime? CancelTimestamp { get; set; }
@@ -30,13 +30,13 @@ namespace EmmaSharp.Models.Triggers
         public DateTime? CreatedTimestamp { get; set; }
 
         [JsonProperty("month")]
-        public string Month { get; set; }
+        public int? Month { get; set; }
 
         [JsonProperty("failure_ts")]
         public DateTime? FailureTimestamp { get; set; }
 
         [JsonProperty("year")]
-        public int Year { get; set; }
+        public int? Year { get; set; }
 
         [JsonProperty("datacenter")]
         public string Datacenter { get; set; }
@@ -45,7 +45,7 @@ namespace EmmaSharp.Models.Triggers
         public DateTime? StartedOrFinished { get; set; }
 
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
 
         [JsonProperty("disabled")]
         public bool Disabled { get; set; }
@@ -72,7 +72,7 @@ namespace EmmaSharp.Models.Triggers
         public bool? SendFinished { get; set; }
 
         [JsonProperty("cancel_by_user_id")]
-        public int CancelByUserId { get; set; }
+        public int? CancelByUserId { get; set; }
 
         [JsonProperty("send_at")]
         public DateTime? SendAt { get; set; }

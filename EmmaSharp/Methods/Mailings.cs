@@ -25,7 +25,7 @@ namespace EmmaSharp
 		/// <param name="end">Record to begin with. Defaults to 500</param>
         /// <returns>An array of mailings.</returns>
         /// <remarks>Http400 if invalid mailing types or statuses are specified.</remarks>
-		public List<Mailing> ListMailings(bool? archived, List<MailingType> mailingType, List<MailingStatus> mailingStatus, bool? isScheduled, bool? withHtmlBody, bool? withPlaintext, int? start, int? end)
+		public List<MailingInfo> ListMailings(bool archived = false, List<MailingType> mailingType = null, List<MailingStatus> mailingStatus = null, bool isScheduled = false, bool withHtmlBody = false, bool withPlaintext = false, int? start = null, int? end = null)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/mailings";
@@ -38,7 +38,7 @@ namespace EmmaSharp
 				end = 500;
 			request.AddParameter("end", end);
 
-            if (!archived ?? false)
+            if (archived)
                 request.AddParameter("include_archived", archived);
 
             if (mailingType != null)
@@ -47,16 +47,16 @@ namespace EmmaSharp
             if (mailingStatus != null)
                 request.AddParameter("mailing_statuses", mailingStatus);
 
-            if (!isScheduled ?? false)
+            if (isScheduled)
                 request.AddParameter("is_scheduled", isScheduled);
 
-            if (!withHtmlBody ?? false)
+            if (withHtmlBody)
                 request.AddParameter("with_html_body", withHtmlBody);
 
-            if (!withPlaintext ?? false)
+            if (withPlaintext)
                 request.AddParameter("with_plaintext", withPlaintext);
 
-            return Execute<List<Mailing>>(request);
+            return Execute<List<MailingInfo>>(request);
         }
 
 		/// <summary>

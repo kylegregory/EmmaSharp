@@ -11,7 +11,7 @@ namespace EmmaSharp.Models.Response
         public string Network { get; set; }
 
         [JsonProperty("share_clicks")]
-        public int ShareClicks { get; set; }
+        public int? ShareClicks { get; set; }
 
         [JsonProperty("fields")]
         public Dictionary<string, string> Fields { get; set; }
@@ -20,7 +20,7 @@ namespace EmmaSharp.Models.Response
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public int? MemberId { get; set; }
 
         [JsonProperty("member_since")]
         public DateTime? MemberSince { get; set; }

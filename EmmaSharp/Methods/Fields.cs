@@ -35,7 +35,7 @@ namespace EmmaSharp
 		/// <param name="end">End paging record at.</param>
         /// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
         /// <returns>An array of fields.</returns>
-		public List<Field> ListFields(bool? deleted, int? start, int? end)
+		public List<Field> ListFields(bool deleted = false, int? start = null, int? end = null)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields";
@@ -48,7 +48,7 @@ namespace EmmaSharp
 				end = 500;
 			request.AddParameter("end", end);
 
-            if (!deleted ?? false) 
+            if (deleted) 
                 request.AddParameter("deleted", deleted);
 
             return Execute<List<Field>>(request);
@@ -61,13 +61,13 @@ namespace EmmaSharp
         /// <param name="deleted">Accepts True. Optionally show a field even if it has been deleted.</param>
         /// <returns>A field.</returns>
         /// <remarks>Http404 if the field does not exist.</remarks>
-        public Field GetField(string fieldId, bool? deleted)
+        public Field GetField(string fieldId, bool deleted = false)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields/{fieldId}";
             request.AddUrlSegment("fieldId", fieldId);
 
-            if (!deleted ?? false)
+            if (deleted)
                 request.AddParameter("deleted", deleted);
 
             return Execute<Field>(request);

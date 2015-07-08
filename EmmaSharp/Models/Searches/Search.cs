@@ -6,13 +6,13 @@ namespace EmmaSharp.Models.Searches
     public class Search
     {
         [JsonProperty("search_id")]
-        public int SearchId { get; set; }
+        public int? SearchId { get; set; }
 
         [JsonProperty("optout_count")]
-        public int OptoutCount { get; set; }
+        public int? OptoutCount { get; set; }
 
         [JsonProperty("error_count")]
-        public int ErrorCount { get; set; }
+        public int? ErrorCount { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -30,9 +30,9 @@ namespace EmmaSharp.Models.Searches
         public DateTime? LastRunAt { get; set; }
 
         [JsonProperty("active_count")]
-        public int ActiveCount { get; set; }
+        public int? ActiveCount { get; set; }
 
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public int? AccountId { get; set; }
     }
 }
