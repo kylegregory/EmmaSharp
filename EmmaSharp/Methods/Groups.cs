@@ -33,7 +33,7 @@ namespace EmmaSharp
 		/// <param name="start">Start paging record at.</param>
 		/// <param name="end">End paging record at.</param>
         /// <returns>An array of groups.</returns>
-		public List<Group> ListGroups(GroupType groupType, int? start, int? end)
+		public List<Group> ListGroups(GroupType? groupType = null, int? start = null, int? end = null)
         {
             var request = new RestRequest();
 			request.Resource = "/{accountId}/groups";
@@ -76,7 +76,7 @@ namespace EmmaSharp
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/groups/{memberGroupId}";
-            request.AddUrlSegment("memberIdGroup", memberGroupId);
+            request.AddUrlSegment("memberGroupId", memberGroupId);
 
             return Execute<Group>(request);
         }
@@ -176,7 +176,7 @@ namespace EmmaSharp
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns the number of members removed from the group.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public int DeleteAllMembersFromGroup(string memberGroupId, MemberStatus status)
+        public int DeleteAllMembersFromGroup(string memberGroupId, MemberStatus? status = null)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/groups/{memberGroupId}/members";
@@ -195,7 +195,7 @@ namespace EmmaSharp
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns true.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public bool DeleteAllMembersFromAllGroups(string memberGroupId, MemberStatus status)
+        public bool DeleteAllMembersFromAllGroups(string memberGroupId, MemberStatus? status = null)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/groups/{memberGroupId}/members/remove";
@@ -215,7 +215,7 @@ namespace EmmaSharp
         /// <param name="status">A Member Status string. Optional. This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns true.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public bool CopyUsersFromGroup(string fromGroupId, string toGroupId, MemberStatus status)
+        public bool CopyUsersFromGroup(string fromGroupId, string toGroupId, MemberStatus? status = null)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/groups/{fromGroupId}/{toGroupId}/members/copy";

@@ -1,4 +1,4 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace EmmaSharp.Models.Mailings
 {

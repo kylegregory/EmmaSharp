@@ -1,5 +1,5 @@
 ﻿using EmmaSharp.Models.Members;
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,34 +7,34 @@ namespace EmmaSharp.Models.Response
 {
     public class ResponseShares
     {
-        [DeserializeAs(Name = "network")]
+        [JsonProperty("network")]
         public string Network { get; set; }
 
-        [DeserializeAs(Name = "share_clicks")]
+        [JsonProperty("share_clicks")]
         public int ShareClicks { get; set; }
 
-        [DeserializeAs(Name = "fields")]
+        [JsonProperty("fields")]
         public Dictionary<string, string> Fields { get; set; }
 
-        [DeserializeAs(Name = "timestamp")]
+        [JsonProperty("timestamp")]
         public DateTime? Timestamp { get; set; }
 
-        [DeserializeAs(Name = "member_id")]
+        [JsonProperty("member_id")]
         public int MemberId { get; set; }
 
-        [DeserializeAs(Name = "member_since")]
+        [JsonProperty("member_since")]
         public DateTime? MemberSince { get; set; }
 
-        [DeserializeAs(Name = "email_domain")]
+        [JsonProperty("email_domain")]
         public string EmailDomain { get; set; }
 
-        [DeserializeAs(Name = "email_user")]
+        [JsonProperty("email_user")]
         public string EmailUser { get; set; }
 
-        [DeserializeAs(Name = "email")]
+        [JsonProperty("email")]
         public string Email { get; set; }
 
-        [DeserializeAs(Name = "member_status_id")]
+        [JsonProperty("member_status_id")]
         public MemberStatus MemberStatusId { get; set; }
     }
 }

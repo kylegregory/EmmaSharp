@@ -97,7 +97,7 @@ namespace EmmaSharp
 		/// <param name="memberId">Member identifier.</param>
 		/// <param name="type">Accepts: ‘all’, ‘html’, ‘plaintext’, ‘subject’. Defaults to ‘all’, if not provided.</param>
 		/// <remarks>Http404 if no mailing is found.</remarks>
-		public List<PersonalizationType> GetMailingMembersPersonalization(string mailingId, string memberId, PersonalizationType type)
+		public List<PersonalizationType> GetMailingMembersPersonalization(string mailingId, string memberId, PersonalizationType? type = null)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/mailings/{mailingId}/messages/{memberId}";

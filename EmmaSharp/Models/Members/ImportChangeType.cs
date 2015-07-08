@@ -1,26 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Members
 {
-    public sealed class ImportChangeType
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum ImportChangeType
     {
-        private readonly string name;
-
-        public static readonly ImportChangeType Add = new ImportChangeType("a");
-        public static readonly ImportChangeType Update = new ImportChangeType("u");
-
-        private ImportChangeType(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
-        }
+        [EnumMember(Value = "a")]
+        Add,
+        [EnumMember(Value = "u")]
+        Update
     }
 }

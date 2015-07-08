@@ -1,12 +1,12 @@
 ﻿using EmmaSharp.Models.Generics;
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Response
 {
     public class ResponseLinks
     {
-        [DeserializeAs(Name = "links")]
+        [JsonProperty("links")]
         public List<Link> Links { get; set; }
     }
 }

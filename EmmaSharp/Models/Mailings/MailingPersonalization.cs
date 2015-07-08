@@ -1,16 +1,16 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace EmmaSharp.Models.Mailings
 {
     public class MailingPersonalization
     {
-        [DeserializeAs(Name = "paintext")]
+        [JsonProperty("paintext")]
         public string Plaintext { get; set; }
 
-        [DeserializeAs(Name = "subject")]
+        [JsonProperty("subject")]
         public string Subject { get; set; }
 
-        [DeserializeAs(Name = "html_body")]
+        [JsonProperty("html_body")]
         public string HtmlBody { get; set; }
     }
 }

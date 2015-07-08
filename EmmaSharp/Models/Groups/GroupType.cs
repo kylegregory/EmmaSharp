@@ -1,23 +1,19 @@
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
 {
-    public sealed class GroupType {
-        private readonly string name;
-
-        public static readonly GroupType group = new GroupType("g");
-        public static readonly GroupType test = new GroupType("t");
-        public static readonly GroupType hidden = new GroupType("h");
-        public static readonly GroupType all = new GroupType("a");
-
-        private GroupType(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
-        }
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum GroupType
+    {
+        [EnumMember(Value = "g")]
+        Group,
+        [EnumMember(Value = "t")]
+        Test,
+        [EnumMember(Value = "h")]
+        Hidden,
+        [EnumMember(Value = "all")]
+        All
     }
 }

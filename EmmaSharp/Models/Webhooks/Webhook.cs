@@ -1,22 +1,22 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace EmmaSharp.Models.Webhooks
 {
     public class Webhook
     {
-        [DeserializeAs(Name = "url")]
+        [JsonProperty("url")]
         public string Url { get; set; }
 
-        [DeserializeAs(Name = "webhook_id")]
+        [JsonProperty("webhook_id")]
         public int WebhookId { get; set; }
 
-        [DeserializeAs(Name = "method")]
+        [JsonProperty("method")]
         public string Method { get; set; }
 
-        [DeserializeAs(Name = "account_id")]
+        [JsonProperty("account_id")]
         public int AccountId { get; set; }
 
-        [DeserializeAs(Name = "name")]
+        [JsonProperty("name")]
         public string Event { get; set; }
     }
 }

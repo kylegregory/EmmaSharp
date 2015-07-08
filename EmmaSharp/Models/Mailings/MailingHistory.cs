@@ -1,5 +1,5 @@
 ﻿using EmmaSharp.Models.Members;
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,40 +7,40 @@ namespace EmmaSharp.Models.Mailings
 {
     public class MailingHistory
     {
-        [DeserializeAs(Name = "mailing_type")]
+        [JsonProperty("mailing_type")]
         public MailingType MailingType { get; set; }
 
-        [DeserializeAs(Name = "clicked")]
+        [JsonProperty("clicked")]
         public DateTime? Clicked { get; set; }
 
-        [DeserializeAs(Name = "opened")]
+        [JsonProperty("opened")]
         public DateTime? Opened { get; set; }
 
-        [DeserializeAs(Name = "mailing_id")]
+        [JsonProperty("mailing_id")]
         public int MailingId { get; set; }
 
-        [DeserializeAs(Name = "delivery_ts")]
+        [JsonProperty("delivery_ts")]
         public DateTime? DelieveryTimestamp { get; set; }
 
-        [DeserializeAs(Name = "delivery_type")]
+        [JsonProperty("delivery_type")]
         public DeliveryTypeShort DelieveryType { get; set; }
 
-        [DeserializeAs(Name = "name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
-        [DeserializeAs(Name = "forwarded")]
+        [JsonProperty("forwarded")]
         public DateTime? Forwarded { get; set; }
 
-        [DeserializeAs(Name = "parent_mailing_id")]
+        [JsonProperty("parent_mailing_id")]
         public int ParentMailingId { get; set; }
 
-        [DeserializeAs(Name = "shared")]
+        [JsonProperty("shared")]
         public DateTime? Shared { get; set; }
 
-        [DeserializeAs(Name = "subject")]
+        [JsonProperty("subject")]
         public string Subject { get; set; }
 
-        [DeserializeAs(Name = "account_id")]
+        [JsonProperty("account_id")]
         public int AccountId { get; set; }
     }
 }

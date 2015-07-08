@@ -1,28 +1,29 @@
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
 {
-    public sealed class WidgetType {
-        private readonly string name;
-
-        public static readonly WidgetType text = new WidgetType("text");
-        public static readonly WidgetType longInt = new WidgetType("long");
-        public static readonly WidgetType checkbox = new WidgetType("checkbox");
-        public static readonly WidgetType selectMultiple = new WidgetType("select multiple");
-        public static readonly WidgetType checkMultiple = new WidgetType("check_multiple"); //Seems like the underscore here is correct
-        public static readonly WidgetType radio = new WidgetType("radio");
-        public static readonly WidgetType date = new WidgetType("date");
-        public static readonly WidgetType selectOne = new WidgetType("select one");
-        public static readonly WidgetType number = new WidgetType("number");
-
-        private WidgetType(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
-        }    
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum WidgetType
+    {
+        [EnumMember(Value = "text")]
+        Text,
+        [EnumMember(Value = "long")]
+        LongInt,
+        [EnumMember(Value = "checkbox")]
+        Checkbox,
+        [EnumMember(Value = "select multiple")]
+        SelectMultiple,
+        [EnumMember(Value = "check_multiple")]
+        CheckMultiple,
+        [EnumMember(Value = "radio")]
+        Radio,
+        [EnumMember(Value = "date")]
+        Date,
+        [EnumMember(Value = "select one")]
+        SelectOne,
+        [EnumMember(Value = "number")]
+        Number
     }
 }

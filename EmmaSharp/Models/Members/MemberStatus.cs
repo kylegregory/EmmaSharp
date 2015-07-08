@@ -1,28 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Members
 {
-    public sealed class MemberStatus
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum MemberStatus
     {
-        private readonly string name;
-
-        public static readonly MemberStatus Active = new MemberStatus("a");
-        public static readonly MemberStatus Optout = new MemberStatus("o");
-        public static readonly MemberStatus Error = new MemberStatus("e");
-        public static readonly MemberStatus Forwarded = new MemberStatus("f");
-
-        private MemberStatus(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
-        }
+        [EnumMember(Value = "a")]
+        Active,
+        [EnumMember(Value = "o")]
+        Optout,
+        [EnumMember(Value = "e")]
+        Error,
+        [EnumMember(Value = "f")]
+        Forwarded
     }
 }

@@ -1,24 +1,19 @@
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
+using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
 {
-    public sealed class MailingType
+    [JsonConverter(typeof(StringEnumConverter))]
+    public enum MailingType
     {
-        private readonly string name;
-
-        public static readonly MailingType Standard = new MailingType("m");
-        public static readonly MailingType Test = new MailingType("t");
-        public static readonly MailingType Trigger = new MailingType("r");
-        public static readonly MailingType Spilt = new MailingType("s");
-
-        private MailingType(string name)
-        {
-            this.name = name;
-        }
-
-        public override string ToString()
-        {
-            return name;
-        }
+        [EnumMember(Value = "m")]
+        Standard,
+        [EnumMember(Value = "t")]
+        Test,
+        [EnumMember(Value = "r")]
+        Trigger,
+        [EnumMember(Value = "s")]
+        Spilt
     }
 }

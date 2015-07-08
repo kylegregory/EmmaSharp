@@ -1,4 +1,4 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,10 +9,10 @@ namespace EmmaSharp.Models.SignupForms
 {
     public class SignupForm
     {
-        [DeserializeAs(Name = "id")]
+        [JsonProperty("id")]
         public int SignupFormId { get; set; }
 
-        [DeserializeAs(Name = "name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
     }
 }

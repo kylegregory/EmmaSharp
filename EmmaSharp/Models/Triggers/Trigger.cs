@@ -1,5 +1,5 @@
 ﻿using EmmaSharp.Models.Groups;
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,61 +7,61 @@ namespace EmmaSharp.Models.Triggers
 {
     public class Trigger
     {
-        [DeserializeAs(Name = "parent_mailing")]
+        [JsonProperty("parent_mailing")]
         public TriggerParent ParentMailing { get; set; }
 
-        [DeserializeAs(Name = "surveys")]
+        [JsonProperty("surveys")]
         public string Surveys { get; set; }
 
-        [DeserializeAs(Name = "event_type")]
+        [JsonProperty("event_type")]
         public string EventType { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "links")]
+        [JsonProperty("links")]
         public string Links { get; set; }
 
-        [DeserializeAs(Name = "field_id")]
+        [JsonProperty("field_id")]
         public int FieldId { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "signup_integrations")]
+        [JsonProperty("signup_integrations")]
         public string SignupIntegrations { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "push_offest_units")]
+        [JsonProperty("push_offest_units")]
         public string PushOffsetUnits { get; set; }
 
-        [DeserializeAs(Name = "start_timestamp")]
+        [JsonProperty("start_timestamp")]
         public DateTime? StartTimestamp { get; set; }
 
-        [DeserializeAs(Name = "trigger_id")]
+        [JsonProperty("trigger_id")]
         public int TriggerId { get; set; }
 
-        [DeserializeAs(Name = "name")]
+        [JsonProperty("name")]
         public string Name { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "signups")]
+        [JsonProperty("signups")]
         public string Signups { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "push_offset")]
+        [JsonProperty("push_offset")]
         public string PushOffset { get; set; }
 
         // Need more info from Emma
-        [DeserializeAs(Name = "groups")]
+        [JsonProperty("groups")]
         public List<Group> Groups { get; set; }
 
-        [DeserializeAs(Name = "parent_mailing_id")]
+        [JsonProperty("parent_mailing_id")]
         public int ParentMailingId { get; set; }
 
-        [DeserializeAs(Name = "deleted_at")]
+        [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
-        [DeserializeAs(Name = "is_disabled")]
+        [JsonProperty("is_disabled")]
         public bool IsDisabled { get; set; }
 
-        [DeserializeAs(Name = "account_id")]
+        [JsonProperty("account_id")]
         public int AccountId { get; set; }
     }
 }

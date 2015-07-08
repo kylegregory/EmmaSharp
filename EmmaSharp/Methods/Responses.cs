@@ -89,7 +89,7 @@ namespace EmmaSharp
         /// <param name="result">Optional. Accepted options: ‘all’, ‘delivered’, ‘bounced’, ‘hard’, ‘soft’. Defaults to ‘all’, if not provided.</param>
         /// <returns>An array of message responses that have finished delivery.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseDeliveries> GetMailingDelieveries(string mailingId, DelieveryType result = null)
+        public List<ResponseDeliveries> GetMailingDelieveries(string mailingId, DelieveryType? result = null)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/deliveries";

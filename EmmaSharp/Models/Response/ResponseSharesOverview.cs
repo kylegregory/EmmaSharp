@@ -1,16 +1,16 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace EmmaSharp.Models.Response
 {
     public class ResponseSharesOverview
     {
-        [DeserializeAs(Name = "share_count")]
+        [JsonProperty("share_count")]
         public int ShareCount { get; set; }
 
-        [DeserializeAs(Name = "share_clicks")]
+        [JsonProperty("share_clicks")]
         public int ShareClicks { get; set; }
 
-        [DeserializeAs(Name = "network")]
+        [JsonProperty("network")]
         public string Network { get; set; }
     }
 }

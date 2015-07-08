@@ -1,35 +1,36 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 using System;
 
 namespace EmmaSharp.Models
 {
     public class Group
     {
-        [DeserializeAs(Name = "active_count")]
+        [JsonProperty("active_count")]
         public int ActiveCount { get; set; }
 
-        [DeserializeAs(Name = "deleted_at")]
-        public DateTime DeletedAt { get; set; }
+        [JsonProperty("deleted_at")]
+        public DateTime? DeletedAt { get; set; }
 
-        [DeserializeAs(Name = "error_count")]
+        [JsonProperty("error_count")]
         public int ErrorCount { get; set; }
 
-        [DeserializeAs(Name = "optout_count")]
+        [JsonProperty("optout_count")]
         public int OptoutCount { get; set; }
 
-        [DeserializeAs(Name = "group_type")]
+        [JsonProperty("group_type")]
         public GroupType GroupType { get; set; }
 
-        [DeserializeAs(Name = "member_group_id")]
+        [JsonProperty("member_group_id")]
         public int MemberGroupId { get; set; }
 
-        [DeserializeAs(Name = "purged_at")]
-        public DateTime PurgedAt { get; set; }
+        [JsonProperty("purged_at")]
+        public DateTime? PurgedAt { get; set; }
 
-        [DeserializeAs(Name = "account_id")]
+        [JsonProperty("account_id")]
         public int AccountId { get; set; }
 
-        [DeserializeAs(Name = "group_name")]
+        [JsonProperty("group_name")]
         public string GroupName { get; set; }
     }
 }

@@ -1,5 +1,5 @@
 ﻿using EmmaSharp.Models.Fields;
-using RestSharp.Deserializers;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -7,46 +7,46 @@ namespace EmmaSharp.Models.Members
 {
     public class Import
     {
-        [DeserializeAs(Name = "import_id")]
+        [JsonProperty("import_id")]
         public int ImportId { get; set; }
 
-        [DeserializeAs(Name = "status")]
+        [JsonProperty("status")]
         public string Status { get; set; }
 
-        [DeserializeAs(Name = "style")]
+        [JsonProperty("style")]
         public string Style { get; set; }
 
-        [DeserializeAs(Name = "import_started")]
+        [JsonProperty("import_started")]
         public DateTime? ImportStarted { get; set; }
 
-        [DeserializeAs(Name = "account_id")]
+        [JsonProperty("account_id")]
         public int AccountId { get; set; }
 
-        [DeserializeAs(Name = "error_message")]
+        [JsonProperty("error_message")]
         public string ErrorMessage { get; set; }
 
-        [DeserializeAs(Name = "num_members_updated")]
+        [JsonProperty("num_members_updated")]
         public int NumMembersUpdated { get; set; }
 
-        [DeserializeAs(Name = "source_filename")]
+        [JsonProperty("source_filename")]
         public string SourceFilename { get; set; }
 
-        [DeserializeAs(Name = "fields_updated")]
+        [JsonProperty("fields_updated")]
         public List<Field> FieldsUpdated { get; set; }
 
-        [DeserializeAs(Name = "num_fields_added")]
+        [JsonProperty("num_fields_added")]
         public int NumFieldsAdded { get; set; }
 
-        [DeserializeAs(Name = "import_finished")]
+        [JsonProperty("import_finished")]
         public DateTime? ImportFinished { get; set; }
 
-        [DeserializeAs(Name = "groups_updated")]
+        [JsonProperty("groups_updated")]
         public List<Group> GroupsUpdated { get; set; }
 
-        [DeserializeAs(Name = "num_skipped")]
+        [JsonProperty("num_skipped")]
         public int NumSkipped { get; set; }
 
-        [DeserializeAs(Name = "num_duplicates")]
+        [JsonProperty("num_duplicates")]
         public int NumDuplicates { get; set; }
     }
 }

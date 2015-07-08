@@ -1,16 +1,16 @@
-﻿using RestSharp.Deserializers;
+﻿using Newtonsoft.Json;
 
 namespace EmmaSharp.Models
 {
     public class PaginationBase
     {
-        [DeserializeAs(Name = "start")]
+        [JsonProperty("start")]
         public int Start { get; set; }
 
-        [DeserializeAs(Name = "end")]
+        [JsonProperty("end")]
         public int End { get; set; }
 
-        [DeserializeAs(Name = "count")]
+        [JsonProperty("count")]
         public bool Count { get; set; }
     }
 }
