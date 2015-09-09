@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
+using RestSharp.Deserializers;
 using System;
 
 namespace EmmaSharp.Models.Fields
@@ -32,6 +34,7 @@ namespace EmmaSharp.Models.Fields
         [JsonProperty("column_order")]
         public int? ColumnOrder { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 

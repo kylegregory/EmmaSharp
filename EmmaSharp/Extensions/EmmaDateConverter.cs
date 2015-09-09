@@ -12,7 +12,7 @@ namespace EmmaSharp.Extensions
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             // Deal with this, ugh: "@D:2014-11-26T11:40:55"
-            writer.WriteValue("@D" + ((DateTime)value).ToString("s"));
+            writer.WriteValue("@D:" + ((DateTime)value).ToString("s"));
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

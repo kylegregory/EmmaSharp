@@ -41,14 +41,15 @@ namespace EmmaSharp
             client.Authenticator = new HttpBasicAuthenticator(_publicKey, _secretKey);
             request.AddParameter("accountId", _accountId, ParameterType.UrlSegment); // used on every request
             var execute = client.Execute(request);
-            T response = JsonConvert.DeserializeObject<T>(execute.Content);
 
-            if (execute.ErrorException != null)
+            if ((int)(execute).StatusCode >= 400)
             {
                 const string message = "Error retrieving response. Check inner details for more info.";
                 var emmaException = new ApplicationException(message, execute.ErrorException);
                 throw emmaException;
             }
+
+            T response = JsonConvert.DeserializeObject<T>(execute.Content);
             return response;
         }
     }

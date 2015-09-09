@@ -1,5 +1,6 @@
 using EmmaSharp.Models.Fields;
 using RestSharp;
+using RestSharp.Serializers;
 using System.Collections.Generic;
 
 namespace EmmaSharp
@@ -78,13 +79,16 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="field">The Field to be created.</param>
         /// <returns>A reference to the new field.</returns>
-        public Field CreateField(Field field)
+        public int CreateField(Field field)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields";
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+
             request.AddBody(field);
 
-            return Execute<Field>(request);
+            return Execute<int>(request);
         }
 
         /// <summary>
@@ -96,6 +100,9 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/fields/{fieldId}";
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+
             request.AddUrlSegment("fieldId", fieldId);
 
             return Execute<bool>(request);
@@ -111,6 +118,8 @@ namespace EmmaSharp
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields/{fieldId}/clear";
             request.AddUrlSegment("fieldId", fieldId);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
 
             return Execute<bool>(request);
         }
@@ -121,14 +130,17 @@ namespace EmmaSharp
         /// <param name="fieldId">The Field Id of the field to update.</param>
         /// <param name="field">The Field to be updated.</param>
         /// <returns>A reference to the updated field.</returns>
-        public bool UpdateField(string fieldId, Field field)
+        public int UpdateField(string fieldId, Field field)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/fields/{fieldId}";
             request.AddUrlSegment("fieldId", fieldId);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+
             request.AddBody(field);
 
-            return Execute<bool>(request);
+            return Execute<int>(request);
         }
 
         #endregion
