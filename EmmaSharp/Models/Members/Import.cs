@@ -1,4 +1,5 @@
 ﻿using EmmaSharp.Models.Fields;
+using EmmaSharp.Models.Groups;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;

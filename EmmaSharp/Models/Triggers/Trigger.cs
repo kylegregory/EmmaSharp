@@ -1,4 +1,5 @@
 ﻿using EmmaSharp.Models.Groups;
+using EmmaSharp.Models.Mailings;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ namespace EmmaSharp.Models.Triggers
     public class Trigger
     {
         [JsonProperty("parent_mailing")]
-        public TriggerParent ParentMailing { get; set; }
+        public MailingTrigger ParentMailing { get; set; }
 
         [JsonProperty("surveys")]
         public string Surveys { get; set; }

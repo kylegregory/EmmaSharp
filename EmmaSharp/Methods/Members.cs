@@ -1,8 +1,13 @@
-﻿using RestSharp;
-using System.Collections.Generic;
-using EmmaSharp.Models.Members;
-using EmmaSharp.Models.Mailings;
+﻿using EmmaSharp.Extensions;
+using EmmaSharp.Models;
 using EmmaSharp.Models.Fields;
+using EmmaSharp.Models.Groups;
+using EmmaSharp.Models.Mailings;
+using EmmaSharp.Models.Members;
+using Newtonsoft.Json;
+using RestSharp;
+using System;
+using System.Collections.Generic;
 
 namespace EmmaSharp
 {
@@ -22,14 +27,14 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>A list of members in the given account.</returns>
 		/// <param name="deleted">Accepts True. Optional flag to include deleted members.</param>
-		public int GetMemberCount(bool? deleted)
+		public int GetMemberCount(bool deleted = false)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members";
 			request.AddParameter("count", "true");
 
-			if(!deleted ?? false)
-				request.AddParameter("deleted", deleted.ToString());
+			if(deleted)
+				request.AddParameter("deleted", deleted);
 
 			return Execute<int>(request);
 		}
@@ -41,7 +46,7 @@ namespace EmmaSharp
 		/// <param name="deleted">Accepts True. Optional flag to include deleted members.</param>
         /// <param name="start">Pagination: start page. Defaults to first page (e.g. 0).</param>
         /// <param name="end">Pagination: end page. Defaults to first page (e.g. 500).</param>
-		public List<Member> ListMembers(bool? deleted, int? start, int? end)
+		public List<Member> ListMembers(bool deleted = false, int? start = null, int? end = null)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members";
@@ -54,8 +59,8 @@ namespace EmmaSharp
 				end = 500;
 			request.AddParameter("end", end);
 
-			if(!deleted ?? false)
-				request.AddParameter("deleted", deleted.ToString());
+			if(deleted)
+				request.AddParameter("deleted", deleted);
 
             return Execute<List<Member>>(request);
 		}
@@ -137,7 +142,7 @@ namespace EmmaSharp
         /// <param name="groupIds">Optional. Add imported members to this list of groups.</param>
         /// <returns>An import id.</returns>
         /// <remarks></remarks>
-        public int AddNewMemebers(List<Member> members, string sourceFilename, bool addOnly, MemberGroups groupIds)
+        public int AddNewMemebers(List<Member> members, string sourceFilename, bool addOnly = false, List<int> groupIds = null)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members";
@@ -145,10 +150,10 @@ namespace EmmaSharp
             request.AddParameter("source_filename", sourceFilename);
 
             if (addOnly)
-                request.AddParameter("add_only", addOnly.ToString());
+                request.AddParameter("add_only", addOnly);
 
-            if (groupIds.Groups.Count != 0)
-                request.AddParameter("group_ids", groupIds.Groups);
+            if (groupIds != null)
+                request.AddParameter("group_ids", string.Join(",", groupIds));
 
             return Execute<int>(request);
         }
@@ -162,18 +167,12 @@ namespace EmmaSharp
         /// <param name="field_triggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>The member_id of the new or updated member, whether the member was added or an existing member was updated, and the status of the member. The status will be reported as ‘a’ (active), ‘e’ (error), or ‘o’ (optout).</returns>
         /// <remarks></remarks>
-        public MemberAdd AddOrUpdateSingleMember(string memberEmail, List<Field> fields, MemberGroups groupIds, bool field_triggers)
+        public MemberAdd AddOrUpdateSingleMember(string memberEmail, Dictionary<string, string> fields, string groupIds = "", bool fieldtriggers = false)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/add";
-            request.AddParameter("email", memberEmail);
-            request.AddParameter("fields", fields);
-
-            if (groupIds.Groups.Count != 0)
-                request.AddParameter("group_ids", groupIds);
-
-            if (field_triggers)
-                request.AddParameter("field_triggers", field_triggers);
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(new { email = memberEmail, fields = fields, group_ids = groupIds, field_triggers = fieldtriggers });
 
             return Execute<MemberAdd>(request);
         }
@@ -190,14 +189,14 @@ namespace EmmaSharp
         /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>The member_id of the member, and their status. The status will be reported as ‘a’ (active), ‘e’ (error), or ‘o’ (optout).</returns>
         /// <remarks></remarks>
-        public MemberSignup MemberSignup(string memberEmail, MemberGroups groupIds, List<Field> fields, int signupFormId, string optInSubject, string optInMessage, bool fieldTriggers)
+        public MemberSignup MemberSignup(string memberEmail, List<int> groupIds, List<Field> fields = null, int signupFormId = 0, string optInSubject = "", string optInMessage = "", bool fieldTriggers = false)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/signup";
             request.AddParameter("email", memberEmail);
-            request.AddParameter("group_ids", groupIds.Groups);
+            request.AddParameter("group_ids", string.Join(",", groupIds));
 
-            if (fields.Count != 0)
+            if (fields != null)
                 request.AddParameter("fields", fields);
 
             if (signupFormId != 0)
@@ -237,12 +236,12 @@ namespace EmmaSharp
         /// <param name="statusTo">The new status for the given members. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (optout).</param>
         /// <returns>True if the members are successfully updated, otherwise False.</returns>
         /// <remarks></remarks>
-        public bool ChangeMemberStatus(List<string> memberIds, MemberStatus statusTo)
+        public bool ChangeMemberStatus(List<string> memberIds, MemberStatusShort statusTo)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/status";
             request.AddParameter("member_ids", memberIds);
-            request.AddParameter("status_to", statusTo);
+            request.AddParameter("status_to", statusTo.ToEnumString<MemberStatusShort>());
 
             return Execute<bool>(request);
         }
@@ -257,13 +256,13 @@ namespace EmmaSharp
         /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
         /// <returns>True if the member was updated successfully</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, List<Field> fields, bool fieldTriggers)
+        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, List<Field> fields, bool fieldTriggers = false)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}";
             request.AddUrlSegment("memberId", memberId);
             request.AddParameter("email", memberEmail);
-            request.AddParameter("status_to", statusTo);
+            request.AddParameter("status_to", statusTo.ToEnumString<MemberStatus>());
             request.AddParameter("fields", fields);
 
             if (fieldTriggers)
@@ -293,13 +292,13 @@ namespace EmmaSharp
         /// <param name="memberId">Member identifier.</param>
         /// <returns>An array of groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public MemberGroups GetMemberGroups(string memberId)
+        public List<Group> GetMemberGroups(string memberId)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/members/{memberId}/groups";
             request.AddUrlSegment("memberId", memberId);
 
-            return Execute<MemberGroups>(request);
+            return Execute<List<Group>>(request);
         }
 
         /// <summary>
@@ -314,7 +313,7 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups";
             request.AddUrlSegment("memberId", memberId);
-            request.AddParameter("group_ids", groupIds);
+            request.AddParameter("group_ids", string.Join(",", groupIds));
 
             return Execute<List<string>>(request);
         }
@@ -331,7 +330,7 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups/remove";
             request.AddUrlSegment("memberId", memberId);
-            request.AddParameter("group_ids", groupIds);
+            request.AddParameter("group_ids", string.Join(",", groupIds));
 
             return Execute<List<string>>(request);
         }
@@ -342,11 +341,11 @@ namespace EmmaSharp
         /// <param name="memberStatusId">This is ‘a’ (active), ‘o’ (optout), or ‘e’ (error).</param>
         /// <returns>Returns true.</returns>
         /// <remarks></remarks>
-        public bool DeleteAllMembers(MemberStatus memberStatusId)
+        public bool DeleteAllMembers(MemberStatusShort memberStatusId)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/members";
-            request.AddParameter("member_status_id", memberStatusId);
+            request.AddParameter("member_status_id", memberStatusId.ToEnumString<MemberStatusShort>());
 
             return Execute<bool>(request);
         }
@@ -377,8 +376,8 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/groups/remove";
-            request.AddParameter("member_ids", memberIds);
-            request.AddParameter("group_ids", groupIds);
+            request.AddParameter("member_ids", string.Join(",", memberIds));
+            request.AddParameter("group_ids", string.Join(",", groupIds));
 
             return Execute<bool>(request);
         }
@@ -461,12 +460,12 @@ namespace EmmaSharp
         /// <param name="memberStatusId"> ‘a’ (active), ‘o’ (optout), and/or ‘e’ (error).</param>
         /// <returns>True</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public bool CopyMembersIntoStatusGroup(string groupId, List<string> memberStatusId)
+        public bool CopyMembersIntoStatusGroup(string groupId, List<MemberStatusShort> memberStatusId)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{groupId}/copy";
             request.AddUrlSegment("groupId", groupId);
-            request.AddParameter("member_status_id", memberStatusId);
+            request.AddParameter("member_status_id", string.Join(",", Array.ConvertAll(memberStatusId.ToArray(), i => i.ToEnumString<MemberStatusShort>())));
 
             return Execute<bool>(request);
         }
@@ -479,13 +478,15 @@ namespace EmmaSharp
         /// <param name="groupId">Optional. Limit the update to members of the specified group</param>
         /// <returns>True</returns>
         /// <remarks>Http400 if the specified status is invalid</remarks>
-        public bool UpdateStatusOfGroupMembersBasedOnCurrentStatus(MemberStatus statusFrom, MemberStatus statusTo, string groupId)
+        public bool UpdateStatusOfGroupMembersBasedOnCurrentStatus(MemberStatusShort statusFrom, MemberStatusShort statusTo, string groupId = "")
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/status/{statusFrom}/to/{statusTo}";
-            request.AddUrlSegment("statusFrom", statusFrom.ToString());
-            request.AddUrlSegment("statusTo", statusTo.ToString());
-            request.AddParameter("group_id", groupId);
+            request.AddUrlSegment("statusFrom", statusFrom.ToEnumString<MemberStatusShort>());
+            request.AddUrlSegment("statusTo", statusTo.ToEnumString<MemberStatusShort>());
+
+            if (!string.IsNullOrWhiteSpace(groupId))
+                request.AddParameter("group_id", groupId);
 
             return Execute<bool>(request);
         }

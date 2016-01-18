@@ -1,10 +1,15 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
+using System.Collections.Generic;
 
-namespace EmmaSharp.Models
+namespace EmmaSharp.Models.Groups
 {
-    public class Group
+    public class BaseGroup
+    {
+        
+    }
+    public class Group : BaseGroup
     {
         [JsonProperty("active_count")]
         public int? ActiveCount { get; set; }
@@ -32,5 +37,22 @@ namespace EmmaSharp.Models
 
         [JsonProperty("group_name")]
         public string GroupName { get; set; }
+    }
+
+    public class CreateGroups
+    {
+        [JsonProperty("groups")]
+        public List<GroupName> Groups { get; set; }
+    }
+
+    public class GroupName
+    {
+        [JsonProperty("group_name")]
+        public string Name { get; set; }
+    }
+
+    public class UpdateGroup : GroupName
+    {
+
     }
 }

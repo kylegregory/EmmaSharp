@@ -1,3 +1,4 @@
+using EmmaSharp.Models;
 using EmmaSharp.Models.Fields;
 using RestSharp;
 using RestSharp.Serializers;
@@ -17,7 +18,7 @@ namespace EmmaSharp
 		/// </summary>
 		/// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
 		/// <returns>An array of fields.</returns>
-		public int GetFieldCount(bool deleted = false)
+		public int ListFieldsCount(bool deleted = false)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/fields";
@@ -32,27 +33,19 @@ namespace EmmaSharp
 		/// <summary>
         /// Gets a list of this account's defined fields. Be sure to get a count of fields before accessing this method, so you're aware of paging requirements.
 		/// </summary>
-		/// <param name="start">Start paging record at.</param>
-		/// <param name="end">End paging record at.</param>
         /// <param name="deleted">Accepts True. Optional flag to include deleted fields</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>An array of fields.</returns>
-		public List<Field> ListFields(bool deleted = false, int? start = null, int? end = null)
+		public List<Field> ListFields(bool deleted = false, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/fields";
 
-			if (!start.HasValue)
-				start = 0;
-			request.AddParameter("start", start);
-
-			if (!end.HasValue || end - start > 500)
-				end = 500;
-			request.AddParameter("end", end);
-
             if (deleted) 
                 request.AddParameter("deleted", deleted);
 
-            return Execute<List<Field>>(request);
+            return Execute<List<Field>>(request, start, end);
         }
 
         /// <summary>
@@ -78,8 +71,8 @@ namespace EmmaSharp
         /// Create a new field field. There must not already be a field with this name.
         /// </summary>
         /// <param name="field">The Field to be created.</param>
-        /// <returns>A reference to the new field.</returns>
-        public int CreateField(Field field)
+        /// <returns>A reference (Field ID as int) to the new field.</returns>
+        public int CreateField(CreateField field)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields";
@@ -129,8 +122,8 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="fieldId">The Field Id of the field to update.</param>
         /// <param name="field">The Field to be updated.</param>
-        /// <returns>A reference to the updated field.</returns>
-        public int UpdateField(string fieldId, Field field)
+        /// <returns>A reference (Field ID as int) to the updated field.</returns>
+        public int UpdateField(string fieldId, UpdateField field)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/fields/{fieldId}";

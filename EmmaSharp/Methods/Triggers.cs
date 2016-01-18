@@ -1,4 +1,5 @@
-﻿using EmmaSharp.Models.Triggers;
+﻿using EmmaSharp.Models.Mailings;
+using EmmaSharp.Models.Triggers;
 using RestSharp;
 using System.Collections.Generic;
 
@@ -68,13 +69,13 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="triggerId">The trigger ID of the returned mailings.</param>
         /// <returns>An array of mailings.</returns>
-        public List<TriggerParent> GetMailingsByTrigger(string triggerId)
+        public List<MailingTrigger> GetMailingsByTrigger(string triggerId)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/triggers/{triggerId}/mailings";
             request.AddUrlSegment("triggerId", triggerId);
 
-            return Execute<List<TriggerParent>>(request);
+            return Execute<List<MailingTrigger>>(request);
         }
 
         #endregion

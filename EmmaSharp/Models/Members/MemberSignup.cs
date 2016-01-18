@@ -7,7 +7,7 @@ namespace EmmaSharp.Models.Members
     public class MemberSignup
     {
         [JsonProperty("status")]
-        public MemberStatus Status { get; set; }
+        public MemberStatusShort Status { get; set; }
 
         [JsonProperty("member_id")]
         public int? MemberId { get; set; }

@@ -4,7 +4,7 @@ namespace EmmaSharp.Models.Mailings
 {
     public class MailingPersonalization
     {
-        [JsonProperty("paintext")]
+        [JsonProperty("plaintext")]
         public string Plaintext { get; set; }
 
         [JsonProperty("subject")]

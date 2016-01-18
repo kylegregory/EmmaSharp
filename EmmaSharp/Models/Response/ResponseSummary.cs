@@ -59,6 +59,6 @@ namespace EmmaSharp.Models.Response
         public int? CountPurchased { get; set; }
 
         [JsonProperty("sum_purchased")]
-        public int? SumPurchased { get; set; }
+        public decimal? SumPurchased { get; set; }
     }
 }

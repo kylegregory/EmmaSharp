@@ -1,3 +1,4 @@
+using EmmaSharp.Extensions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
@@ -14,6 +15,6 @@ namespace EmmaSharp.Models
         [EnumMember(Value = "r")]
         Trigger,
         [EnumMember(Value = "s")]
-        Spilt
+        Split
     }
 }
