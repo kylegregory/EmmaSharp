@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>EmmaSharp</id>
+    <version>$version$</version>
+    <authors>Kyle Gregory</authors>
+    <owners>Kyle Gregory</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A .Net wrapper for the Emma API.</description>
+    <releaseNotes></releaseNotes>
+    <copyright>Copyright &#x00A9; Kyle Gregory. All Rights Reserved.</copyright>
+    <tags>api emma myemma sdk wrapper c#</tags>
+  </metadata>
+</package>
