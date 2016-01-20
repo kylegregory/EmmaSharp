@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using EmmaSharp.Models.Response;
 using EmmaSharp.Extensions;
+using EmmaSharp.Models.Mailings;
+using EmmaSharp.Models.Generics;
 
 namespace EmmaSharp
 {
@@ -17,7 +19,7 @@ namespace EmmaSharp
         #region Responses
 
         /// <summary>
-        /// Get the response summary for an account.
+        /// Get the response summary for an account. This method will return a month-based time series of data including sends, opens, clicks, mailings, forwards, and opt-outs. Test mailings and forwards are not included in the data returned.
         /// </summary>
         /// <param name="includeArchived">Accepts 1. All other values are False. Optional flag to include archived mailings in the list.</param>
         /// <param name="range">Optional. A DateRange object to build the range parameter.</param>
@@ -53,33 +55,87 @@ namespace EmmaSharp
         }
 
         /// <summary>
+        /// Get the count of the list of messages that have been sent to an MTA (Message Transfer Agent) for delivery.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public int GetMailingSendsCount(string mailingId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/sends";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
+        }
+
+        /// <summary>
         /// Get the list of messages that have been sent to an MTA (Message Transfer Agent) for delivery.
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>Get the list of messages that have been sent to an MTA for delivery.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseGeneric> GetMailingSends(string mailingId)
+        public List<ResponseGeneric> GetMailingSends(string mailingId, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/sends";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseGeneric>>(request);
+            return Execute<List<ResponseGeneric>>(request, start, end);
+        }
+
+        /// <summary>
+        /// Get the count of the list of messages that are in the queue, possibly sent, but not yet delivered.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <returns>Get the list of messages that are in-progress.</returns>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public int GetMailingInProgressCount(string mailingId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/in_progress";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
         }
 
         /// <summary>
         /// Get the list of messages that are in the queue, possibly sent, but not yet delivered.
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>Get the list of messages that are in-progress.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseGeneric> GetMailingInProgress(string mailingId)
+        public List<ResponseGeneric> GetMailingInProgress(string mailingId, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/in_progress";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseGeneric>>(request);
+            return Execute<List<ResponseGeneric>>(request, start, end);
+        }
+
+        /// <summary>
+        /// Get the count of the list of messages that have finished delivery. This will include those that were successfully delivered, as well as those that failed due to hard or soft bounces.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="result">Optional. Accepted options: ‘all’, ‘delivered’, ‘bounced’, ‘hard’, ‘soft’. Defaults to ‘all’, if not provided.</param>
+        /// <returns>An array of message responses that have finished delivery.</returns>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public int GetMailingDelieveriesCount(string mailingId, DeliveryType result = DeliveryType.All)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/deliveries";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            request.AddParameter("result", result.ToEnumString<DeliveryType>());
+
+            return Execute<int>(request);
         }
 
         /// <summary>
@@ -87,18 +143,19 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <param name="result">Optional. Accepted options: ‘all’, ‘delivered’, ‘bounced’, ‘hard’, ‘soft’. Defaults to ‘all’, if not provided.</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>An array of message responses that have finished delivery.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseDeliveries> GetMailingDelieveries(string mailingId, DelieveryType? result = null)
+        public List<ResponseDeliveries> GetMailingDelieveries(string mailingId, DeliveryType result = DeliveryType.All, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/deliveries";
             request.AddUrlSegment("mailingId", mailingId);
 
-            if (result != null)
-                request.AddParameter("result", result.ToString());
+            request.AddParameter("result", result.ToEnumString<DeliveryType>());
 
-            return Execute<List<ResponseDeliveries>>(request);
+            return Execute<List<ResponseDeliveries>>(request, start, end);
         }
 
         /// <summary>
@@ -107,13 +164,31 @@ namespace EmmaSharp
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>Get the list of messages that opened.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseOpens> GetMailingOpens(string mailingId)
+        public int GetMailingOpensCount(string mailingId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/opens";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
+        }
+
+        /// <summary>
+        /// Get the count of the list of opened messages for this campaign.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
+        /// <returns>Get the list of messages that opened.</returns>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public List<ResponseGeneric> GetMailingOpens(string mailingId, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/opens";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseOpens>>(request);
+            return Execute<List<ResponseGeneric>>(request, start, end);
         }
 
         /// <summary>
@@ -122,13 +197,31 @@ namespace EmmaSharp
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of link objects for the mailing.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseLinks> GetMailingLinks(string mailingId)
+        public List<Link> GetMailingLinks(string mailingId)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/links";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseLinks>>(request);
+            return Execute<List<Link>>(request);
+        }
+
+        /// <summary>
+        /// Get the count of the list of clicks for this mailing.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="memberId">Optional. Limits results to a single member.</param>
+        /// <param name="linkId">Optional. Limits results to a single link.</param>
+        /// <returns>An array of link objects for the mailing.</returns>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public int GetMailingClicksCount(string mailingId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/clicks";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
         }
 
         /// <summary>
@@ -137,9 +230,11 @@ namespace EmmaSharp
         /// <param name="mailingId">Mailing Identifier</param>
         /// <param name="memberId">Optional. Limits results to a single member.</param>
         /// <param name="linkId">Optional. Limits results to a single link.</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>An array of link objects for the mailing.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseClicks> GetMailingClicks(string mailingId, string memberId = null, string linkId = null)
+        public List<ResponseClicks> GetMailingClicks(string mailingId, string memberId = null, string linkId = null, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/clicks";
@@ -151,7 +246,7 @@ namespace EmmaSharp
             if (!string.IsNullOrWhiteSpace(linkId))
                 request.AddParameter("link_id", linkId);
 
-            return Execute<List<ResponseClicks>>(request);
+            return Execute<List<ResponseClicks>>(request, start, end);
         }
 
         /// <summary>
@@ -170,18 +265,36 @@ namespace EmmaSharp
         }
 
         /// <summary>
-        /// Get the list of optouts for this mailing.
+        /// Get the count of the list of optouts for this mailing.
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of optouts objects for the mailing.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseGeneric> GetMailingOptouts(string mailingId)
+        public int GetMailingOptoutsCount(string mailingId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/response/{mailingId}/optouts";
+            request.AddUrlSegment("mailingId", mailingId);
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
+        }
+
+        /// <summary>
+        /// Get the list of optouts for this mailing.
+        /// </summary>
+        /// <param name="mailingId">Mailing Identifier</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
+        /// <returns>An array of optouts objects for the mailing.</returns>
+        /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
+        public List<ResponseGeneric> GetMailingOptouts(string mailingId, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/optouts";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseGeneric>>(request);
+            return Execute<List<ResponseGeneric>>(request, start, end);
         }
 
         /// <summary>
@@ -220,13 +333,13 @@ namespace EmmaSharp
         /// <param name="mailingId">Mailing Identifier</param>
         /// <returns>An array of customer shares objects for the mailing.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
-        public List<ResponseCustomerShares> GetMailingCustomerShares(string mailingId)
+        public List<ResponseCustomerShare> GetMailingCustomerShares(string mailingId)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/response/{mailingId}/customer_shares";
             request.AddUrlSegment("mailingId", mailingId);
 
-            return Execute<List<ResponseCustomerShares>>(request);
+            return Execute<List<ResponseCustomerShare>>(request);
         }
 
         /// <summary>

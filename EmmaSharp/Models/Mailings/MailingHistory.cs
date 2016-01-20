@@ -1,7 +1,6 @@
-﻿using EmmaSharp.Models.Members;
+﻿using EmmaSharp.Extensions;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 
 namespace EmmaSharp.Models.Mailings
 {
@@ -10,15 +9,18 @@ namespace EmmaSharp.Models.Mailings
         [JsonProperty("mailing_type")]
         public MailingType MailingType { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("clicked")]
         public DateTime? Clicked { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("opened")]
         public DateTime? Opened { get; set; }
 
         [JsonProperty("mailing_id")]
         public int? MailingId { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("delivery_ts")]
         public DateTime? DelieveryTimestamp { get; set; }
 
@@ -28,12 +30,14 @@ namespace EmmaSharp.Models.Mailings
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("forwarded")]
         public DateTime? Forwarded { get; set; }
 
         [JsonProperty("parent_mailing_id")]
         public int? ParentMailingId { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("shared")]
         public DateTime? Shared { get; set; }
 

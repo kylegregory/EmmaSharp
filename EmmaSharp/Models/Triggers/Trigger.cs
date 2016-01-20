@@ -1,4 +1,5 @@
-﻿using EmmaSharp.Models.Groups;
+﻿using EmmaSharp.Extensions;
+using EmmaSharp.Models.Groups;
 using EmmaSharp.Models.Mailings;
 using Newtonsoft.Json;
 using System;
@@ -32,6 +33,7 @@ namespace EmmaSharp.Models.Triggers
         [JsonProperty("push_offest_units")]
         public string PushOffsetUnits { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("start_timestamp")]
         public DateTime? StartTimestamp { get; set; }
 
@@ -56,6 +58,7 @@ namespace EmmaSharp.Models.Triggers
         [JsonProperty("parent_mailing_id")]
         public int? ParentMailingId { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 

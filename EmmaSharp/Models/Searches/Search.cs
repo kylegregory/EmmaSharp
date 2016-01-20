@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System;
 
 namespace EmmaSharp.Models.Searches
@@ -20,12 +21,15 @@ namespace EmmaSharp.Models.Searches
         [JsonProperty("criteria")]
         public string Criteria { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("purged_at")]
         public DateTime? PurgedAt { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("last_run_at")]
         public DateTime? LastRunAt { get; set; }
 

@@ -17,11 +17,15 @@ namespace EmmaSharp.Models.Mailings
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DeliveryType
     {
+        [EnumMember(Value = "all")]
+        All,
         [EnumMember(Value = "delivered")]
         Delivered,
+        [EnumMember(Value = "bounced")]
+        Bounced,
         [EnumMember(Value = "hard")]
         Hard,
-        [EnumMember(Value = "short")]
+        [EnumMember(Value = "soft")]
         Soft
     }
 }

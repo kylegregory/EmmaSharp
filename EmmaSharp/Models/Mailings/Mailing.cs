@@ -53,6 +53,7 @@ namespace EmmaSharp.Models.Mailings
         [JsonProperty("subject")]
         public string Subject { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("archived_ts")]
         public DateTime? ArchivedTimestamp { get; set; }
     }

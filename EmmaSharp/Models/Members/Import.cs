@@ -1,4 +1,5 @@
-﻿using EmmaSharp.Models.Fields;
+﻿using EmmaSharp.Extensions;
+using EmmaSharp.Models.Fields;
 using EmmaSharp.Models.Groups;
 using Newtonsoft.Json;
 using System;
@@ -17,6 +18,7 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("style")]
         public string Style { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("import_started")]
         public DateTime? ImportStarted { get; set; }
 
@@ -38,6 +40,7 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("num_fields_added")]
         public int? NumFieldsAdded { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("import_finished")]
         public DateTime? ImportFinished { get; set; }
 
