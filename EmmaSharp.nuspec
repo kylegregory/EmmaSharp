@@ -4,7 +4,6 @@
     <id>EmmaSharp</id>
     <version>$version$</version>
     <authors>$author$</authors>
-    <owners>$owners$</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes></releaseNotes>
