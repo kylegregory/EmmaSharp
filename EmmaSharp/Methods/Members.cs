@@ -72,7 +72,7 @@ namespace EmmaSharp
 		/// <param name="memberId">Member identifier.</param>
 		/// <param name="deleted">Accepts True. Optional flag to include deleted members.</param>
 		/// <remarks>Http404 if no member is found.</remarks>
-		public Member GetMemeber(string memberId, bool deleted = false)
+		public Member GetMember(string memberId, bool deleted = false)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members/{memberId}";
@@ -142,7 +142,7 @@ namespace EmmaSharp
         /// <param name="groupIds">Optional. Add imported members to this list of groups.</param>
         /// <returns>An import id.</returns>
         /// <remarks></remarks>
-        public int AddNewMemebers(List<Member> members, string sourceFilename, bool addOnly = false, List<int> groupIds = null)
+        public int AddNewMembers(List<Member> members, string sourceFilename, bool addOnly = false, List<int> groupIds = null)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members";

@@ -127,7 +127,7 @@ namespace EmmaSharp
         /// <param name="deleted">Include deleted members. Optional, defaults to false.</param>
         /// <returns>An array of members.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public int ListGroupMemebersCount(string memberGroupId, bool deleted = false)
+        public int ListGroupMembersCount(string memberGroupId, bool deleted = false)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/groups/{memberGroupId}/members";
