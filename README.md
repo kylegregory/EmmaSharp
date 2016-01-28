@@ -23,15 +23,20 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 `Members` ![Progress](http://progressed.io/bar/0)
 
-`Response` ![Progress](http://progressed.io/bar/95)
+`Response` ![Progress](http://progressed.io/bar/95) \*
 
-`Searches` ![Progress](http://progressed.io/bar/0)
+
+`Searches` ![Progress](http://progressed.io/bar/95) \*\*
 
 `Signup Forms` ![Progress](http://progressed.io/bar/100)
 
-`Trggers` ![Progress](http://progressed.io/bar/0)
+`Trggers` ![Progress](http://progressed.io/bar/100)
 
 `Webhooks` ![Progress](http://progressed.io/bar/0)
+
+\**`customer_shares`, `customer_share_clicks`, and `customer_share` return values are unknown*
+
+\*\**Creating and Updating searches use strings with escaped quotes, which seems to trip up Emma's API.*
 
 ### Making contributions
 This project is not affiliated with [Emma](http://myemma.com/meet-us).  All contributors to this project are unpaid average folks (just like you!) who choose to volunteer their time.  If you like Emma and want to contribute, we would appreciate your help!  To get started, just [fork the repo](https://help.github.com/articles/fork-a-repo), make your changes and submit a pull request.   
