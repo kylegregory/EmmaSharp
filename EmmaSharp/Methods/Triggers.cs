@@ -10,15 +10,30 @@ namespace EmmaSharp
         #region Triggers
 
         /// <summary>
-        /// Get a basic listing of all triggers in an account.
+        /// Get a count of all triggers in an account.
         /// </summary>
         /// <returns>A list of Triggers in the account.</returns>
-        public List<Trigger> GetTriggers()
+        public int GetTriggersCount()
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/triggers";
+            request.AddParameter("count", "true");
+
+            return Execute<int>(request);
+        }
+
+        /// <summary>
+        /// Get a basic listing of all triggers in an account.
+        /// </summary>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
+        /// <returns>A list of Triggers in the account.</returns>
+        public List<Trigger> GetTriggers(int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/triggers";
 
-            return Execute<List<Trigger>>(request);
+            return Execute<List<Trigger>>(request, start, end);
         }
 
         /// <summary>
@@ -40,12 +55,14 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="trigger">Trigger fields to update</param>
         /// <returns>The id of the updated trigger.</returns>
-        public int UpdateTrigger(string triggerId, Trigger trigger)
+        public int UpdateTrigger(string triggerId, string name)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/triggers/{triggerId}";
             request.AddUrlSegment("triggerId", triggerId);
-            request.AddBody(trigger);
+
+            request.RequestFormat = DataFormat.Json;
+            request.AddBody(new { name = name });
 
             return Execute<int>(request);
         }
@@ -55,11 +72,26 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="triggerId">ID of the trigger to be deleted.</param>
         /// <returns>True if the trigger is deleted.</returns>
-        public int DeleteTrigger(string triggerId)
+        public bool DeleteTrigger(string triggerId)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/triggers/{triggerId}";
             request.AddUrlSegment("triggerId", triggerId);
+
+            return Execute<bool>(request);
+        }
+
+        /// <summary>
+        /// Get a count of mailings sent by a trigger.
+        /// </summary>
+        /// <param name="triggerId">The trigger ID of the returned mailings.</param>
+        /// <returns>An array of mailings.</returns>
+        public int GetMailingsByTriggerCount(string triggerId)
+        {
+            var request = new RestRequest();
+            request.Resource = "/{accountId}/triggers/{triggerId}/mailings";
+            request.AddUrlSegment("triggerId", triggerId);
+            request.AddParameter("count", "true");
 
             return Execute<int>(request);
         }
@@ -68,14 +100,16 @@ namespace EmmaSharp
         /// Get mailings sent by a trigger.
         /// </summary>
         /// <param name="triggerId">The trigger ID of the returned mailings.</param>
+        /// <param name="start">Start paging record at.</param>
+        /// <param name="end">End paging record at.</param>
         /// <returns>An array of mailings.</returns>
-        public List<MailingTrigger> GetMailingsByTrigger(string triggerId)
+        public List<MailingTrigger> GetMailingsByTrigger(string triggerId, int start = -1, int end = -1)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/triggers/{triggerId}/mailings";
             request.AddUrlSegment("triggerId", triggerId);
 
-            return Execute<List<MailingTrigger>>(request);
+            return Execute<List<MailingTrigger>>(request, start, end);
         }
 
         #endregion

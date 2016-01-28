@@ -151,6 +151,10 @@ namespace EmmaSharp.Models.Mailings
 
     public class MailingTrigger : MailingDetails
     {
+        [JsonConverter(typeof(EmmaDateConverter))]
+        [JsonProperty("deleted_at")]
+        public DateTime? DeletedAt { get; set; }
+
         [JsonProperty("plaintext")]
         public string Plaintext { get; set; }
 
