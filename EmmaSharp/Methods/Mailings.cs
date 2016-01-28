@@ -35,7 +35,7 @@ namespace EmmaSharp
 			request.AddParameter("start", start);
 
 			if (!end.HasValue || end - start > 500)
-				end = 500;
+				end = start+500;
 			request.AddParameter("end", end);
 
             if (archived)

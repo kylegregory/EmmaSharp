@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
@@ -21,6 +22,7 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("member_id")]
         public int? MemberId { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("last_modified_at")]
         public DateTime? LastModifiedAt { get; set; }
 
@@ -33,12 +35,14 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("email_error")]
         public bool? EmailError { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("member_since")]
         public DateTime MemberSince { get; set; }
 
         [JsonProperty("bounce_count")]
         public int? BounceCount { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
