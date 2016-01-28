@@ -11,8 +11,9 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("status")]
         public MemberStatus Status { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("confirmed_opt_in")]
-        public bool? ConfirmedOptIn { get; set; }
+        public DateTime? ConfirmedOptIn { get; set; }
 
         [JsonProperty("account_id")]
         public int? AccountId { get; set; }

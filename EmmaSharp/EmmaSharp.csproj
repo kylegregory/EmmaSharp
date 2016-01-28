@@ -98,8 +98,8 @@
     <Compile Include="Models\Response\ResponseShares.cs" />
     <Compile Include="Models\Response\Response.cs" />
     <Compile Include="Models\Response\ResponseGeneric.cs" />
+    <Compile Include="Models\Searches\CreateSearch.cs" />
     <Compile Include="Models\Searches\Search.cs" />
-    <Compile Include="Models\Searches\SearchMembers.cs" />
     <Compile Include="Models\SignupForms\SignupForm.cs" />
     <Compile Include="Models\Triggers\Trigger.cs" />
     <Compile Include="Models\Webhooks\Webhook.cs" />
