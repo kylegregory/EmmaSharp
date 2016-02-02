@@ -11,7 +11,7 @@ namespace EmmaSharp.Models.Members
         public ImportChangeType ChangeType { get; set; }
 
         [JsonProperty("member_status_id")]
-        public MemberStatus MemberStatusId { get; set; }
+        public MemberStatusShort MemberStatusId { get; set; }
 
         [JsonProperty("email")]
         public string Email { get; set; }

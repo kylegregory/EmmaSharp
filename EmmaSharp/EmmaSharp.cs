@@ -59,7 +59,6 @@ namespace EmmaSharp
             IRestResponse<T> execute = client.Execute<T>(request);
             Trace.WriteLine(request.JsonSerializer.Serialize(request));
             checkResponse(execute);
-
             
             T response = JsonConvert.DeserializeObject<T>(execute.Content);
             return response;

@@ -36,7 +36,7 @@ namespace EmmaSharp.Models.Members
         public bool PlaintextPreferred { get; set; }
 
         [JsonProperty("email_error")]
-        public bool? EmailError { get; set; }
+        public string EmailError { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("member_since")]

@@ -13,7 +13,7 @@ namespace EmmaSharp.Models.Members
         public int? ImportId { get; set; }
 
         [JsonProperty("status")]
-        public string Status { get; set; }
+        public ImportStatus Status { get; set; }
 
         [JsonProperty("style")]
         public string Style { get; set; }
