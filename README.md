@@ -21,12 +21,12 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 `Mailings` ![Progress](http://progressed.io/bar/65)
 
-`Members` ![Progress](http://progressed.io/bar/0)
+`Members` ![Progress](http://progressed.io/bar/50) \*
 
-`Response` ![Progress](http://progressed.io/bar/95) \*
+`Response` ![Progress](http://progressed.io/bar/95) \*\*
 
 
-`Searches` ![Progress](http://progressed.io/bar/95) \*\*
+`Searches` ![Progress](http://progressed.io/bar/95) \*\*\*
 
 `Signup Forms` ![Progress](http://progressed.io/bar/100)
 
@@ -34,9 +34,11 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 `Webhooks` ![Progress](http://progressed.io/bar/0)
 
-\**`customer_shares`, `customer_share_clicks`, and `customer_share` return values are unknown*
+\**All `GET` methods tested and `UpdateMemberToOptoutByEmail`, `AddOrUpdateSingleMember`, `MemberSignup`, `DeleteMembers` methods. `GetMemberOptout` returns an empty array, which it should not for a vaild optout member.
 
-\*\**Creating and Updating searches uses strings with escaped quotes, which seems to trip up Emma's API.*
+\*\**`customer_shares`, `customer_share_clicks`, and `customer_share` return values are unknown*
+
+\*\*\**Creating and Updating searches uses strings with escaped quotes, which seems to trip up Emma's API.*
 
 ### Making contributions
 This project is not affiliated with [Emma](http://myemma.com/meet-us).  All contributors to this project are unpaid average folks (just like you!) who choose to volunteer their time.  If you like Emma and want to contribute, we would appreciate your help!  To get started, just [fork the repo](https://help.github.com/articles/fork-a-repo), make your changes and submit a pull request.   
