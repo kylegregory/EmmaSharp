@@ -7,21 +7,21 @@ using System.Text;
 namespace EmmaSharp.Models
 {
     /// <summary>
-    /// Parameters to add a single member to an audience. Group Ids and Field Triggers are optional.
+    /// Parameters to add a batch members to an audience. 
     /// </summary>
-    public class AddMember
+    public class AddMembers
     {
         /// <summary>
         /// Email address of member to add or update
         /// </summary>
-        [JsonProperty("email")]
-        public string MemberEmail { get; set; }
+        [JsonProperty("members")]
+        public List<MemberBulk> Members { get; set; }
 
         /// <summary>
         /// Names and values of user-defined fields to update
         /// </summary>
-        [JsonProperty("fields")]
-        public Dictionary<string, string> Fields { get; set; }
+        [JsonProperty("source_filename")]
+        public string SourceFileName { get; set; }
 
         /// <summary>
         /// Optional. Add imported members to this list of groups.
@@ -32,11 +32,12 @@ namespace EmmaSharp.Models
         /// <summary>
         /// Optional. Fires related field change autoresponders when set to true.
         /// </summary>
-        [JsonProperty("field_triggers", NullValueHandling = NullValueHandling.Ignore)]
-        public bool? FieldTriggers { get; set; }
+        [JsonProperty("add_only", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? AddOnly { get; set; }
 
-        public AddMember()
+        public AddMembers()
         {
+            Members = new List<MemberBulk>();
             GroupIds = new List<int>();
         }
     }

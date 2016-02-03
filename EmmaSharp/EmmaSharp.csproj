@@ -63,6 +63,7 @@
     <Compile Include="Extensions\QueryFactory.cs" />
     <Compile Include="Models\Members\AddMember.cs" />
     <Compile Include="Models\Mailings\UpdateMailingStatus.cs" />
+    <Compile Include="Models\Members\AddMembers.cs" />
     <Compile Include="Models\Members\AddMemeberRequest.cs" />
     <Compile Include="Methods\Groups.cs" />
     <Compile Include="Methods\Fields.cs" />
@@ -80,6 +81,8 @@
     <Compile Include="Models\Groups\Group.cs" />
     <Compile Include="Models\Members\DeleteMembers.cs" />
     <Compile Include="Models\Members\ImportStatus.cs" />
+    <Compile Include="Models\Members\MemberBulk.cs" />
+    <Compile Include="Models\Members\MembersAdd.cs" />
     <Compile Include="Models\Members\SignupMember.cs" />
     <Compile Include="Models\Response\DeliveryType.cs" />
     <Compile Include="Models\Mailings\MailingHeadsup.cs" />

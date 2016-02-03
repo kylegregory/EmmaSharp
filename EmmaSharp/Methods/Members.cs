@@ -130,27 +130,17 @@ namespace EmmaSharp
         /// Add new members or update existing members in bulk. If you are doing actions for a single member please see the <see cref="AddOrUpdateSingleMember"/> call .
         /// </summary>
         /// <param name="members">An array of members to update. A member is a dictionary of member emails and field values to import. The only required field is “email”. All other fields are treated as the name of a member field.</param>
-        /// <param name="sourceFilename">An arbitrary string to associate with this import. This should generally be set to the filename that the user uploaded.</param>
-        /// <param name="addOnly">Optional. Only add new members, ignore existing members.</param>
-        /// <param name="groupIds">Optional. Add imported members to this list of groups.</param>
         /// <returns>An import id.</returns>
         /// <remarks></remarks>
-        public int AddNewMembers(List<Member> members, string sourceFilename, bool addOnly = false, List<int> groupIds = null)
+        public MembersAdd AddNewMembers(AddMembers members)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members";
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddParameter("members", members);
-            request.AddParameter("source_filename", sourceFilename);
+            request.AddBody(members);
 
-            if (addOnly)
-                request.AddParameter("add_only", addOnly);
-
-            if (groupIds != null)
-                request.AddParameter("group_ids", string.Join(",", groupIds));
-
-            return Execute<int>(request);
+            return Execute<MembersAdd>(request);
         }
 
         /// <summary>
