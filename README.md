@@ -21,10 +21,9 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 `Mailings` ![Progress](http://progressed.io/bar/65)
 
-`Members` ![Progress](http://progressed.io/bar/50) \*
+`Members` ![Progress](http://progressed.io/bar/100) \*
 
 `Response` ![Progress](http://progressed.io/bar/95) \*\*
-
 
 `Searches` ![Progress](http://progressed.io/bar/95) \*\*\*
 
@@ -34,7 +33,7 @@ A very early alpha of this wrapper library. Building out calls as time allows. F
 
 `Webhooks` ![Progress](http://progressed.io/bar/0)
 
-\**All `GET` methods tested and `UpdateMemberToOptoutByEmail`, `AddOrUpdateSingleMember`, `MemberSignup`, `DeleteMembers` methods. `GetMemberOptout` returns an empty array, which it should not for a vaild optout member.
+\**`GetMemberOptout` returns an empty array, which it should not for a vaild optout member.*
 
 \*\**`customer_shares`, `customer_share_clicks`, and `customer_share` return values are unknown*
 
