@@ -200,19 +200,17 @@ namespace EmmaSharp
         /// <summary>
         /// Change the status for an array of members. The members will have their member_status_id update
         /// </summary>
-        /// <param name="memberIds">The array of member ids to change.</param>
-        /// <param name="statusTo">The new status for the given members. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (optout).</param>
+        /// <param name="status">Class representing members and their new status.</param>
         /// <returns>True if the members are successfully updated, otherwise False.</returns>
         /// <remarks></remarks>
-        public bool ChangeMemberStatus(List<string> memberIds, MemberStatusShort statusTo)
+        public bool ChangeMemberStatus(ChangeStatus status)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/status";
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
 
-            request.AddParameter("member_ids", memberIds);
-            request.AddParameter("status_to", statusTo.ToEnumString<MemberStatusShort>());
+            request.AddBody(status);
 
             return Execute<bool>(request);
         }
@@ -221,25 +219,18 @@ namespace EmmaSharp
         /// Update a single member’s information. Update the information for an existing member (even if they are marked as deleted). Note that this method allows the email address to be updated (which cannot be done with a POST, since in that case the email address is used to identify the member).
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
-        /// <param name="memberEmail">A new email address for the member.</param>
-        /// <param name="statusTo"> A new status for the member. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (opt-out).</param>
-        /// <param name="fields">An array of fields with associated values for this member.</param>
-        /// <param name="fieldTriggers">Optional. Fires related field change autoresponders when set to true.</param>
+        /// <param name="member">Class representing fields to update member information.</param>
         /// <returns>True if the member was updated successfully</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public bool UpdateSingleMemberInformation(string memberId, string memberEmail, MemberStatus statusTo, List<Field> fields, bool fieldTriggers = false)
+        public bool UpdateSingleMemberInformation(string memberId, UpdateMember member)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}";
+            request.AddUrlSegment("memberId", memberId);
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddUrlSegment("memberId", memberId);
-            request.AddParameter("email", memberEmail);
-            request.AddParameter("status_to", statusTo.ToEnumString<MemberStatus>());
-            request.AddParameter("fields", fields);
 
-            if (fieldTriggers)
-                request.AddParameter("field_triggers", fieldTriggers);
+            request.AddBody(member);
 
             return Execute<bool>(request);
         }
@@ -278,38 +269,40 @@ namespace EmmaSharp
         /// Add a single member to one or more groups.
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
-        /// <param name="groupIds">Group ids to which to add this member.</param>
+        /// <param name="members">Group ids to which to add this member.</param>
         /// <returns>An array of ids of the affected groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public List<string> AddMemberToGroups(string memberId, List<string> groupIds)
+        public List<int> AddMemberToGroups(string memberId, MemberGroups members)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups";
+            request.AddUrlSegment("memberId", memberId);
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddUrlSegment("memberId", memberId);
-            request.AddParameter("group_ids", string.Join(",", groupIds));
 
-            return Execute<List<string>>(request);
+            request.AddBody(members);
+
+            return Execute<List<int>>(request);
         }
 
         /// <summary>
         /// Remove a single member from one or more groups.
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
-        /// <param name="groupIds">Group ids from which to remove this member</param>
+        /// <param name="members">Group ids from which to remove this member</param>
         /// <returns>An array of references to the affected groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public List<string> RemoveMemberFromGroups(string memberId, List<string> groupIds)
+        public List<int> RemoveMemberFromGroups(string memberId, MemberGroups members)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups/remove";
+            request.AddUrlSegment("memberId", memberId);
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddUrlSegment("memberId", memberId);
-            request.AddParameter("group_ids", string.Join(",", groupIds));
 
-            return Execute<List<string>>(request);
+            request.AddBody(members);
+
+            return Execute<List<int>>(request);
         }
 
         /// <summary>
@@ -333,7 +326,7 @@ namespace EmmaSharp
         /// <param name="memberId">Member identifier.</param>
         /// <returns>True if the member is removed from all groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public bool RemoveMemberFromGroups(string memberId)
+        public bool RemoveMemberFromAllGroups(string memberId)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/members/{memberId}/groups";
@@ -345,18 +338,17 @@ namespace EmmaSharp
         /// <summary>
         /// Remove multiple members from groups.
         /// </summary>
-        /// <param name="memberIds">Member ids to remove from the given groups.</param>
-        /// <param name="groupIds">Group ids from which to remove the given members</param>
+        /// <param name="groups">Class representing members and the groups to remove them from.</param>
         /// <returns>True if the members are deleted, otherwise False.</returns>
         /// <remarks>Http404 if any of the members or groups do not exist</remarks>
-        public bool RemoveMembersFromGroups(List<string> memberIds, List<string> groupIds)
+        public bool RemoveMembersFromGroups(RemoveMemberGroups groups)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/groups/remove";
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddParameter("member_ids", string.Join(",", memberIds));
-            request.AddParameter("group_ids", string.Join(",", groupIds));
+
+            request.AddBody(groups);
 
             return Execute<bool>(request);
         }
@@ -480,17 +472,18 @@ namespace EmmaSharp
         /// Copy all account members of one or more statuses into a group.
         /// </summary>
         /// <param name="groupId">Group identifier.</param>
-        /// <param name="memberStatusId"> ‘a’ (active), ‘o’ (optout), and/or ‘e’ (error).</param>
+        /// <param name="status">Class representing a list of Member statuses: ‘a’ (active), ‘o’ (optout), and/or ‘e’ (error).</param>
         /// <returns>True</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public bool CopyMembersIntoStatusGroup(string groupId, List<MemberStatusShort> memberStatusId)
+        public bool CopyMembersIntoStatusGroup(string groupId, CopyStatus status)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{groupId}/copy";
+            request.AddUrlSegment("groupId", groupId);
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddUrlSegment("groupId", groupId);
-            request.AddParameter("member_status_id", string.Join(",", Array.ConvertAll(memberStatusId.ToArray(), i => i.ToEnumString<MemberStatusShort>())));
+
+            request.AddBody(status);
 
             return Execute<bool>(request);
         }
@@ -507,10 +500,10 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/status/{statusFrom}/to/{statusTo}";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddUrlSegment("statusFrom", statusFrom.ToEnumString<MemberStatusShort>());
             request.AddUrlSegment("statusTo", statusTo.ToEnumString<MemberStatusShort>());
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
 
             if (!string.IsNullOrWhiteSpace(groupId))
                 request.AddParameter("group_id", groupId);

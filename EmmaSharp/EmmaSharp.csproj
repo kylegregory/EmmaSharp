@@ -79,10 +79,15 @@
     <Compile Include="Models\Generics\Link.cs" />
     <Compile Include="Models\Groups\GroupType.cs" />
     <Compile Include="Models\Groups\Group.cs" />
+    <Compile Include="Models\Members\ChangeStatus.cs" />
+    <Compile Include="Models\Members\CopyStatus.cs" />
     <Compile Include="Models\Members\DeleteMembers.cs" />
     <Compile Include="Models\Members\ImportStatus.cs" />
     <Compile Include="Models\Members\MemberBulk.cs" />
     <Compile Include="Models\Members\MembersAdd.cs" />
+    <Compile Include="Models\Members\MemberGroups.cs" />
+    <Compile Include="Models\Members\RemoveMemberGroups.cs" />
+    <Compile Include="Models\Members\UpdateMember.cs" />
     <Compile Include="Models\Members\SignupMember.cs" />
     <Compile Include="Models\Response\DeliveryType.cs" />
     <Compile Include="Models\Mailings\MailingHeadsup.cs" />
