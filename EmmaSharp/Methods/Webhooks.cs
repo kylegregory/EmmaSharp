@@ -1,6 +1,7 @@
 ﻿using EmmaSharp.Models.Webhooks;
 using RestSharp;
 using System.Collections.Generic;
+using RestSharp.Serializers;
 
 namespace EmmaSharp
 {
@@ -55,6 +56,8 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/webhooks";
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(webhook);
 
             return Execute<int>(request);
@@ -71,6 +74,8 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/webhooks/{webhookId}";
             request.AddUrlSegment("webhookId", webhookId);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(webhook);
 
             return Execute<int>(request);
