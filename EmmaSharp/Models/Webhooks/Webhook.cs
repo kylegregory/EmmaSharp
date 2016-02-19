@@ -13,10 +13,10 @@ namespace EmmaSharp.Models.Webhooks
         [JsonProperty("method")]
         public string Method { get; set; }
 
-        [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        [JsonProperty("public_key")]
+        public string PublicKey { get; set; }
 
-        [JsonProperty("name")]
+        [JsonProperty("event")]
         public string Event { get; set; }
     }
 }
