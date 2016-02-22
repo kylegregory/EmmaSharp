@@ -12,32 +12,26 @@ The examples below show how to have your application pull all account fields on 
 
 ### To-Do/Status
 
-A very early alpha of this wrapper library. Building out calls as time allows. Feel free to contribute. Most API endpoints have methods in the library, however not all endpoints have been tested. The following list displays the level of tested and functioning endpoints for each entity. Additional documentation will be added as time allows. If you have any questions, feel free to submit an issue for a particular entity or endpoint.
+A very early alpha of this wrapper library. Building out calls as time allows. Feel free to contribute. Most API endpoints have methods in the library, however not all endpoints have been tested. The following list displays the level of tested and functioning endpoints for each entity. Additional documentation will be added as time allows. If you have any questions, feel free to submit an issue for a particular entity or endpoint. You may also want to look at issues found [pertaining to Emma's API](https://github.com/kylegregory/EmmaSharp/issues?q=is%3Aopen+is%3Aissue+label%3A%22api+bug%22), which we're waiting on a response from @Emma.
 
 #### Status by API Category/Entity
 `Fields` ![Progress](http://progressed.io/bar/100)
 
 `Groups` ![Progress](http://progressed.io/bar/100)
 
-`Mailings` ![Progress](http://progressed.io/bar/65)
+`Mailings` ![Progress](http://progressed.io/bar/100)
 
-`Members` ![Progress](http://progressed.io/bar/100) \*
+`Members` ![Progress](http://progressed.io/bar/100)
 
-`Response` ![Progress](http://progressed.io/bar/95) \*\*
+`Response` ![Progress](http://progressed.io/bar/100)
 
-`Searches` ![Progress](http://progressed.io/bar/95) \*\*\*
+`Searches` ![Progress](http://progressed.io/bar/100)
 
 `Signup Forms` ![Progress](http://progressed.io/bar/100)
 
 `Trggers` ![Progress](http://progressed.io/bar/100)
 
-`Webhooks` ![Progress](http://progressed.io/bar/0)
-
-\**`GetMemberOptout` returns an empty array, which it should not for a vaild optout member.*
-
-\*\**`customer_shares`, `customer_share_clicks`, and `customer_share` return values are unknown*
-
-\*\*\**Creating and Updating searches uses strings with escaped quotes, which seems to trip up Emma's API.*
+`Webhooks` ![Progress](http://progressed.io/bar/100)
 
 ### Making contributions
 This project is not affiliated with [Emma](http://myemma.com/meet-us).  All contributors to this project are unpaid average folks (just like you!) who choose to volunteer their time.  If you like Emma and want to contribute, we would appreciate your help!  To get started, just [fork the repo](https://help.github.com/articles/fork-a-repo), make your changes and submit a pull request.   
