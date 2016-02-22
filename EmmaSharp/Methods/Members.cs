@@ -354,7 +354,7 @@ namespace EmmaSharp
         }
 
         /// <summary>
-        /// Get the number of mailing history entires for a member.
+        /// Get the number of mailing history entries for a member.
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
         /// <param name="start">Pagination: start page. Defaults to first page (e.g. 0).</param>
