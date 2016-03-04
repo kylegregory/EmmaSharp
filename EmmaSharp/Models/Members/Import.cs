@@ -37,8 +37,8 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("fields_updated")]
         public List<Field> FieldsUpdated { get; set; }
 
-        [JsonProperty("num_fields_added")]
-        public int? NumFieldsAdded { get; set; }
+        [JsonProperty("num_members_added")]
+        public int? NumMembersAdded { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("import_finished")]
