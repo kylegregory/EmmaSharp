@@ -10,6 +10,6 @@ namespace EmmaSharp.Models.Members
     public class MemberIdList
     {
         [JsonProperty("member_ids")]
-        public List<string> MemberIds { get; set; }
+        public List<long> MemberIds { get; set; }
     }
 }

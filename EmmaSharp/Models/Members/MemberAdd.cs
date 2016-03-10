@@ -10,7 +10,7 @@ namespace EmmaSharp.Models.Members
         public MemberStatusShort Status { get; set; }
 
         [JsonProperty("member_id")]
-        public int? MemberId { get; set; }
+        public long? MemberId { get; set; }
 
         [JsonProperty("added")]
         public bool Added { get; set; }
