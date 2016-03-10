@@ -19,6 +19,6 @@ namespace EmmaSharp.Models.Members
         /// The member id of the member.
         /// </summary>
         [JsonProperty("member_id")]
-        public long? MemberId { get; set; }
+        public int? MemberId { get; set; }
     }
 }

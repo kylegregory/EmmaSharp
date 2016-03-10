@@ -1,5 +1,9 @@
-﻿using EmmaSharp.Extensions;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace EmmaSharp.Models.Searches
 {
@@ -8,7 +12,6 @@ namespace EmmaSharp.Models.Searches
         [JsonProperty("name")]
         public string Name { get; set; }
 
-        [JsonConverter(typeof(PlainJsonStringConverter))]
         [JsonProperty("criteria")]
         public string Criteria { get; set; }
     }

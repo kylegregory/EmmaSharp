@@ -60,7 +60,6 @@
     <Compile Include="Extensions\EnumHelper.cs" />
     <Compile Include="Extensions\Intervals.cs" />
     <Compile Include="Extensions\JsonSerializer.cs" />
-    <Compile Include="Extensions\PlainJsonStringConverter.cs" />
     <Compile Include="Extensions\QueryFactory.cs" />
     <Compile Include="Models\Mailings\ForwardMailing.cs" />
     <Compile Include="Models\Mailings\MailingHeadsUp.cs" />

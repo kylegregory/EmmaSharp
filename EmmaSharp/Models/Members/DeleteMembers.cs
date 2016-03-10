@@ -13,6 +13,6 @@ namespace EmmaSharp.Models.Members
         /// An array of member ids to delete.
         /// </summary>
         [JsonProperty("member_ids")]
-        public List<long> MemberIds { get; set; }
+        public List<int> MemberIds { get; set; }
     }
 }

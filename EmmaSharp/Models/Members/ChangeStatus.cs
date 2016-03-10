@@ -16,7 +16,7 @@ namespace EmmaSharp.Models.Members
         /// The array of member ids to change.
         /// </summary>
         [JsonProperty("member_ids")]
-        public List<long> MemberIds { get; set; }
+        public List<int> MemberIds { get; set; }
 
         /// <summary>
         /// The new status for the given members. Accepts one of ‘a’ (active), ‘e’ (error), ‘o’ (optout).

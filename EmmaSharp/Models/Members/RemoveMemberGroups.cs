@@ -16,7 +16,7 @@ namespace EmmaSharp.Models.Members
         /// Member ids to remove from the given groups.
         /// </summary>
         [JsonProperty("member_ids")]
-        public List<long> MemberIds { get; set; }
+        public List<int> MemberIds { get; set; }
 
         /// <summary>
         /// Group ids from which to remove the given members.
