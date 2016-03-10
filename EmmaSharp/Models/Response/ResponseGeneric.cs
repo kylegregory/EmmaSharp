@@ -17,7 +17,7 @@ namespace EmmaSharp.Models.Response
         public DateTime? Timestamp { get; set; }
 
         [JsonProperty("member_id")]
-        public int? MemberId { get; set; }
+        public long? MemberId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("member_since")]

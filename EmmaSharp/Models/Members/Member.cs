@@ -22,7 +22,7 @@ namespace EmmaSharp.Models.Members
         public Dictionary<string, string> Fields { get; set; }
 
         [JsonProperty("member_id")]
-        public int? MemberId { get; set; }
+        public long? MemberId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("last_modified_at")]
