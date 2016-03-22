@@ -22,7 +22,7 @@ namespace EmmaSharp.Models.Webhooks
         public string SignupFormId { get; set; }
 
         [JsonProperty("account_id")]
-        public string AcocuntId { get; set; }
+        public string AccountId { get; set; }
 
         [JsonProperty("member_id")]
         public string MemberId { get; set; }
