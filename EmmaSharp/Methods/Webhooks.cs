@@ -1,6 +1,7 @@
 ﻿using EmmaSharp.Models.Webhooks;
 using RestSharp;
 using System.Collections.Generic;
+using RestSharp.Serializers;
 
 namespace EmmaSharp
 {
@@ -51,10 +52,13 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="webhook">The webhook to be created.</param>
         /// <returns>The ID of the newly created webhook.</returns>
-        public int CreateWebhook(Webhook webhook)
+        public int CreateWebhook(CreateWebhook webhook)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/webhooks";
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+
             request.AddBody(webhook);
 
             return Execute<int>(request);
@@ -66,11 +70,14 @@ namespace EmmaSharp
         /// <param name="webhookId">The ID of the Webhook to update.</param>
         /// <param name="webhook">The webhook parameters to be updated.</param>
         /// <returns>The id of the updated webhook, or False if the update failed.</returns>
-        public int UpdateWebhook(string webhookId, Webhook webhook)
+        public int UpdateWebhook(string webhookId, UpdateWebhook webhook)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/webhooks/{webhookId}";
             request.AddUrlSegment("webhookId", webhookId);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+
             request.AddBody(webhook);
 
             return Execute<int>(request);
@@ -94,7 +101,7 @@ namespace EmmaSharp
         /// Delete all webhooks registered for an account.
         /// </summary>
         /// <returns>True if the webhook deleted successfully.</returns>
-        public bool DeleteWebhook()
+        public bool DeleteAllWebhooks()
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/webhooks";

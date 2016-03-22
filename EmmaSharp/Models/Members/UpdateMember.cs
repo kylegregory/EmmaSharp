@@ -15,7 +15,7 @@ namespace EmmaSharp.Models.Members
         /// <summary>
         /// A new email address for the member.
         /// </summary>
-        [JsonProperty("member_email", NullValueHandling = NullValueHandling.Ignore)]
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Ignore)]
         public string MemberEmail { get; set; }
 
         /// <summary>

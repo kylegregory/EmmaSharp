@@ -61,6 +61,10 @@
     <Compile Include="Extensions\Intervals.cs" />
     <Compile Include="Extensions\JsonSerializer.cs" />
     <Compile Include="Extensions\QueryFactory.cs" />
+    <Compile Include="Models\Mailings\ForwardMailing.cs" />
+    <Compile Include="Models\Mailings\MailingHeadsUp.cs" />
+    <Compile Include="Models\Mailings\MailingIdentifier.cs" />
+    <Compile Include="Models\Mailings\ResendMailing.cs" />
     <Compile Include="Models\Members\AddMember.cs" />
     <Compile Include="Models\Mailings\UpdateMailingStatus.cs" />
     <Compile Include="Models\Members\AddMembers.cs" />
@@ -90,7 +94,6 @@
     <Compile Include="Models\Members\UpdateMember.cs" />
     <Compile Include="Models\Members\SignupMember.cs" />
     <Compile Include="Models\Response\DeliveryType.cs" />
-    <Compile Include="Models\Mailings\MailingHeadsup.cs" />
     <Compile Include="Models\Mailings\Mailing.cs" />
     <Compile Include="Models\Mailings\MailingHistory.cs" />
     <Compile Include="Models\Mailings\MailingPersonalization.cs" />
