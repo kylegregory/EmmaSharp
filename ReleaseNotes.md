@@ -2,6 +2,8 @@ EmmaSharp Release Notes
 =========
 
 ## Head (Unreleased)
+* Webhook fix and updates to handle member signup event - [#18](https://github.com/kylegregory/EmmaSharp/pull/18) via @technomaz
+* Fixed MemberIds longer than Int32
 * Fixed: `NumMembersAdded` property on `Import` - [#16](https://github.com/kylegregory/EmmaSharp/pull/16) via @MikeSmithDev
 
 --------------------
