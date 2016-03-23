@@ -119,6 +119,7 @@
     <Compile Include="Models\Triggers\Trigger.cs" />
     <Compile Include="Models\Webhooks\Webhook.cs" />
     <Compile Include="Models\Webhooks\WebhookEvents.cs" />
+    <Compile Include="Models\Webhooks\WebhookPostMemberSignup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Methods\Mailings.cs" />
     <Compile Include="Models\Mailings\MailingStatus.cs" />
