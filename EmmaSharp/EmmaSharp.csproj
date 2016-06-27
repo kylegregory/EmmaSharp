@@ -129,7 +129,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="EmmaSharp.csproj" />
-    <None Include="Models\Mailings\ReleaseNotes.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
