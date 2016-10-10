@@ -1,6 +1,9 @@
 EmmaSharp Release Notes
 =========
 
+## New in 1.0.2 (Released 2016/10/10)
+* Update RestSharp Dependency to v 105.2.3 because of namespace change to `HttpBasicAuthenticator` [#8](https://github.com/kylegregory/EmmaSharp/issues/8#issuecomment-252004909) via @technomaz
+
 ## New in 1.0.1 (Released 2016/06/27)
 * Webhook fix and updates to handle member signup event - [#18](https://github.com/kylegregory/EmmaSharp/pull/18) via @technomaz
 * Fixed MemberIds longer than Int32
