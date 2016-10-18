@@ -8,8 +8,20 @@ namespace EmmaSharp.Models.Members
     public enum ImportChangeType
     {
         [EnumMember(Value = "a")]
-        Add,
+        Added,
+        [EnumMember(Value = "c")]
+        Confirmed,
+        [EnumMember(Value = "d")]
+        Deleted,
+        [EnumMember(Value = "n")]
+        Undeleted,
         [EnumMember(Value = "u")]
-        Update
+        Updated,
+        [EnumMember(Value = "r")]
+        UpdateRejected,
+        [EnumMember(Value = "s")]
+        SignedUp,
+        [EnumMember(Value = "t")]
+        StatusShifted,
     }
 }
