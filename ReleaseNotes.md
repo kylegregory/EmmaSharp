@@ -1,7 +1,10 @@
 EmmaSharp Release Notes
 =========
 ## HEAD (Unreleased)
+
+## New in 1.0.3 (Released 2016/10/26)
 * Added change_status enum values as received from Emma support. [#20](https://github.com/kylegregory/EmmaSharp/pull/20) via @MikeSmithDev
+* GetMemberGroups was failing due to DateTime conversion on the Group model, added EmmaDateConverter to necessary properties. [#21](https://github.com/kylegregory/EmmaSharp/pull/21) via @MikeSmithDev
 
 ## New in 1.0.2 (Released 2016/10/10)
 * Update RestSharp Dependency to v 105.2.3 because of namespace change to `HttpBasicAuthenticator` [#8](https://github.com/kylegregory/EmmaSharp/issues/8#issuecomment-252004909) via @technomaz
