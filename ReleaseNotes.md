@@ -1,6 +1,7 @@
 EmmaSharp Release Notes
 =========
 ## HEAD (Unreleased)
+* Added new field AutomateFieldChanged to AddMembers Model. [#22](https://github.com/kylegregory/EmmaSharp/pull/22) via @ginowit
 
 ## New in 1.0.3 (Released 2016/10/26)
 * Added change_status enum values as received from Emma support. [#20](https://github.com/kylegregory/EmmaSharp/pull/20) via @MikeSmithDev
