@@ -76,8 +76,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(field);
 
@@ -93,8 +91,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/fields/{fieldId}";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddUrlSegment("fieldId", fieldId);
 
@@ -111,8 +107,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields/{fieldId}/clear";
             request.AddUrlSegment("fieldId", fieldId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             return Execute<bool>(request);
         }
@@ -128,8 +122,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/fields/{fieldId}";
             request.AddUrlSegment("fieldId", fieldId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(field);
 

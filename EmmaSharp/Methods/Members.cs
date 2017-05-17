@@ -1,13 +1,10 @@
 ﻿using EmmaSharp.Extensions;
 using EmmaSharp.Models;
-using EmmaSharp.Models.Fields;
 using EmmaSharp.Models.Groups;
 using EmmaSharp.Models.Mailings;
 using EmmaSharp.Models.Members;
-using Newtonsoft.Json;
 using RestSharp;
 using RestSharp.Serializers;
-using System;
 using System.Collections.Generic;
 
 namespace EmmaSharp
@@ -136,8 +133,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(members);
 
             return Execute<MembersAdd>(request);
@@ -153,8 +148,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/add";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(member);
 
@@ -171,8 +164,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/members/signup";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(member);
 
@@ -189,8 +180,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/delete";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(members);
 
@@ -207,8 +196,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/status";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(status);
 
@@ -227,8 +214,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}";
             request.AddUrlSegment("memberId", memberId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(member);
 
@@ -277,8 +262,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups";
             request.AddUrlSegment("memberId", memberId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(members);
 
@@ -297,8 +280,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups/remove";
             request.AddUrlSegment("memberId", memberId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(members);
 
@@ -345,8 +326,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/groups/remove";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(groups);
 
@@ -478,8 +457,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{groupId}/copy";
             request.AddUrlSegment("groupId", groupId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(status);
 
@@ -500,8 +477,6 @@ namespace EmmaSharp
             request.Resource = "/{accountId}/members/status/{statusFrom}/to/{statusTo}";
             request.AddUrlSegment("statusFrom", statusFrom.ToEnumString<MemberStatusShort>());
             request.AddUrlSegment("statusTo", statusTo.ToEnumString<MemberStatusShort>());
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             if (!string.IsNullOrWhiteSpace(groupId))
                 request.AddParameter("group_id", groupId);

@@ -79,8 +79,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/searches";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(search);
 
@@ -99,8 +97,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/searches/{searchId}";
             request.AddUrlSegment("searchId", searchId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(search);
 

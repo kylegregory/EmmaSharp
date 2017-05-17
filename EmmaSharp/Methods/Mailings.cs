@@ -223,8 +223,6 @@ namespace EmmaSharp
 			var request = new RestRequest(Method.PUT);
 			request.Resource = "/{accountId}/mailings/{mailingId}";
             request.AddUrlSegment("mailingId", mailingId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(new { status = status.ToEnumString<UpdateMailingStatus>() });
 
@@ -273,8 +271,6 @@ namespace EmmaSharp
 			request.Resource = "/{accountId}/forwards/{mailingId}/{memberId}";
 			request.AddUrlSegment("mailingId", mailingId);
             request.AddUrlSegment("memberId", memberId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
             
 			request.AddBody(mailing);
 
@@ -293,8 +289,6 @@ namespace EmmaSharp
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/mailings/{mailingId}";
             request.AddUrlSegment("mailingId", mailingId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
 			request.AddBody(mailing);
 
@@ -325,8 +319,6 @@ namespace EmmaSharp
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/mailings/validate";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddBody(personalization);
 
