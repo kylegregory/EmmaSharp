@@ -1,7 +1,11 @@
 EmmaSharp Release Notes
 =========
 ## HEAD (Unreleased)
+
+## New in 1.0.4 (Released 2017/05/17)
 * Added new field AutomateFieldChanged to AddMembers Model. [#22](https://github.com/kylegregory/EmmaSharp/pull/22) via @ginowit
+* Removing redundant request format and json serializer calls.
+* Triggers marked as obsolete, via [Emma API docs](http://api.myemma.com/api/external/triggers.html).
 
 ## New in 1.0.3 (Released 2016/10/26)
 * Added change_status enum values as received from Emma support. [#20](https://github.com/kylegregory/EmmaSharp/pull/20) via @MikeSmithDev
