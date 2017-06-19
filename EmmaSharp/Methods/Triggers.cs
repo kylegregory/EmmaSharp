@@ -1,6 +1,7 @@
 ﻿using EmmaSharp.Models.Mailings;
 using EmmaSharp.Models.Triggers;
 using RestSharp;
+using RestSharp.Serializers;
 using System;
 using System.Collections.Generic;
 
@@ -67,6 +68,8 @@ namespace EmmaSharp
             request.Resource = "/{accountId}/triggers/{triggerId}";
             request.AddUrlSegment("triggerId", triggerId);
 
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(new { name = name });
 
             return Execute<int>(request);

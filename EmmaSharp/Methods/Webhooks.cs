@@ -51,12 +51,14 @@ namespace EmmaSharp
         /// Create an new webhook.
         /// </summary>
         /// <param name="webhook">The webhook to be created.</param>
-        /// <returns>The ID of the newly created webhook.</returns>
+        /// <returns>The ID of the newly created webhook.</returns>@Html.Raw(breadcrumb.Item3)
         public int CreateWebhook(CreateWebhook webhook)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/webhooks";
 
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(webhook);
 
             return Execute<int>(request);
@@ -74,6 +76,8 @@ namespace EmmaSharp
             request.Resource = "/{accountId}/webhooks/{webhookId}";
             request.AddUrlSegment("webhookId", webhookId);
 
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(webhook);
 
             return Execute<int>(request);

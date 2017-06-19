@@ -2,6 +2,9 @@ EmmaSharp Release Notes
 =========
 ## HEAD (Unreleased)
 
+## New in 1.0.5 (Released 2017/06/19)
+ * Undoing a regression in 1.0.4 for setting DataFormat.Json.
+
 ## New in 1.0.4 (Released 2017/05/17)
 * Added new field AutomateFieldChanged to AddMembers Model. [#22](https://github.com/kylegregory/EmmaSharp/pull/22) via @ginowit
 * Removing redundant request format and json serializer calls.
