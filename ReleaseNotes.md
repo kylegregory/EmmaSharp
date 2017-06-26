@@ -1,6 +1,7 @@
 EmmaSharp Release Notes
 =========
 ## HEAD (Unreleased)
+ * Fix for GroupName property naming inconsistancy in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
 
 ## New in 1.0.5 (Released 2017/06/19)
  * Undoing a regression in 1.0.4 for setting DataFormat.Json.
