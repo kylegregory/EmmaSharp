@@ -109,7 +109,7 @@ namespace EmmaSharp.Models.Mailings
     public class Mailing : MailingBase
     {
         [JsonProperty("recipient_groups")]
-        public List<Group> RecipientGroups { get; set; }
+        public List<MailingGroup> RecipientGroups { get; set; }
 
         [JsonProperty("heads_up_emails")]
         public List<Email> HeadsUpEmails { get; set; }
