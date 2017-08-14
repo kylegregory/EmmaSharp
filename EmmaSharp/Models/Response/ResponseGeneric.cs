@@ -10,7 +10,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseGeneric
     {
         [JsonProperty("fields")]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("timestamp")]

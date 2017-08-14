@@ -28,7 +28,7 @@ namespace EmmaSharp.Models.Members
         /// An array of fields with associated values for this member
         /// </summary>
         [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         /// <summary>
         /// Optional. Fires related field change autoresponders when set to true.
