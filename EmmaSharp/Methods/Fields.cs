@@ -7,7 +7,7 @@ using System.Collections.Generic;
 namespace EmmaSharp
 {
     /// <summary>
-    /// These endpoints let you create, edit, update and delete all of the custom fields in your account. Of particular interest is the <code>/#account_id/fields/#field_id/clear</code> endpoint which lets you clear out all the data in a single field for all members in your account. This makes it easy to re-initialize a dataset if you’re looking to correct an import error or syncing issue.
+    /// These endpoints let you create, edit, update and delete all of the custom fields in your account. Of particular interest is the <see cref="ClearField(string)"/> method which lets you clear out all the data in a single field for all members in your account. This makes it easy to re-initialize a dataset if you’re looking to correct an import error or syncing issue.
     /// </summary>
     public partial class EmmaApi
     {
@@ -68,7 +68,7 @@ namespace EmmaSharp
         }
 
         /// <summary>
-        /// Create a new field field. There must not already be a field with this name.
+        /// Create a new field. There must not already be a field with this name.
         /// </summary>
         /// <param name="field">The Field to be created.</param>
         /// <returns>A reference (Field ID as int) to the new field.</returns>
@@ -76,9 +76,9 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields";
+
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(field);
 
             return Execute<int>(request);
@@ -93,8 +93,6 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/fields/{fieldId}";
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             request.AddUrlSegment("fieldId", fieldId);
 
@@ -111,8 +109,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/fields/{fieldId}/clear";
             request.AddUrlSegment("fieldId", fieldId);
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             return Execute<bool>(request);
         }
@@ -128,9 +124,9 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/fields/{fieldId}";
             request.AddUrlSegment("fieldId", fieldId);
+
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(field);
 
             return Execute<int>(request);

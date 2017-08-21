@@ -32,6 +32,12 @@ namespace EmmaSharp.Models
         /// <summary>
         /// Optional. Fires related field change autoresponders when set to true.
         /// </summary>
+        [JsonProperty("automate_field_changes", NullValueHandling = NullValueHandling.Ignore)]
+        public bool? AutomateFieldChanges { get; set; }
+
+        /// <summary>
+        /// Optional. Only add new members, ignore existing members.
+        /// </summary>        
         [JsonProperty("add_only", NullValueHandling = NullValueHandling.Ignore)]
         public bool? AddOnly { get; set; }
 

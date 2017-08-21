@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using RestSharp;
+using RestSharp.Authenticators;
 using RestSharp.Serializers;
 using System;
 using System.Diagnostics;
@@ -37,11 +38,14 @@ namespace EmmaSharp
         /// </summary>
         /// <typeparam name="T">The model or type to bind the return response.</typeparam>
         /// <param name="request">The RestRequest request.</param>
+        /// <param name="start">If more than 500 results, use these parameters to start/end pages.</param>
+        /// <param name="end">If more than 500 results, use these parameters to start/end pages.</param>
         /// <returns>Response data from the API call.</returns>
         private T Execute<T>(RestRequest request, int start = -1, int end = -1) where T : new()
         {
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl);
+
             client.Authenticator = new HttpBasicAuthenticator(_publicKey, _secretKey);
             request.AddParameter("accountId", _accountId, ParameterType.UrlSegment); // used on every request
 

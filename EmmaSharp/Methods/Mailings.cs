@@ -223,9 +223,9 @@ namespace EmmaSharp
 			var request = new RestRequest(Method.PUT);
 			request.Resource = "/{accountId}/mailings/{mailingId}";
             request.AddUrlSegment("mailingId", mailingId);
+
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(new { status = status.ToEnumString<UpdateMailingStatus>() });
 
             return Execute<UpdateMailing>(request);
@@ -265,45 +265,40 @@ namespace EmmaSharp
 		/// <returns>A reference to the new mailing.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
 		/// <param name="memberId">Member identifier.</param>
-		/// <param name="recipientEmails">An array of email addresses to which to forward the specified message.</param>
-		/// <param name="note">A note to include in the forward. This note will be HTML encoded and is limited to 500 characters.</param>
+		/// <param name="mailing">Class representing the fields to forward and email to additional recipients.</param>
 		/// <remarks>Http404 if no message is found.</remarks>
-		public Mailing ForwardMailing(string mailingId, string memberId, List<string> recipientEmails, string note)
+        public MailingIdentifier ForwardMailing(string mailingId, string memberId, ForwardMailing mailing)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/forwards/{mailingId}/{memberId}";
 			request.AddUrlSegment("mailingId", mailingId);
-			request.AddUrlSegment("mailingId", memberId);
-			request.AddBody("recipient_emails", string.Join(",", recipientEmails));
-			request.AddBody("note", note);
+            request.AddUrlSegment("memberId", memberId);
 
-			return Execute<Mailing>(request);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+            request.AddBody(mailing);
+
+            return Execute<MailingIdentifier>(request);
 		}
 
 		/// <summary>
 		/// Send a prior mailing to additional recipients. A new mailing will be created that inherits its content from the original.
 		/// </summary>
-		/// <returns>TA reference to the new mailing.</returns>
+		/// <returns>The mailing id of the new mailing.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		/// <param name="headsUpEmails"> A list of email addresses that heads up notification emails will be sent to.</param>
-		/// <param name="recipientEmails">An array of email addresses to which the new mailing should be sent.</param>
-		/// <param name="recipientGroups">An array of member groups to which the new mailing should be sent.</param>
-		/// <param name="recipientSearches">A list of searches that this mailing should be sent to.</param>
-		/// <param name="sender">The message sender. If this is not supplied, the sender of the original mailing will be used.</param>
+		/// <param name="mailing">Class representing the available fields when resending a mailing.</param>
 		/// <remarks>Http404 if no message is found.</remarks>
-		public Mailing ResendMailing(string mailingId, List<string> headsUpEmails, List<string> recipientEmails, List<string> recipientGroups, List<string> recipientSearches, string sender)
+        public MailingIdentifier ResendMailing(string mailingId, ResendMailing mailing)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/mailings/{mailingId}";
-			request.AddUrlSegment("mailingId", mailingId);
-			request.AddBody("heads_up_emails", string.Join(",", headsUpEmails));
-			request.AddBody("recipient_emails", string.Join(",", recipientEmails));
-			request.AddBody("recipient_groups", string.Join(",", recipientGroups));
-			request.AddBody("recipient_searches", string.Join(",", recipientSearches));
-			if (!string.IsNullOrWhiteSpace(sender))
-				request.AddBody("sender", sender);
+            request.AddUrlSegment("mailingId", mailingId);
 
-			return Execute<Mailing>(request);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+            request.AddBody(mailing);
+
+            return Execute<MailingIdentifier>(request);
 		}
 
 		/// <summary>
@@ -311,30 +306,29 @@ namespace EmmaSharp
 		/// </summary>
 		/// <returns>An array of heads up email addresses.</returns>
 		/// <param name="mailingId">Mailing identifier.</param>
-		public List<string> GetHeadsUpEmailsForMailing(string mailingId)
+        public List<MailingHeadsUp> GetHeadsUpEmailsForMailing(string mailingId)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/mailings/{mailingId}/headsup";
 			request.AddUrlSegment("mailingId", mailingId);
 
-			return Execute<List<string>>(request);
+            return Execute<List<MailingHeadsUp>>(request);
 		}
 
 		/// <summary>
 		/// Validate that a mailing has valid personalization-tag syntax. Checks tag syntax in three params:
 		/// </summary>
 		/// <returns><c>true</c>, if personalization syntax was validated, <c>false</c> otherwise.</returns>
-		/// <param name="htmlBody">The html contents of the mailing</param>
-		/// <param name="plaintext">The plaintext contents of the mailing. Unlike in create_mailing, this param is not required.</param>
-		/// <param name="subject">The subject of the mailing.</param>
+        /// <param name="personalization">HTML body, plaintext body and subject line for personalization testing.</param>
 		/// <remarks>Http400 if any tags are invalid. The response body will have information about the invalid tags.</remarks>
-		public bool VaildatePersonalizationSyntax(string htmlBody, string plaintext, string subject)
+		public bool VaildatePersonalizationSyntax(MailingPersonalization personalization)
 		{
 			var request = new RestRequest(Method.POST);
 			request.Resource = "/{accountId}/mailings/validate";
-			request.AddBody("html_body", htmlBody);
-			request.AddBody("plaintext", plaintext);
-			request.AddBody("subject", subject);
+
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+            request.AddBody(personalization);
 
 			return Execute<bool>(request);
 		}

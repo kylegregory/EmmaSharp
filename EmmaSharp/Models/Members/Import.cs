@@ -13,7 +13,7 @@ namespace EmmaSharp.Models.Members
         public int? ImportId { get; set; }
 
         [JsonProperty("status")]
-        public ImportStatus Status { get; set; }
+        public ImportStatus? Status { get; set; }
 
         [JsonProperty("style")]
         public string Style { get; set; }
@@ -37,8 +37,8 @@ namespace EmmaSharp.Models.Members
         [JsonProperty("fields_updated")]
         public List<Field> FieldsUpdated { get; set; }
 
-        [JsonProperty("num_fields_added")]
-        public int? NumFieldsAdded { get; set; }
+        [JsonProperty("num_members_added")]
+        public int? NumMembersAdded { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("import_finished")]

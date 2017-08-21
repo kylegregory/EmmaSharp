@@ -1,13 +1,9 @@
-﻿using RestSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using EmmaSharp.Models.Response;
-using EmmaSharp.Extensions;
-using EmmaSharp.Models.Mailings;
+﻿using EmmaSharp.Extensions;
 using EmmaSharp.Models.Generics;
+using EmmaSharp.Models.Mailings;
+using EmmaSharp.Models.Response;
+using RestSharp;
+using System.Collections.Generic;
 
 namespace EmmaSharp
 {
@@ -210,8 +206,6 @@ namespace EmmaSharp
         /// Get the count of the list of clicks for this mailing.
         /// </summary>
         /// <param name="mailingId">Mailing Identifier</param>
-        /// <param name="memberId">Optional. Limits results to a single member.</param>
-        /// <param name="linkId">Optional. Limits results to a single link.</param>
         /// <returns>An array of link objects for the mailing.</returns>
         /// <remarks>Http404 if the mailing does not exist. Http404 if the mailing is not valid mailing type - ‘m’ for standard mailings, ‘t’ for test mailings and ‘r’ for trigger mailings.</remarks>
         public int GetMailingClicksCount(string mailingId)

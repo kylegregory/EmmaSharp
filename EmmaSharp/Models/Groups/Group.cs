@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace EmmaSharp.Models.Groups
         [JsonProperty("active_count")]
         public int? ActiveCount { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
         public DateTime? DeletedAt { get; set; }
 
@@ -29,6 +31,7 @@ namespace EmmaSharp.Models.Groups
         [JsonProperty("member_group_id")]
         public int? MemberGroupId { get; set; }
 
+        [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("purged_at")]
         public DateTime? PurgedAt { get; set; }
 
@@ -54,5 +57,11 @@ namespace EmmaSharp.Models.Groups
     public class UpdateGroup : GroupName
     {
 
+    }
+    public class MailingGroup : Group
+    {
+        //Ugh. API names GroupName differently in Mailings than elsewhere.
+        [JsonProperty("name")]
+        public new string GroupName { get; set; }
     }
 }

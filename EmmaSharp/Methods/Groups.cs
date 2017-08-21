@@ -59,9 +59,9 @@ namespace EmmaSharp
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/groups";
+
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(groups);
 
             return Execute<List<Group>>(request);
@@ -94,9 +94,9 @@ namespace EmmaSharp
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/groups/{memberIdGroup}";
             request.AddUrlSegment("memberIdGroup", memberGroupId);
+
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(group);
 
             return Execute<bool>(request);
@@ -175,7 +175,6 @@ namespace EmmaSharp
 
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(memberIds);
 
             return Execute<List<int>>(request);
@@ -196,7 +195,6 @@ namespace EmmaSharp
 
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(memberIds);
 
             return Execute<List<int>>(request);
@@ -214,9 +212,6 @@ namespace EmmaSharp
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/groups/{memberGroupId}/members";
             request.AddUrlSegment("memberGroupId", memberGroupId);
-
-            request.RequestFormat = DataFormat.Json;
-            request.JsonSerializer = new EmmaJsonSerializer();
 
             if (status != null)
                 request.AddParameter("member_status_id", status.ToEnumString<MemberStatusShort>());
@@ -259,7 +254,6 @@ namespace EmmaSharp
 
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-
             request.AddBody(status);
 
             return Execute<bool>(request);
