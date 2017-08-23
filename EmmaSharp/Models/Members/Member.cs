@@ -19,7 +19,7 @@ namespace EmmaSharp.Models.Members
         public int? AccountId { get; set; }
 
         [JsonProperty("fields")]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         [JsonProperty("member_id")]
         public long? MemberId { get; set; }

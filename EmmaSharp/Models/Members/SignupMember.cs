@@ -25,7 +25,7 @@ namespace EmmaSharp.Models.Members
         /// Optional. Names and values of user-defined fields to update.
         /// </summary>
         [JsonProperty("fields", NullValueHandling = NullValueHandling.Ignore)]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         /// <summary>
         /// Optional. Indicate that this member used a particular signup form. This is important if you have custom mailings for a particular signup form and so that signup-based triggers will be fired.
