@@ -5,6 +5,7 @@ using RestSharp.Authenticators;
 using RestSharp.Serializers;
 using System;
 using System.Diagnostics;
+using System.Net;
 
 namespace EmmaSharp
 {
@@ -43,6 +44,9 @@ namespace EmmaSharp
         /// <returns>Response data from the API call.</returns>
         private T Execute<T>(RestRequest request, int start = -1, int end = -1) where T : new()
         {
+            // Explicitly set requests to TLS 1.1 or higher per Emma Documentation
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11;
+
             var client = new RestClient();
             client.BaseUrl = new Uri(BaseUrl);
 

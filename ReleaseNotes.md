@@ -1,7 +1,12 @@
 EmmaSharp Release Notes
 =========
+
 ## HEAD (Unreleased)
- * Fix for GroupName property naming inconsistancy in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
+
+## New in 1.1.0 (Released 2017/08/23)
+ * Fix for GroupName property naming inconsistency in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
+ * Support for multi select fields. [#28](https://github.com/kylegregory/EmmaSharp/pull/28) via @SMarioMan
+ * Require TLS 1.1 or 1.2 per [documentation from Emma](https://community.myemma.com/emma/topics/emma-api-no-longer-supporting-tls-1-0-as-of-august-1st-2017).
 
 ## New in 1.0.5 (Released 2017/06/19)
  * Undoing a regression in 1.0.4 for setting DataFormat.Json.
