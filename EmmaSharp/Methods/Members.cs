@@ -498,7 +498,11 @@ namespace EmmaSharp
             request.AddUrlSegment("statusTo", statusTo.ToEnumString<MemberStatusShort>());
 
             if (!string.IsNullOrWhiteSpace(groupId))
-                request.AddParameter("group_id", groupId);
+            {
+                request.RequestFormat = DataFormat.Json;
+                request.JsonSerializer = new EmmaJsonSerializer();
+                request.AddBody(new { group_id = groupId });
+            }
 
             return Execute<bool>(request);
         }

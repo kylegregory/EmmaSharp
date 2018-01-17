@@ -2,6 +2,7 @@ EmmaSharp Release Notes
 =========
 
 ## HEAD (Unreleased)
+ * Fixes UpdateStatusOfGroupMembersBasedOnCurrentStatus method to put groupId in the request body. [#32](https://github.com/kylegregory/EmmaSharp/issues/32) via @MiaWang7777
 
 ## New in 1.1.0 (Released 2017/08/23)
  * Fix for GroupName property naming inconsistency in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
