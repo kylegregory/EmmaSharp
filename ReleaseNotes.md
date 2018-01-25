@@ -2,6 +2,7 @@ EmmaSharp Release Notes
 =========
 
 ## HEAD (Unreleased)
+ * Update return type for GetSearchesCount. [#33](https://github.com/kylegregory/EmmaSharp/pull/33) via @MilSix
  * Fixes UpdateStatusOfGroupMembersBasedOnCurrentStatus method to put groupId in the request body. [#32](https://github.com/kylegregory/EmmaSharp/issues/32) via @MiaWang7777
 
 ## New in 1.1.0 (Released 2017/08/23)
