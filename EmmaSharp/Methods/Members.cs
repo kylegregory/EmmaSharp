@@ -276,6 +276,8 @@ namespace EmmaSharp
             request.Resource = "/{accountId}/members/{memberId}/groups";
             request.AddUrlSegment("memberId", memberId);
 
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(members);
 
             return Execute<List<int>>(request);

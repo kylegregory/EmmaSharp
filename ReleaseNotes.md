@@ -4,6 +4,7 @@ EmmaSharp Release Notes
 ## HEAD (Unreleased)
  * Update return type for GetSearchesCount. [#33](https://github.com/kylegregory/EmmaSharp/pull/33) via @MilSix
  * Fixes UpdateStatusOfGroupMembersBasedOnCurrentStatus method to put groupId in the request body. [#32](https://github.com/kylegregory/EmmaSharp/issues/32) via @MiaWang7777
+ * Fixes AddMemberToGroups by adding JSON Serializer. [#34](https://github.com/kylegregory/EmmaSharp/issues/34) via @pbhandari1s
 
 ## New in 1.1.0 (Released 2017/08/23)
  * Fix for GroupName property naming inconsistency in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
