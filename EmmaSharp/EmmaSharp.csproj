@@ -61,6 +61,8 @@
     <Compile Include="Extensions\JsonSerializer.cs" />
     <Compile Include="Extensions\PlainJsonStringConverter.cs" />
     <Compile Include="Extensions\QueryFactory.cs" />
+    <Compile Include="Methods\Automation.cs" />
+    <Compile Include="Models\Automation\Workflow.cs" />
     <Compile Include="Models\Mailings\ForwardMailing.cs" />
     <Compile Include="Models\Mailings\MailingHeadsUp.cs" />
     <Compile Include="Models\Mailings\MailingIdentifier.cs" />
@@ -89,7 +91,6 @@
     <Compile Include="Models\Members\ImportStatus.cs" />
     <Compile Include="Models\Members\MemberBulk.cs" />
     <Compile Include="Models\Members\MembersAdd.cs" />
-    <Compile Include="Models\Members\MemberGroups.cs" />
     <Compile Include="Models\Members\RemoveMemberGroups.cs" />
     <Compile Include="Models\Members\UpdateMember.cs" />
     <Compile Include="Models\Members\SignupMember.cs" />
@@ -141,4 +142,3 @@
   </Target>
   -->
 </Project>
-

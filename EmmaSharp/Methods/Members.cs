@@ -267,10 +267,10 @@ namespace EmmaSharp
         /// Add a single member to one or more groups.
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
-        /// <param name="members">Group ids to which to add this member.</param>
+        /// <param name="groupIds">Group ids to which to add this member.</param>
         /// <returns>An array of ids of the affected groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public List<int> AddMemberToGroups(string memberId, MemberGroups members)
+        public List<int> AddMemberToGroups(string memberId, List<int> groupIds)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups";
@@ -278,7 +278,7 @@ namespace EmmaSharp
 
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddBody(members);
+            request.AddBody(new { group_ids = groupIds });
 
             return Execute<List<int>>(request);
         }
@@ -287,10 +287,10 @@ namespace EmmaSharp
         /// Remove a single member from one or more groups.
         /// </summary>
         /// <param name="memberId">Member identifier.</param>
-        /// <param name="members">Group ids from which to remove this member</param>
+        /// <param name="groupIds">Group ids from which to remove this member</param>
         /// <returns>An array of references to the affected groups.</returns>
         /// <remarks>Http404 if no member is found.</remarks>
-        public List<int> RemoveMemberFromGroups(string memberId, MemberGroups members)
+        public List<int> RemoveMemberFromGroups(string memberId, List<int> groupIds)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/members/{memberId}/groups/remove";
@@ -298,7 +298,7 @@ namespace EmmaSharp
 
             request.RequestFormat = DataFormat.Json;
             request.JsonSerializer = new EmmaJsonSerializer();
-            request.AddBody(members);
+            request.AddBody(new { group_ids = groupIds });
 
             return Execute<List<int>>(request);
         }

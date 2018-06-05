@@ -2,6 +2,12 @@ EmmaSharp Release Notes
 =========
 
 ## HEAD (Unreleased)
+
+
+## New in 1.2.0 (Released 2018/06/05)
+ * Added Automation Workflow endpoints.
+ * Reduced parameter complexity in AddMemberToGroups and RemoveMemberFromGroups.
+ * Set ImportId to long in MembersAdd. [#35](https://github.com/kylegregory/EmmaSharp/pull/35) via @tjdavis1111
  * Update return type for GetSearchesCount. [#33](https://github.com/kylegregory/EmmaSharp/pull/33) via @MilSix
  * Fixes UpdateStatusOfGroupMembersBasedOnCurrentStatus method to put groupId in the request body. [#32](https://github.com/kylegregory/EmmaSharp/issues/32) via @MiaWang7777
  * Fixes AddMemberToGroups by adding JSON Serializer. [#34](https://github.com/kylegregory/EmmaSharp/issues/34) via @pbhandari1s
