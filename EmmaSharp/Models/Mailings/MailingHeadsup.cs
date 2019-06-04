@@ -26,6 +26,6 @@ namespace EmmaSharp.Models.Mailings
         /// Mailing associated with these heads up mailings.
         /// </summary>
         [JsonProperty("mailing_id")]
-        public int MailingId { get; set; }
+        public long MailingId { get; set; }
     }
 }

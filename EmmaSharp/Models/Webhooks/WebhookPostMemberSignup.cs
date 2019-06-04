@@ -28,7 +28,7 @@ namespace EmmaSharp.Models.Webhooks
         public string MemberId { get; set; }
 
         [JsonProperty("mailing_id", NullValueHandling = NullValueHandling.Ignore)]
-        public string MailingId { get; set; }
+        public long MailingId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("timestamp")]

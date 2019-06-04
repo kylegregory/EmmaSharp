@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
@@ -15,7 +15,8 @@ namespace EmmaSharp.Models.Members
         [EnumMember(Value = "error")]
         Error,
         [EnumMember(Value = "forwarded")]
-        Forwarded
+        Forwarded,
+        Unknown
     }
 
     [JsonConverter(typeof(StringEnumConverter))]
@@ -28,7 +29,8 @@ namespace EmmaSharp.Models.Members
         [EnumMember(Value = "e")]
         Error,
         [EnumMember(Value = "f")]
-        Forwarded
+        Forwarded,
+        Unknown
     }
 
     public class MemberStatusShortList 

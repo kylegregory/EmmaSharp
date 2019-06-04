@@ -23,7 +23,7 @@ namespace EmmaSharp.Models.Triggers
         public string Links { get; set; }
 
         [JsonProperty("field_id")]
-        public int? FieldId { get; set; }
+        public long? FieldId { get; set; }
 
         // Need more info from Emma
         [JsonProperty("signup_integrations")]
@@ -38,7 +38,7 @@ namespace EmmaSharp.Models.Triggers
         public DateTime? StartTimestamp { get; set; }
 
         [JsonProperty("trigger_id")]
-        public int? TriggerId { get; set; }
+        public long? TriggerId { get; set; }
 
         [JsonProperty("name")]
         public string Name { get; set; }
@@ -56,7 +56,7 @@ namespace EmmaSharp.Models.Triggers
         public List<Group> Groups { get; set; }
 
         [JsonProperty("parent_mailing_id")]
-        public int? ParentMailingId { get; set; }
+        public long? ParentMailingId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("deleted_at")]
@@ -66,6 +66,6 @@ namespace EmmaSharp.Models.Triggers
         public bool IsDisabled { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
     }
 }

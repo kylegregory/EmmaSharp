@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Members
@@ -10,6 +10,9 @@ namespace EmmaSharp.Models.Members
         [EnumMember(Value = "o")]
         Okay,
         [EnumMember(Value = "e")]
-        Error
+        Error,
+        [EnumMember(Value = "q")]
+        Queued,
+        Unknown
     }
 }

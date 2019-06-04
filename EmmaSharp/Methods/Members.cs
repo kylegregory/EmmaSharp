@@ -99,13 +99,13 @@ namespace EmmaSharp
         /// <param name="memberId">Member identifier.</param>
 		/// <returns>Member opt out date and mailing if member is opted out.</returns>
 		/// <remarks>Http404 if no member is found.</remarks>
-		public MemberOptout GetMemberOptout(string memberId)
+		public List<MemberOptout> GetMemberOptout(string memberId)
 		{
 			var request = new RestRequest();
 			request.Resource = "/{accountId}/members/{memberId}/optout";
 			request.AddUrlSegment("memberId", memberId);
 
-			return Execute<MemberOptout>(request);
+			return Execute<List<MemberOptout>>(request);
 		}
 
         /// <summary>

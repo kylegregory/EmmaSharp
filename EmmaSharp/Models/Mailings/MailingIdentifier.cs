@@ -16,6 +16,6 @@ namespace EmmaSharp.Models.Mailings
         /// Mailing Identifier.
         /// </summary>
         [JsonProperty("mailing_id")]
-        public int MailingId { get; set; }
+        public long MailingId { get; set; }
     }
 }

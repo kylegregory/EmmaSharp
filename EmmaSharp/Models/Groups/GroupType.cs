@@ -1,5 +1,5 @@
+using EmmaSharp.Extensions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
@@ -14,6 +14,7 @@ namespace EmmaSharp.Models
         [EnumMember(Value = "h")]
         Hidden,
         [EnumMember(Value = "all")]
-        All
+        All,
+        Unknown
     }
 }

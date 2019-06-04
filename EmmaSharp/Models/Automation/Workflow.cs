@@ -32,13 +32,14 @@ namespace EmmaSharp.Models.Automation
         [EnumMember(Value = "inactive")]
         Inactive,
         [EnumMember(Value = "draft")]
-        Draft
+        Draft,
+        Unknown
     }
 
     public class WorkflowCount
     {
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("draft")]
         public int Draft { get; set; }

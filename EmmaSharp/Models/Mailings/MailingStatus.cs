@@ -1,5 +1,5 @@
+using EmmaSharp.Extensions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
@@ -18,6 +18,7 @@ namespace EmmaSharp.Models
         [EnumMember(Value = "c")]
         Complete,
         [EnumMember(Value = "f")]
-        Failed
+        Failed,
+        Unknown
     }
 }

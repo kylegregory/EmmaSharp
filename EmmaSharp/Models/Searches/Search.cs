@@ -7,7 +7,7 @@ namespace EmmaSharp.Models.Searches
     public class Search
     {
         [JsonProperty("search_id")]
-        public int? SearchId { get; set; }
+        public long? SearchId { get; set; }
 
         [JsonProperty("optout_count")]
         public int? OptoutCount { get; set; }
@@ -37,6 +37,6 @@ namespace EmmaSharp.Models.Searches
         public int? ActiveCount { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
     }
 }

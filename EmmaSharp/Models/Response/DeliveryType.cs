@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Mailings
@@ -12,7 +12,8 @@ namespace EmmaSharp.Models.Mailings
         [EnumMember(Value = "h")]
         Hard,
         [EnumMember(Value = "s")]
-        Soft
+        Soft,
+        Unknown
     }
     [JsonConverter(typeof(StringEnumConverter))]
     public enum DeliveryType
@@ -26,6 +27,7 @@ namespace EmmaSharp.Models.Mailings
         [EnumMember(Value = "hard")]
         Hard,
         [EnumMember(Value = "soft")]
-        Soft
+        Soft,
+        Unknown
     }
 }

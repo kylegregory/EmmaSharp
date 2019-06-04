@@ -72,7 +72,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseSummary : ResponseBase
     {
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("month")]
         public int? Month { get; set; }

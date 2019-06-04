@@ -1,5 +1,5 @@
+using EmmaSharp.Extensions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
@@ -24,6 +24,7 @@ namespace EmmaSharp.Models
         [EnumMember(Value = "select one")]
         SelectOne,
         [EnumMember(Value = "number")]
-        Number
+        Number,
+        Unknown
     }
 }

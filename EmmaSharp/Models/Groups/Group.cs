@@ -29,14 +29,14 @@ namespace EmmaSharp.Models.Groups
         public GroupType GroupType { get; set; }
 
         [JsonProperty("member_group_id")]
-        public int? MemberGroupId { get; set; }
+        public long? MemberGroupId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("purged_at")]
         public DateTime? PurgedAt { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("group_name")]
         public string GroupName { get; set; }
