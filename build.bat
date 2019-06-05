@@ -16,10 +16,10 @@ if "%nuget%" == "" (
 
 call %nuget% restore EmmaSharp\packages.config -OutputDirectory %cd%\packages -NonInteractive
 
-%WINDIR%\Microsoft.NET\Framework\v4.0.30319\msbuild EmmaSharp.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false /p:BuildInParallel=true /p:RestorePackages=true /t:Clean,Rebuild
+"%programfiles(x86)%\MSBuild\14.0\Bin\MSBuild.exe" EmmaSharp.sln /p:Configuration="%config%" /m /v:M /fl /flp:LogFile=msbuild.log;Verbosity=diag /nr:false /p:BuildInParallel=true /p:RestorePackages=true /t:Clean,Rebuild
 
 mkdir build
 mkdir build\lib
-mkdir build\lib\net45
+mkdir build\lib\net46
 
 %nuget% pack "EmmaSharp\EmmaSharp.csproj" -IncludeReferencedProjects -NoPackageAnalysis -verbosity detailed -o Build -Version %version% -p Configuration="%config%"

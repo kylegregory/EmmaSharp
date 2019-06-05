@@ -3,6 +3,10 @@ EmmaSharp Release Notes
 
 ## HEAD (Unreleased)
 
+## New in 1.3.0 (Released 2019/06/04)
+ * Updated all ids to be long. [#42](https://github.com/kylegregory/EmmaSharp/pull/42) via @MilSix
+ * Added new Import Status. [#40](https://github.com/kylegregory/EmmaSharp/pull/40) via @MikeSmithDev
+ * Updated Enums to have fallback of Unknown.
 
 ## New in 1.2.0 (Released 2018/06/05)
  * Added Automation Workflow endpoints.
