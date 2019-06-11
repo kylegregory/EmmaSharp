@@ -1,145 +1,18 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{822E821C-9A1C-419E-AAEF-875168137E39}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EmmaSharp</RootNamespace>
-    <AssemblyName>EmmaSharp</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Debug\EmmaSharp.XML</DocumentationFile>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\EmmaSharp.XML</DocumentationFile>
+    <TargetFrameworks>netstandard2.0;net461</TargetFrameworks>
+    <Title>EmmaSharp</Title>
+    <Description>A .Net wrapper for the Emma API.</Description>
+    <Version>1.4.0</Version>
+    <Copyright>Copyright © Kyle Gregory. All Rights Reserved.</Copyright>
+    <Authors>Kyle Gregory</Authors>
+    <Company>Kyle Gregory</Company>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="RestSharp" Version="106.6.9" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EmmaSharp.cs" />
-    <Compile Include="Extensions\DateRange.cs" />
-    <Compile Include="Extensions\Dates.cs" />
-    <Compile Include="Extensions\EmmaDateConverter.cs" />
-    <Compile Include="Extensions\EmmaException.cs" />
-    <Compile Include="Extensions\EnumHelper.cs" />
-    <Compile Include="Extensions\Intervals.cs" />
-    <Compile Include="Extensions\JsonSerializer.cs" />
-    <Compile Include="Extensions\PlainJsonStringConverter.cs" />
-    <Compile Include="Extensions\QueryFactory.cs" />
-    <Compile Include="Extensions\StringEnumConverter.cs" />
-    <Compile Include="Methods\Automation.cs" />
-    <Compile Include="Models\Automation\Workflow.cs" />
-    <Compile Include="Models\Mailings\ForwardMailing.cs" />
-    <Compile Include="Models\Mailings\MailingHeadsUp.cs" />
-    <Compile Include="Models\Mailings\MailingIdentifier.cs" />
-    <Compile Include="Models\Mailings\ResendMailing.cs" />
-    <Compile Include="Models\Members\AddMember.cs" />
-    <Compile Include="Models\Mailings\UpdateMailingStatus.cs" />
-    <Compile Include="Models\Members\AddMembers.cs" />
-    <Compile Include="Models\Members\AddMemeberRequest.cs" />
-    <Compile Include="Methods\Groups.cs" />
-    <Compile Include="Methods\Fields.cs" />
-    <Compile Include="Methods\Responses.cs" />
-    <Compile Include="Methods\Searches.cs" />
-    <Compile Include="Methods\SignupForms.cs" />
-    <Compile Include="Methods\Triggers.cs" />
-    <Compile Include="Methods\Webhooks.cs" />
-    <Compile Include="Models\Fields\Field.cs" />
-    <Compile Include="Models\Fields\FieldType.cs" />
-    <Compile Include="Models\Fields\WidgetType.cs" />
-    <Compile Include="Models\Generics\Email.cs" />
-    <Compile Include="Models\Generics\Link.cs" />
-    <Compile Include="Models\Groups\GroupType.cs" />
-    <Compile Include="Models\Groups\Group.cs" />
-    <Compile Include="Models\Members\ChangeStatus.cs" />
-    <Compile Include="Models\Members\CopyStatus.cs" />
-    <Compile Include="Models\Members\DeleteMembers.cs" />
-    <Compile Include="Models\Members\ImportStatus.cs" />
-    <Compile Include="Models\Members\MemberBulk.cs" />
-    <Compile Include="Models\Members\MembersAdd.cs" />
-    <Compile Include="Models\Members\RemoveMemberGroups.cs" />
-    <Compile Include="Models\Members\UpdateMember.cs" />
-    <Compile Include="Models\Members\SignupMember.cs" />
-    <Compile Include="Models\Response\DeliveryType.cs" />
-    <Compile Include="Models\Mailings\Mailing.cs" />
-    <Compile Include="Models\Mailings\MailingHistory.cs" />
-    <Compile Include="Models\Mailings\MailingPersonalization.cs" />
-    <Compile Include="Models\Members\ImportChangeType.cs" />
-    <Compile Include="Models\Members\MemberIdList.cs" />
-    <Compile Include="Models\Members\MemberSignup.cs" />
-    <Compile Include="Models\Members\MemberAdd.cs" />
-    <Compile Include="Models\Members\Import.cs" />
-    <Compile Include="Models\Members\ImportMembers.cs" />
-    <Compile Include="Models\Members\Member.cs" />
-    <Compile Include="Models\Members\MemberMailings.cs" />
-    <Compile Include="Models\Members\MemberOptout.cs" />
-    <Compile Include="Models\Members\MemberStatus.cs" />
-    <Compile Include="Models\PaginationBase.cs" />
-    <Compile Include="Models\Response\ResponseCustomerShareClicks.cs" />
-    <Compile Include="Models\Response\ResponseCustomerShare.cs" />
-    <Compile Include="Models\Response\ResponseShares.cs" />
-    <Compile Include="Models\Response\Response.cs" />
-    <Compile Include="Models\Response\ResponseGeneric.cs" />
-    <Compile Include="Models\Searches\CreateSearch.cs" />
-    <Compile Include="Models\Searches\Search.cs" />
-    <Compile Include="Models\SignupForms\SignupForm.cs" />
-    <Compile Include="Models\Triggers\Trigger.cs" />
-    <Compile Include="Models\Webhooks\Webhook.cs" />
-    <Compile Include="Models\Webhooks\WebhookEvents.cs" />
-    <Compile Include="Models\Webhooks\WebhookPostMemberSignup.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Methods\Mailings.cs" />
-    <Compile Include="Models\Mailings\MailingStatus.cs" />
-    <Compile Include="Models\Mailings\MailingType.cs" />
-    <Compile Include="Models\Mailings\PersonalizationType.cs" />
-    <Compile Include="Methods\Members.cs" />
+    <Folder Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="EmmaSharp.csproj" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

@@ -65,7 +65,6 @@ namespace EmmaSharp
             request.JsonSerializer = new EmmaJsonSerializer(serializer);
 
             IRestResponse<T> execute = client.Execute<T>(request);
-            Trace.WriteLine(request.JsonSerializer.Serialize(request));
             checkResponse(execute);
             
             T response = JsonConvert.DeserializeObject<T>(execute.Content);
