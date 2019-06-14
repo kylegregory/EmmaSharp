@@ -4,7 +4,7 @@ A .Net wrapper for the [Emma API](http://api.myemma.com/). [![Build status](http
 
 ### Sample Usage
 
-The examples below show how to have your application pull all account fields on the Emma API. An optional parameter is included to show all fields, included those that were deleted:
+The examples below show how to have your application pull all account fields on the Emma API. You can substitute the public/private key with your Emma username/password if needed. An optional parameter is included to show all fields, included those that were deleted:
 
     using EmmaSharp;
     var emmasharp = new EmmaApi("publicKey", "privateKey", "accountId");
