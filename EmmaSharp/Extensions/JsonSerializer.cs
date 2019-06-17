@@ -40,7 +40,8 @@ namespace RestSharp.Serializers
             {
                 MissingMemberHandling = MissingMemberHandling.Ignore,
                 NullValueHandling = NullValueHandling.Include,
-                DefaultValueHandling = DefaultValueHandling.Include
+                DefaultValueHandling = DefaultValueHandling.Include,
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore
             };
         }
 
@@ -50,6 +51,7 @@ namespace RestSharp.Serializers
         public EmmaJsonSerializer(Newtonsoft.Json.JsonSerializer serializer)
         {
             ContentType = "application/json";
+            serializer.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
             _serializer = serializer;
         }
 
