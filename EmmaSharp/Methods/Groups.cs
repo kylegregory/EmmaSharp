@@ -44,7 +44,7 @@ namespace EmmaSharp
             var request = new RestRequest();
 			request.Resource = "/{accountId}/groups";
 
-            if (groupType != null) 
+            if (groupType != null)
                 request.AddParameter("group_types", string.Join(",", string.Join(",", Array.ConvertAll(groupType.ToArray(), i => i.ToEnumString<GroupType>()))));
 
             return Execute<List<Group>>(request, start, end);
@@ -125,7 +125,7 @@ namespace EmmaSharp
         /// </summary>
         /// <param name="memberGroupId">The Member Group Id to be retrieved.</param>
         /// <param name="deleted">Include deleted members. Optional, defaults to false.</param>
-        /// <returns>An array of members.</returns>
+        /// <returns>The member count for the group.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
         public int ListGroupMembersCount(string memberGroupId, bool deleted = false)
         {
@@ -167,7 +167,7 @@ namespace EmmaSharp
         /// <param name="memberIds">An array of member ids.</param>
         /// <returns>An array of references to the members added to the group. If a member already exists in the group or is not a valid member, that reference will not be returned.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public List<int> AddMembersToGroup(string memberGroupId, MemberIdList memberIds)
+        public List<long> AddMembersToGroup(string memberGroupId, MemberIdList memberIds)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/groups/{memberGroupId}/members";
@@ -177,7 +177,7 @@ namespace EmmaSharp
             request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(memberIds);
 
-            return Execute<List<int>>(request);
+            return Execute<List<long>>(request);
         }
 
         /// <summary>
@@ -187,7 +187,7 @@ namespace EmmaSharp
         /// <param name="memberIds">An array of member ids.</param>
         /// <returns>An array of references to the removed members.</returns>
         /// <remarks>Http404 if the group does not exist.</remarks>
-        public List<int> RemoveMembersFromGroup(string memberGroupId, MemberIdList memberIds) 
+        public List<long> RemoveMembersFromGroup(string memberGroupId, MemberIdList memberIds)
         {
             var request = new RestRequest(Method.PUT);
             request.Resource = "/{accountId}/groups/{memberGroupId}/members/remove";
@@ -197,7 +197,7 @@ namespace EmmaSharp
             request.JsonSerializer = new EmmaJsonSerializer();
             request.AddBody(memberIds);
 
-            return Execute<List<int>>(request);
+            return Execute<List<long>>(request);
         }
 
         /// <summary>
