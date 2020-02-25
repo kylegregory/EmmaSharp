@@ -23,6 +23,6 @@ namespace EmmaSharp.Models.Generics
         public int? TotalClicks { get; set; }
 
         [JsonProperty("link_id")]
-        public int? LinkId { get; set; }
+        public long? LinkId { get; set; }
     }
 }
