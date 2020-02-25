@@ -39,7 +39,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseClicks : ResponseGeneric
     {
         [JsonProperty("link_id")]
-        public int? LinkId { get; set; }
+        public long? LinkId { get; set; }
     }
 
     public class ResponseDeliveries : ResponseGeneric
