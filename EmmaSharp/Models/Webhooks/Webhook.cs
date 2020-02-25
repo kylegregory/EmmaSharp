@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Webhooks
@@ -36,13 +36,13 @@ namespace EmmaSharp.Models.Webhooks
         /// The Id of the webhook
         /// </summary>
         [JsonProperty("webhook_id")]
-        public int? WebhookId { get; set; }
+        public long? WebhookId { get; set; }
 
         /// <summary>
         /// The ID associated with the webhook account
         /// </summary>
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
     }
     /// <summary>
     /// Properties associated with creating webhooks
@@ -76,6 +76,7 @@ namespace EmmaSharp.Models.Webhooks
         /// Webhook uses HTTP POST
         /// </summary>
         [EnumMember(Value = "POST")]
-        Post
+        Post,
+        Unknown
     }
 }

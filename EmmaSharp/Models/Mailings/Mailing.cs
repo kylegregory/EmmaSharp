@@ -15,23 +15,23 @@ namespace EmmaSharp.Models.Mailings
         public MailingType MailingType { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int? MailingId { get; set; }
+        public long? MailingId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("send_started")]
         public DateTime? SendStarted { get; set; }
 
         [JsonProperty("signup_form_id")]
-        public int? SignupFormId { get; set; }
+        public long? SignupFormId { get; set; }
 
         [JsonProperty("recipient_count")]
         public int? RecipientCount { get; set; }
 
         [JsonProperty("parent_mailing_id")]
-        public int? ParentMailingId { get; set; }
+        public long? ParentMailingId { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("mailing_status")]
         public MailingStatus MailingStatus { get; set; }
@@ -62,7 +62,7 @@ namespace EmmaSharp.Models.Mailings
     {
 
         [JsonProperty("cancel_by_user_id")]
-        public int? CancelByUserId { get; set; }
+        public long? CancelByUserId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("cancel_ts")]

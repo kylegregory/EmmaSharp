@@ -18,7 +18,7 @@ namespace EmmaSharp.Models.Mailings
         public DateTime? Opened { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int? MailingId { get; set; }
+        public long? MailingId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("delivery_ts")]
@@ -35,7 +35,7 @@ namespace EmmaSharp.Models.Mailings
         public DateTime? Forwarded { get; set; }
 
         [JsonProperty("parent_mailing_id")]
-        public int? ParentMailingId { get; set; }
+        public long? ParentMailingId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("shared")]
@@ -45,6 +45,6 @@ namespace EmmaSharp.Models.Mailings
         public string Subject { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
     }
 }

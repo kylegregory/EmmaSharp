@@ -1,7 +1,25 @@
 EmmaSharp Release Notes
 =========
+
 ## HEAD (Unreleased)
- * Fix for GroupName property naming inconsistancy in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
+
+## New in 1.3.0 (Released 2019/06/04)
+ * Updated all ids to be long. [#42](https://github.com/kylegregory/EmmaSharp/pull/42) via @MilSix
+ * Added new Import Status. [#40](https://github.com/kylegregory/EmmaSharp/pull/40) via @MikeSmithDev
+ * Updated Enums to have fallback of Unknown.
+
+## New in 1.2.0 (Released 2018/06/05)
+ * Added Automation Workflow endpoints.
+ * Reduced parameter complexity in AddMemberToGroups and RemoveMemberFromGroups.
+ * Set ImportId to long in MembersAdd. [#35](https://github.com/kylegregory/EmmaSharp/pull/35) via @tjdavis1111
+ * Update return type for GetSearchesCount. [#33](https://github.com/kylegregory/EmmaSharp/pull/33) via @MilSix
+ * Fixes UpdateStatusOfGroupMembersBasedOnCurrentStatus method to put groupId in the request body. [#32](https://github.com/kylegregory/EmmaSharp/issues/32) via @MiaWang7777
+ * Fixes AddMemberToGroups by adding JSON Serializer. [#34](https://github.com/kylegregory/EmmaSharp/issues/34) via @pbhandari1s
+
+## New in 1.1.0 (Released 2017/08/23)
+ * Fix for GroupName property naming inconsistency in GetMailing to return Mailing Recipient Groups. [#25](https://github.com/kylegregory/EmmaSharp/issues/25) via @sabmah
+ * Support for multi select fields. [#28](https://github.com/kylegregory/EmmaSharp/pull/28) via @SMarioMan
+ * Require TLS 1.1 or 1.2 per [documentation from Emma](https://community.myemma.com/emma/topics/emma-api-no-longer-supporting-tls-1-0-as-of-august-1st-2017).
 
 ## New in 1.0.5 (Released 2017/06/19)
  * Undoing a regression in 1.0.4 for setting DataFormat.Json.

@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models.Members
@@ -23,5 +23,6 @@ namespace EmmaSharp.Models.Members
         SignedUp,
         [EnumMember(Value = "t")]
         StatusShifted,
+        Unknown
     }
 }

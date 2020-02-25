@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
+﻿using EmmaSharp.Extensions;
+using Newtonsoft.Json;
 using System.Runtime.Serialization;
 
 namespace EmmaSharp.Models
@@ -12,6 +12,7 @@ namespace EmmaSharp.Models
         [EnumMember(Value = "paused")]
         Paused,
         [EnumMember(Value = "ready")]
-        Ready
+        Ready,
+        Unknown
     }
 }

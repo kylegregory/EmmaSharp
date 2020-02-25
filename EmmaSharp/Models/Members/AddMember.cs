@@ -21,7 +21,7 @@ namespace EmmaSharp.Models
         /// Names and values of user-defined fields to update
         /// </summary>
         [JsonProperty("fields")]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         /// <summary>
         /// Optional. Add imported members to this list of groups.

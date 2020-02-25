@@ -10,7 +10,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseGeneric
     {
         [JsonProperty("fields")]
-        public Dictionary<string, string> Fields { get; set; }
+        public Dictionary<string, object> Fields { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("timestamp")]
@@ -48,7 +48,7 @@ namespace EmmaSharp.Models.Response
         public DeliveryType DeliveryType { get; set; }
 
         [JsonProperty("mailing_id")]
-        public int? MailingId { get; set; }
+        public long? MailingId { get; set; }
 
         [JsonProperty("mailing_name")]
         public string MailingName { get; set; }
@@ -57,7 +57,7 @@ namespace EmmaSharp.Models.Response
     public class ResponseForwards : ResponseGeneric
     {
         [JsonProperty("forward_mailing_id")]
-        public int? ForwardMailingId { get; set; }
+        public long? ForwardMailingId { get; set; }
     }
 
     public class ResponseSignups : ResponseGeneric
@@ -66,6 +66,6 @@ namespace EmmaSharp.Models.Response
         public int? ReferingMemberId { get; set; }
 
         [JsonProperty("mailing_mailing_id")]
-        public int? MailingMailingId { get; set; }
+        public long? MailingMailingId { get; set; }
     }
 }

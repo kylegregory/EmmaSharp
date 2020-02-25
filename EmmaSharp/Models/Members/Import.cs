@@ -10,7 +10,7 @@ namespace EmmaSharp.Models.Members
     public class Import
     {
         [JsonProperty("import_id")]
-        public int? ImportId { get; set; }
+        public long? ImportId { get; set; }
 
         [JsonProperty("status")]
         public ImportStatus? Status { get; set; }
@@ -23,7 +23,7 @@ namespace EmmaSharp.Models.Members
         public DateTime? ImportStarted { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("error_message")]
         public string ErrorMessage { get; set; }

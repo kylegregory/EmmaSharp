@@ -11,6 +11,6 @@
     <tags>api emma myemma sdk wrapper c#</tags>
   </metadata>
   <files>
-    <file src="EmmaSharp\bin\$configuration$\EmmaSharp.dll" target="lib\net45" />
+    <file src="EmmaSharp\bin\$configuration$\EmmaSharp.dll" target="lib\net46" />
   </files>
 </package>

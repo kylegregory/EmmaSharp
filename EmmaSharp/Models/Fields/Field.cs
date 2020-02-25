@@ -1,7 +1,5 @@
 ﻿using EmmaSharp.Extensions;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using RestSharp.Deserializers;
 using System;
 
 namespace EmmaSharp.Models.Fields
@@ -11,7 +9,6 @@ namespace EmmaSharp.Models.Fields
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
 
-        [JsonConverter(typeof(StringEnumConverter))]
         [JsonProperty("field_type")]
         public FieldType FieldType { get; set; }
 
@@ -27,13 +24,13 @@ namespace EmmaSharp.Models.Fields
         public string ShortcutName { get; set; }
 
         [JsonProperty("account_id")]
-        public int? AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonProperty("required")]
         public bool Required { get; set; }
 
         [JsonProperty("field_id")]
-        public int? FieldId { get; set; }
+        public long? FieldId { get; set; }
 
         [JsonProperty("short_display_name")]
         public string ShortDisplayName { get; set; }

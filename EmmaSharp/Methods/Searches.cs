@@ -19,7 +19,7 @@ namespace EmmaSharp
         /// <param name="deleted">Accepts True or 1. Optional flag to include deleted searches.</param>
         /// <returns>An array of searches.</returns>
         /// <remarks></remarks>
-        public List<Search> GetSearchesCount(bool deleted = false)
+        public int GetSearchesCount(bool deleted = false)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/searches";
@@ -28,7 +28,7 @@ namespace EmmaSharp
             if (deleted)
                 request.AddParameter("deleted", "true");
 
-            return Execute<List<Search>>(request);
+            return Execute<int>(request);
         }
 
         /// <summary>
