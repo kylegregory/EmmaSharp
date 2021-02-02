@@ -10,6 +10,6 @@ namespace EmmaSharp.Models.Subscriptions
     public class SubscriptionBulk
     {
         [JsonProperty("member_ids")]
-        public List<int> MemberIds { get; set; }
+        public List<long> MemberIds { get; set; }
     }
 }

@@ -36,7 +36,7 @@ namespace EmmaSharp
         /// </summary>
         /// <returns>	Information about a subscription.</returns>
         /// <param name="subscription_id">URL segment for the subscrition ID to query details on</param>
-        public Subscription GetAccountSubscritpion(string subscription_id)
+        public Subscription GetAccountSubscription(string subscription_id)
         {
             var request = new RestRequest();
             request.Resource = "/{accountId}/subscriptions/{subscriptionId}";
@@ -100,7 +100,7 @@ namespace EmmaSharp
         /// <returns>True if successful.</returns>
         /// <param name="memberIds">List of memberIDs</param>
         /// <param name="subscription_id">subscription id</param>
-        public bool PostBulkSubscrpitions(SubscriptionBulk memberIds, string subscription_id)
+        public bool PostBulkMemberSubscrpitions(SubscriptionBulk memberIds, string subscription_id)
         {
             var request = new RestRequest(Method.POST);
             request.Resource = "/{accountId}/subscriptions/{subscriptionId}/members/bulk";
@@ -117,7 +117,7 @@ namespace EmmaSharp
         /// <summary>
         /// Edit a subscription's name or description.
         /// </summary>
-        /// <returns>Information about the updated subscription.</returns>
+        /// <returns>Information about the updated subscription.Limited to name and description.</returns>
         /// <param name="subscription">Name and descrpition of the subscription text to update. Visible in the Subscription Center.</param>
         /// <param name="subscription_id ">the id to update</param>
         public Subscription EditSubscrpition(SubscriptionNew subscription, string subscription_id)
@@ -138,7 +138,7 @@ namespace EmmaSharp
         /// </summary>
         /// <returns>Information about the subscription, including the date and time it was deleted.</returns>
         /// <param name="subscription_id ">the id to update</param>
-        public Subscription DeleteSubscrpition(string subscription_id)
+        public Subscription DeleteSubscription(string subscription_id)
         {
             var request = new RestRequest(Method.DELETE);
             request.Resource = "/{accountId}/subscriptions/{subscriptionId}";

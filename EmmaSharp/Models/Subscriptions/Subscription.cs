@@ -11,7 +11,7 @@ namespace EmmaSharp.Models.Subscriptions
     public class Subscription
     {
         [JsonProperty("account_id")]
-        public int AccountId { get; set; }
+        public long? AccountId { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("created_at")]
@@ -28,13 +28,13 @@ namespace EmmaSharp.Models.Subscriptions
         public string ImportStatus { get; set; }
 
         [JsonProperty("member_count")]
-        public int MemberCount { get; set; }
+        public int? MemberCount { get; set; }
 
         [JsonProperty("modified_at")]
         public string ModifiedAt { get; set; }
 
         [JsonProperty("optout_count")]
-        public int OptoutCount { get; set; }
+        public int? OptoutCount { get; set; }
 
         [JsonConverter(typeof(EmmaDateConverter))]
         [JsonProperty("purged_at")]
@@ -44,13 +44,13 @@ namespace EmmaSharp.Models.Subscriptions
         public Settings Settings { get; set; }
 
         [JsonProperty("subscription_id")]
-        public int SubscriptionId { get; set; }
+        public long? SubscriptionId { get; set; }
 
         [JsonProperty("subscription_name")]
         public string SubscriptionName { get; set; }
 
         [JsonProperty("subscription_order")]
-        public int SubscriptionOrder { get; set; }
+        public int? SubscriptionOrder { get; set; }
     }
     public class Settings
     {

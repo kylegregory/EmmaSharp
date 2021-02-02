@@ -11,6 +11,6 @@ namespace EmmaSharp.Models.Subscriptions
     public class SubscriptionMembers
     {
         [JsonProperty("member_id")]
-        public int MemberId { get; set; }
+        public long MemberId { get; set; }
     }
 }
