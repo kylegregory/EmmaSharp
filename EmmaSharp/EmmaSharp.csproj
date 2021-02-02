@@ -118,6 +118,10 @@
     <Compile Include="Models\Searches\CreateSearch.cs" />
     <Compile Include="Models\Searches\Search.cs" />
     <Compile Include="Models\SignupForms\SignupForm.cs" />
+    <Compile Include="Models\Subscriptions\Subscription.cs" />
+    <Compile Include="Models\Subscriptions\SubscriptionBulk.cs" />
+    <Compile Include="Models\Subscriptions\SubscriptionMembers.cs" />
+    <Compile Include="Models\Subscriptions\SubscriptionNew.cs" />
     <Compile Include="Models\Triggers\Trigger.cs" />
     <Compile Include="Models\Webhooks\Webhook.cs" />
     <Compile Include="Models\Webhooks\WebhookEvents.cs" />
