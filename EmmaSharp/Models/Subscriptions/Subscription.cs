@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-namespace EmmaSharp.Models.Triggers
+namespace EmmaSharp.Models.Subscriptions
 {      
 
     public class Subscription

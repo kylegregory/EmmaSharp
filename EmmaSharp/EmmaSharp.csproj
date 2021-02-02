@@ -63,6 +63,7 @@
     <Compile Include="Extensions\QueryFactory.cs" />
     <Compile Include="Extensions\StringEnumConverter.cs" />
     <Compile Include="Methods\Automation.cs" />
+    <Compile Include="Methods\Subscriptions.cs" />
     <Compile Include="Models\Automation\Workflow.cs" />
     <Compile Include="Models\Mailings\ForwardMailing.cs" />
     <Compile Include="Models\Mailings\MailingHeadsUp.cs" />
