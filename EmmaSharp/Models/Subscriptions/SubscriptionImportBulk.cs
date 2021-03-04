@@ -7,11 +7,9 @@ using System.Threading.Tasks;
 
 namespace EmmaSharp.Models.Subscriptions
 {
-    public class SubscriptionBulk
+    public class SubscriptionImportBulk
     {
-        [JsonProperty("member_ids")]
-        public List<long> MemberIds { get; set; }
-
+        [JsonProperty("import_id")]
+        public long ImportId { get; set; }
     }
-
 }

@@ -113,6 +113,25 @@ namespace EmmaSharp
             return Execute<bool>(request);
         }
 
+        /// <summary>
+        /// Bulk subscribe members to a subscription using the import ID of all members
+        /// </summary>
+        /// <returns>True if successful.</returns>
+        /// <param name="importId">import ID to bulk subscribe</param>
+        /// <param name="subscription_id">subscription id</param>
+        public bool PostBulkImportSubscrpitions(SubscriptionImportBulk importId, string subscription_id)
+        {
+            var request = new RestRequest(Method.POST);
+            request.Resource = "/{accountId}/subscriptions/{subscriptionId}/members/bulk";
+
+            request.AddUrlSegment("subscriptionId", subscription_id);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new EmmaJsonSerializer();
+            request.AddBody(importId);
+
+            return Execute<bool>(request);
+        }
+
 
         /// <summary>
         /// Edit a subscription's name or description.
