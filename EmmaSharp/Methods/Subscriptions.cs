@@ -17,7 +17,7 @@ namespace EmmaSharp
         /// </summary>
         /// <returns>A list of subscriptions in an account along with related information, including member count and subscription ID.</returns>
         /// <param name="deletedOnly">true or false. Returns deleted subscriptions only. Optional, defaults to false.</param>
-        /// <param name="includeDeleted">true or false. Returns deleted subscriptions along with active. Optional, defaults to false./param>
+        /// <param name="includeDeleted">true or false. Returns deleted subscriptions along with active. Optional, defaults to false.</param>
         public List<Subscription> GetAccountSubscritpions(bool deletedOnly = false, bool includeDeleted = false)
         {
             var request = new RestRequest();
